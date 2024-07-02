@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/Stripped/widget/widget_product_stripped.dart';
 
@@ -100,7 +102,9 @@ class _StrippedViewState extends State<StrippedView> {
             'assets/images/addProduct.png',) ,
           backgroundColor:AppColor.purple4,
         
-          onPressed: (){}),
+          onPressed: (){
+            GoRouter.of(context).push(AppRouter.kProductDetailsView);
+          }),
       ),
     );
   }

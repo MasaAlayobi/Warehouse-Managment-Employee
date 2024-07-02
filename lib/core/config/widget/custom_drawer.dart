@@ -47,13 +47,13 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                         GoRouter.of(context).pushReplacement(AppRouter.KInventoryView);
+                         GoRouter.of(context).push(AppRouter.kInventoryView);
                       },
                       child: const Text('   Inventory',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
                     Divider(color: AppColor.white,thickness: 2,),
                     InkWell(
                       onTap: () {
-                        GoRouter.of(context).pushReplacement(AppRouter.KWarehousesView);
+                        GoRouter.of(context).push(AppRouter.kWarehousesView);
                       },
                       child: const Text('   Warehouses',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
                   ],

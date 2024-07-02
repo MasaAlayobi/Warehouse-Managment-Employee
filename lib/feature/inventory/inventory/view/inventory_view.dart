@@ -19,7 +19,7 @@ class InventoryView extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColor.purple1,
          drawer: CustomDrawer(),
-        appBar: CustomAppbar(isnNotification: true,title: 'Product',),
+        appBar: CustomAppbar(isnNotification: true,title: 'Product',ispop: false,),
         body: Column(
           children: [
             SizedBox(height: 10,),

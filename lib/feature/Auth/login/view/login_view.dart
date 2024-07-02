@@ -84,8 +84,9 @@ class LoginView extends StatelessWidget {
                     )),
                   ),
                   CustomButton(
-                      title: '->',
-                      fontsize: 27,
+                     icon: Icons.arrow_forward,
+                     sixeIcon: 33,
+                     colorIcon: AppColor.purple1,
                       onpress: () {
                         GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
                       },
