@@ -2,19 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class WidgetProductStripped extends StatelessWidget {
-  const WidgetProductStripped({super.key, this.image, this.title, this.subTitle, this.subtitle2});
-final String? image;
-  final String? title;
-  final String? subTitle;
-  final String? subtitle2;
+  const WidgetProductStripped({super.key, required this.fillColor, required this.image, required this.title, required this.subTitle, required this.subtitle2});
+  final Color fillColor;
+final String image;
+  final String title;
+  final String subTitle;
+  final String subtitle2;
   @override
   Widget build(BuildContext context) {
     return Padding(
                 padding: const EdgeInsets.fromLTRB(15, 10, 15,0),
                 child: SizedBox(
-                  height: 110,
+                  height: 135,
                   child: Card(
-                    color: AppColor.white,
+                    color: fillColor,
                     elevation: 13,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -23,7 +24,7 @@ final String? image;
                           padding: const EdgeInsets.only(left: 5),
                           child: Container(
                             width: 90,
-                            height: 70,
+                            height: 100,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18),
                                 // color: AppColor.purple5
@@ -67,5 +68,6 @@ final String? image;
                   ),
                 ),
               );
+              
   }
 }
