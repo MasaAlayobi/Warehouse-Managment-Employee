@@ -14,30 +14,34 @@ class WarehousesView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.purple1,
       drawer: CustomDrawer(),
-      appBar: CustomAppbar(isnNotification: false,title: 'Warehouses',),
+      appBar: CustomAppbar(
+        isBackarrow: false,
+        isnNotification: false,
+        title: 'Warehouses',
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
             height: 8,
           ),
-           Text(
+          Text(
             ' Our Warehouses :',
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
           ),
           SizedBox(
             height: 8,
           ),
-          Expanded(child: 
-          ListView.builder(
-            itemCount: 16,
-            itemBuilder: (context,index){
-              return WidgetWarehouse(
-                image: 'assets/images/warehouse.png',
-                title: 'Warehouse Name',
-                subTitle: 'NO:505EE0',
-              );
-            }))
+          Expanded(
+              child: ListView.builder(
+                  itemCount: 16,
+                  itemBuilder: (context, index) {
+                    return WidgetWarehouse(
+                      image: 'assets/images/warehouse.png',
+                      title: 'Warehouse Name',
+                      subTitle: 'NO:505EE0',
+                    );
+                  }))
         ],
       ),
     );

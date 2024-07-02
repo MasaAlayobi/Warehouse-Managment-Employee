@@ -46,7 +46,7 @@ class _HomeViewState extends State<HomeView> {
       key: _scaffoldKey,
       drawer: CustomDrawer(),
       backgroundColor: AppColor.purple1,
-      appBar: CustomAppbar(isnNotification: true,),
+      appBar: CustomAppbar(isnNotification: true,isBackarrow: false,),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
