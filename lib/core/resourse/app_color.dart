@@ -11,6 +11,7 @@ abstract class AppColor{
   static const Color white=Colors.white;
   static const Color grey1=Color(0xffB8B7B7);
   static const Color grey2=Color(0xffC0C6CE);
+  static const Color grey3=Color.fromARGB(255, 148, 152, 158);
   static const Color black=Colors.black;
   static const Color pink=Color(0xffEAB0C8);
   static const Color green1=Color(0xff27A9E0);

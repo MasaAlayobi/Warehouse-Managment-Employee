@@ -72,7 +72,11 @@ class _StrippedViewState extends State<StrippedView> {
             child: ListView.builder(
               itemCount: 13,
               itemBuilder: (context, index) {
-                return isAllProduct == true
+                return InkWell(
+                  onTap: () {
+                     GoRouter.of(context).push(AppRouter.kProductDetailsView);
+                  },
+                  child: isAllProduct == true
                     ? WidgetProductStripped(
                       fillColor: AppColor.white,
                         image: 'assets/images/Rectangle (4).png',
@@ -86,7 +90,8 @@ class _StrippedViewState extends State<StrippedView> {
                         title: 'product name',
                         subTitle: "Price :119.99\$",
                         subtitle2: "Quantity:1200",
-                      );
+                      ),
+                );
               },
             ),
           )
@@ -103,7 +108,7 @@ class _StrippedViewState extends State<StrippedView> {
           backgroundColor:AppColor.purple4,
         
           onPressed: (){
-            GoRouter.of(context).push(AppRouter.kProductDetailsView);
+            GoRouter.of(context).push(AppRouter.kAddProductView);
           }),
       ),
     );
