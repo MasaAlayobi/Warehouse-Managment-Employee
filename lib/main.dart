@@ -5,6 +5,7 @@ import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.da
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -13,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp.router(
       routerConfig: AppRouter.routter,
       debugShowCheckedModeBanner: false,
-     
     );
   }
 }

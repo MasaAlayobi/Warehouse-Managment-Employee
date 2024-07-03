@@ -21,23 +21,23 @@ class WarehousesView extends StatelessWidget {
           SizedBox(
             height: 8,
           ),
-           Text(
+          Text(
             ' Our Warehouses :',
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800),
           ),
           SizedBox(
             height: 8,
           ),
-          Expanded(child: 
-          ListView.builder(
-            itemCount: 16,
-            itemBuilder: (context,index){
-              return WidgetWarehouse(
-                image: 'assets/images/warehouse.png',
-                title: 'Warehouse Name',
-                subTitle: 'NO:505EE0',
-              );
-            }))
+          Expanded(
+              child: ListView.builder(
+                  itemCount: 16,
+                  itemBuilder: (context, index) {
+                    return WidgetWarehouse(
+                      image: 'assets/images/warehouse.png',
+                      title: 'Warehouse Name',
+                      subTitle: 'NO:505EE0',
+                    );
+                  }))
         ],
       ),
     );
