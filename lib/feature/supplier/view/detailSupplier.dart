@@ -28,7 +28,7 @@ class DetailSupplier extends StatelessWidget {
       appBar: CustomAppbar(
         title: "Detail's supplier",
         isnNotification: false,
-        isBackarrow: true,
+        ispop: true,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -136,7 +136,8 @@ class DetailSupplier extends StatelessWidget {
                   fontsize: 20,
                   width: MediaQuery.of(context).size.width / 1,
                   height: MediaQuery.of(context).size.height / 15,
-                  radius: 12),const sizedBox15()
+                  radius: 12),
+              const sizedBox15()
             ],
           ),
         ),

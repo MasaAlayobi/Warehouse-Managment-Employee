@@ -21,7 +21,7 @@ class Reports extends StatelessWidget {
         drawer: CustomDrawer(),
         backgroundColor: AppColor.purple1,
         appBar: CustomAppbar(
-          isBackarrow: false,
+          ispop: false,
           isnNotification: false,
           title: "Create reports",
         ),

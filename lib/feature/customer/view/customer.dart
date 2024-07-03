@@ -39,7 +39,7 @@ class Customer extends StatelessWidget {
       drawer: CustomDrawer(),
       backgroundColor: AppColor.purple1,
       appBar: CustomAppbar(
-        isBackarrow: false,
+        ispop: false,
         isnNotification: true,
         title: "Customer",
       ),

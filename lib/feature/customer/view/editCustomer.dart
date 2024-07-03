@@ -27,7 +27,7 @@ class EditDetailCustomer extends StatelessWidget {
       appBar: CustomAppbar(
         title: "Edit",
         isnNotification: false,
-        isBackarrow: true,
+        ispop: true,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -126,9 +126,7 @@ class EditDetailCustomer extends StatelessWidget {
               ),
               MyButton(
                   title: "save",
-                  onpress: () {
-              
-                  },
+                  onpress: () {},
                   colors: AppColor.purple3,
                   fontsize: 20,
                   width: MediaQuery.of(context).size.width / 1,

@@ -38,7 +38,7 @@ class Supplier extends StatelessWidget {
       drawer: CustomDrawer(),
       backgroundColor: AppColor.purple1,
       appBar: CustomAppbar(
-        isBackarrow: false,
+        ispop: false,
         isnNotification: true,
         title: "Suppliers",
       ),

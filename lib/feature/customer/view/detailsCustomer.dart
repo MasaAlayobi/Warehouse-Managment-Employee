@@ -29,7 +29,7 @@ class DetailCustomer extends StatelessWidget {
       appBar: CustomAppbar(
         title: "Detail's Customer",
         isnNotification: false,
-        isBackarrow: true,
+        ispop: true,
       ),
       body: SingleChildScrollView(
         child: SafeArea(

@@ -10,20 +10,22 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      width: 215,
-      backgroundColor: AppColor.purple2,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30), bottomRight: Radius.circular(30))),
-      child: ListView(
-        children: [
-          Image.asset(
-            'assets/images/backgroundDrawer.png',
-            fit: BoxFit.fill,
-            height: 200,
-          ),
-          ExpansionTile(
-            iconColor: AppColor.white,
+        width: 215,
+        backgroundColor: AppColor.purple2,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                topRight: Radius.circular(30),
+                bottomRight: Radius.circular(30))),
+                
+        child: ListView(
+          children: [
+            Image.asset(
+              'assets/images/backgroundDrawer.png',
+              fit: BoxFit.fill,
+              height:200,
+            ),
+            ExpansionTile(
+              iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
             leading: const Icon(
               Icons.inventory,
@@ -47,25 +49,13 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('   Inventory',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
-                    Divider(
-                      color: AppColor.white,
-                      thickness: 2,
-                    ),
+                    const Text('   Inventory',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600)),
+                    Divider(color: AppColor.white,thickness: 2,),
                     InkWell(
-                        onTap: () {
-                          GoRouter.of(context)
-                              .pushReplacement(AppRouter.KWarehousesView);
-                        },
-                        child: const Text('   Warehouses',
-                            style: TextStyle(
-                                color: AppColor.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600))),
+                      onTap: () {
+                        GoRouter.of(context).pushReplacement(AppRouter.KWarehousesView);
+                      },
+                      child: const Text('   Warehouses',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
                   ],
                 ),
               ),

@@ -3,6 +3,8 @@ import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.da
 import 'package:mobile_warehouse_managment/feature/Home/view/home_view.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/customer.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/detailsCustomer.dart';
+import 'package:mobile_warehouse_managment/feature/inventory/inventory/view/inventory_view.dart';
+import 'package:mobile_warehouse_managment/feature/inventory/productDetails/view/product_details_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/warehouses/view/warehouses_view.dart';
 import 'package:mobile_warehouse_managment/feature/reports/view/reports.dart';
 import 'package:mobile_warehouse_managment/feature/supplier/view/supplier.dart';
@@ -14,6 +16,9 @@ abstract class AppRouter {
   static const String KReportView = '/Reports';
   static const String KSupplierView = '/Supplier';
   static const String KCustomerView = '/customer';
+  static const String kWarehousesView = '/WarehousesView';
+  static const String kInventoryView = '/InventoryView';
+  static const String kProductDetailsView = '/ProductDetailsView';
   static final routter = GoRouter(routes: [
     GoRoute(
       path: kLoginView,
@@ -29,8 +34,12 @@ abstract class AppRouter {
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
     GoRoute(path: kLoginView, builder: (context, state) => LoginView()),
-    GoRoute(path: "/", builder: (context, state) => HomeView()),
+    GoRoute(path: kHomeView, builder: (context, state) => HomeView()),
     GoRoute(
-        path: KWarehousesView, builder: (context, state) => WarehousesView()),
+        path: kWarehousesView, builder: (context, state) => WarehousesView()),
+    GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
+    GoRoute(
+        path: kProductDetailsView,
+        builder: (context, state) => ProductDetailsView()),
   ]);
 }

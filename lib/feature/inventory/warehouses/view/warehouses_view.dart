@@ -14,11 +14,7 @@ class WarehousesView extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.purple1,
       drawer: CustomDrawer(),
-      appBar: CustomAppbar(
-        isBackarrow: false,
-        isnNotification: false,
-        title: 'Warehouses',
-      ),
+      appBar: CustomAppbar(isnNotification: false,title: 'Warehouses',ispop: true,),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

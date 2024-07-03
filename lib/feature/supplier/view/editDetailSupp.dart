@@ -27,7 +27,7 @@ class EditDetailSupplier extends StatelessWidget {
       appBar: CustomAppbar(
         title: "Edit",
         isnNotification: false,
-        isBackarrow: true,
+        ispop: true,
       ),
       body: SingleChildScrollView(
         child: SafeArea(
