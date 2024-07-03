@@ -49,11 +49,15 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('   Inventory',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kInventoryView);
+                      },
+                      child: const Text('   Inventory',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
                     Divider(color: AppColor.white,thickness: 2,),
                     InkWell(
                       onTap: () {
-                        GoRouter.of(context).pushReplacement(AppRouter.kWarehousesView);
+                        GoRouter.of(context).push(AppRouter.kWarehousesView);
                       },
                       child: const Text('   Warehouses',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
                   ],
@@ -229,7 +233,7 @@ class CustomDrawer extends StatelessWidget {
                     InkWell(
                         onTap: () {
                           GoRouter.of(context)
-                              .pushReplacement(AppRouter.KCustomerView);
+                              .push(AppRouter.KCustomerView);
                         },
                         child: const Text('   Customers',
                             style: TextStyle(
@@ -243,7 +247,7 @@ class CustomDrawer extends StatelessWidget {
                     InkWell(
                         onTap: () {
                           GoRouter.of(context)
-                              .pushReplacement(AppRouter.KSupplierView);
+                              .push(AppRouter.KSupplierView);
                         },
                         child: const Text('   Suppliers',
                             style: TextStyle(
@@ -294,7 +298,7 @@ class CustomDrawer extends StatelessWidget {
             ),
             title: InkWell(
                 onTap: () {
-                  GoRouter.of(context).pushReplacement(AppRouter.KReportView);
+                  GoRouter.of(context).push(AppRouter.KReportView);
                 },
                 child: const Text('Creat Reporte',
                     style: TextStyle(
