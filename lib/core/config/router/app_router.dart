@@ -29,7 +29,7 @@ abstract class AppRouter {
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
     GoRoute(path: kLoginView, builder: (context, state) => LoginView()),
-    GoRoute(path: kHomeView, builder: (context, state) => HomeView()),
+    GoRoute(path: "/", builder: (context, state) => HomeView()),
     GoRoute(
         path: KWarehousesView, builder: (context, state) => WarehousesView()),
   ]);

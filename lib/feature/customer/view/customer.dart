@@ -3,6 +3,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/feature/customer/view/addCustomer.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/detailsCustomer.dart';
 import 'package:mobile_warehouse_managment/feature/supplier/view/detailSupplier.dart';
 
@@ -15,6 +16,26 @@ class Customer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      floatingActionButton: InkWell(
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => AddDetailCustomer(),
+          ));
+        },
+        child: Container(
+          height: 55,
+          width: 55,
+          decoration: BoxDecoration(
+              color: AppColor.purple4, borderRadius: BorderRadius.circular(12)),
+          child: const Center(
+            child: Icon(
+              Icons.person_add_alt_outlined,
+              color: AppColor.white,
+              size: 33,
+            ),
+          ),
+        ),
+      ),
       drawer: CustomDrawer(),
       backgroundColor: AppColor.purple1,
       appBar: CustomAppbar(
