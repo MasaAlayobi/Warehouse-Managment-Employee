@@ -24,6 +24,20 @@ class CustomDrawer extends StatelessWidget {
               fit: BoxFit.fill,
               height:200,
             ),
+             const SizedBox(height: 20),
+          ListTile(
+            leading: const Icon(
+              Icons.home,
+              color: AppColor.purple1,
+            ),
+            title: const Text('Home',
+                style: TextStyle(
+                  color: AppColor.purple1,
+                )),
+            onTap: () {
+               GoRouter.of(context).push(AppRouter.kHomeView);
+            },
+          ),
             ExpansionTile(
               iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
@@ -137,20 +151,30 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('   Previous Sales',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kPreviousSalesView);
+                      },
+                      child: const Text('   Previous Sales',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                     Divider(
                       color: AppColor.white,
                       thickness: 2,
                     ),
-                    const Text('   Current Orders',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kCurrentOrderView);
+                      },
+                      child: const Text('   Current Orders',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                     Divider(
                       color: AppColor.white,
                       thickness: 2,
