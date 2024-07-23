@@ -6,7 +6,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart
 import 'package:mobile_warehouse_managment/core/config/widget/widget_ships.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
-GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+// GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 class HomeView extends StatefulWidget {
   HomeView({super.key});
 
@@ -43,10 +43,14 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
+      // key: _scaffoldKey,
       drawer: CustomDrawer(),
       backgroundColor: AppColor.purple1,
-      appBar: CustomAppbar(isnNotification: true,),
+
+
+
+      appBar: CustomAppbar(isnNotification: true,ispop: false,),
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
