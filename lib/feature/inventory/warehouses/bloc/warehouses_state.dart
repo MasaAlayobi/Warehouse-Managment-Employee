@@ -13,3 +13,4 @@ class SuccessGetWarehouses extends WarehousesState {
   });
 }
 class FailedGetWarehouse extends WarehousesState{}
+class LoadedGetWarehouse extends WarehousesState{}

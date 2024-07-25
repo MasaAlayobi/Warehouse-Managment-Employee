@@ -9,20 +9,22 @@ class CustomTextField extends StatelessWidget {
   String nameText;
   final bool readOnly;
   final String? label;
+  final IconData? icon;
   CustomTextField({
     super.key,
     this.validatorText,
     required this.nameText,
-    required this.nameController,
+    this.nameController,
     required this.readOnly,
-    this.label,
+    this.label, this.icon,
   });
 
-  final TextEditingController nameController;
+  final TextEditingController? nameController;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      // textAlign: TextAlign.center,
       readOnly: readOnly,
       keyboardType: TextInputType.name,
       cursorColor: AppColor.grey1,
@@ -43,8 +45,12 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(color: AppColor.white),
             borderRadius: BorderRadius.circular(12)),
         border: OutlineInputBorder(
+          
             borderSide: BorderSide(color: AppColor.white)),
         hintText: nameText,
+        
+        suffixIcon: icon!=null?Icon(icon):null,
+        hintStyle: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: AppColor.grey3),
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelStyle: TextStyle(fontSize: 16, color: AppColor.black),

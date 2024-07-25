@@ -7,12 +7,14 @@ class myTextFieldName extends StatelessWidget {
   String nameText;
   final bool readOnly;
   final String? label;
+  TextStyle? hintStyle;
   myTextFieldName({
     super.key,
     this.validatorText,
     required this.nameText,
     required this.nameController,
     required this.readOnly,
+    this.hintStyle,
     this.label,
   });
 
@@ -43,6 +45,7 @@ class myTextFieldName extends StatelessWidget {
         border:
             OutlineInputBorder(borderSide: BorderSide(color: AppColor.purple2)),
         hintText: nameText,
+        hintStyle: hintStyle,
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelStyle: TextStyle(fontSize: 16, color: AppColor.purple2),
