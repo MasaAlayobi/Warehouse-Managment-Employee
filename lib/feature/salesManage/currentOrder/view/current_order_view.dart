@@ -12,12 +12,16 @@ class CurrentOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       drawer: CustomDrawer(),
-       appBar: CustomAppbar(isnNotification: false, ispop: true,title: 'New orders',),
-       body: Column(
+      drawer: CustomDrawer(),
+      appBar: CustomAppbar(
+        isnNotification: false,
+        ispop: true,
+        title: 'New orders',
+      ),
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           SizedBox(
+          SizedBox(
             height: 10,
           ),
           Text('    Orders :',
@@ -25,10 +29,10 @@ class CurrentOrderView extends StatelessWidget {
                   fontSize: 19,
                   fontWeight: FontWeight.w800,
                   color: AppColor.black)),
-               SizedBox(
+          SizedBox(
             height: 10,
           ),
-           Expanded(
+          Expanded(
               child: ListView.builder(
             itemCount: 17,
             itemBuilder: (context, index) {
@@ -36,16 +40,19 @@ class CurrentOrderView extends StatelessWidget {
             },
           ))
         ],
-       ),
-       floatingActionButton: Align(
-        alignment: Alignment(0.9,0.97),
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment(0.9, 0.97),
         child: FloatingActionButton(
-          child:Icon(Icons.add,color: AppColor.white,size: 35,),
-          backgroundColor:AppColor.purple4,
-        
-          onPressed: (){
-            GoRouter.of(context).push(AppRouter.kAddProductView);
-          }),
+            child: Icon(
+              Icons.add,
+              color: AppColor.white,
+              size: 35,
+            ),
+            backgroundColor: AppColor.purple4,
+            onPressed: () {
+              GoRouter.of(context).push(AppRouter.kAddProductView);
+            }),
       ),
     );
   }

@@ -12,11 +12,11 @@ getHeader({bool useToken = true}) {
           "Bearer ${storage.get<SharedPreferences>().getString('token')}",
       
     });
-  }else {
-      return Options(headers: {
-     "Content-Type":"application/json",
-     "X-Requested-With":"XMLHttpRequest",
-    //  "ngrok-skip-browser-warning": "69420",
+  } else {
+    return Options(headers: {
+      "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+      "ngrok-skip-browser-warning": "69420",
     });
-   }
+  }
 }

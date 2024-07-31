@@ -7,7 +7,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart
 import 'package:mobile_warehouse_managment/core/config/widget/widget_ships.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/bloc/login_bloc.dart';
-import 'package:mobile_warehouse_managment/feature/inventory/warehouses/bloc/warehouses_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/inventory/warehouses/showWare/bloc/warehouses_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/warehouses/widget/widget_warehouse.dart';
 
 class WarehousesView extends StatelessWidget {
@@ -16,7 +16,7 @@ class WarehousesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => WarehousesBloc(),
+      create: (context) => WarehousesBloc()..add(GetAllWarehouses()),
       child: Scaffold(
         backgroundColor: AppColor.purple1,
         drawer: CustomDrawer(),
@@ -40,21 +40,23 @@ class WarehousesView extends StatelessWidget {
             ),
             BlocBuilder<WarehousesBloc, WarehousesState>(
               builder: (context, state) {
-                if (state is SuccessGetWarehouses &&
-                    state.listWarehouseInState.isNotEmpty) {
+                if (state is SuccessGetWarehouses) {
+                  print("state is SuccessGetWarehouses");
                   return Expanded(
                       child: ListView.builder(
                           itemCount: state.listWarehouseInState.length,
                           itemBuilder: (context, index) {
                             return WidgetWarehouse(
+                              id: state.listWarehouseInState[index].id,
                               image: 'assets/images/warehouse.png',
                               title: state.listWarehouseInState[index].name,
                               subTitle:
                                   'NO:${state.listWarehouseInState[index].id}',
+                              position:
+                                  state.listWarehouseInState[index].location,
                             );
                           }));
-                } else if (state is SuccessGetWarehouses &&
-                    state.listWarehouseInState.isEmpty) {
+                } else if (state is EmptyGetWarehouse) {
                   return Center(
                     child: Column(
                       children: [

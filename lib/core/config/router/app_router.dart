@@ -5,10 +5,12 @@ import 'package:mobile_warehouse_managment/feature/customer/view/customer.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/addProduct/view/add_product_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/view/inventory_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/view/product_details_view.dart';
-import 'package:mobile_warehouse_managment/feature/inventory/warehouses/view/warehouses_view.dart';
+
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/view/current_order_purchases.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/purchasesOdrerDetails/view/purchases_order_details.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/view/previous_purchases_view.dart';
+import 'package:mobile_warehouse_managment/feature/inventory/warehouses/showWare/view/warehouses_view.dart';
+import 'package:mobile_warehouse_managment/feature/inventory/warehouses/productOfWareWithDetails/productsInWare/view/product_in_ware.dart';
 import 'package:mobile_warehouse_managment/feature/quality/expiring_date/view/expiringDate.dart';
 import 'package:mobile_warehouse_managment/feature/reports/view/reports.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/view/current_order_view.dart';
@@ -46,6 +48,7 @@ abstract class AppRouter {
       path: KReportView,
       builder: (context, state) => Reports(),
     ),
+
     GoRoute(
       path: kExpiringDateView,
       builder: (context, state) => ExpiringDateView(),
@@ -55,7 +58,11 @@ abstract class AppRouter {
       builder: (context, state) => Supplier(),
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
-    GoRoute(path: '/', builder: (context, state) => HomeView()),
+    GoRoute(
+        path:
+             "/",
+            
+        builder: (context, state) => HomeView()),
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
