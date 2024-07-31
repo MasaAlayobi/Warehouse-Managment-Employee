@@ -2,19 +2,19 @@
 import 'dart:convert';
 
 class addItemInventory {
-  int warehouse_id;
-  String SKU;
-  String name;
-  num sell_price;
-  num pur_price;
-  num size_cubic_meters;
-  num weight;
-  num start_price;
-  num total_quantity;
-  num min_quantity;
-  num available_quantity;
-  num real_quantity;
-  String unit;
+  int? warehouse_id;
+  String? SKU;
+  String? name;
+  num? sell_price;
+  num? pur_price;
+  num? size_cubic_meters;
+  num? weight; 
+  num? start_price;
+  num? total_quantity;
+  num? min_quantity;
+  num? available_quantity;
+  num? real_quantity;
+  String? unit;
   addItemInventory({
     required this.warehouse_id,
     required this.SKU,
@@ -83,19 +83,28 @@ class addItemInventory {
 
   factory addItemInventory.fromMap(Map<String, dynamic> map) {
     return addItemInventory(
-      warehouse_id: map['warehouse_id'] as int,
-      SKU: map['SKU'] as String,
-      name: map['name'] as String,
-      sell_price: map['sell_price'] as num,
-      pur_price: map['pur_price'] as num,
-      size_cubic_meters: map['size_cubic_meters'] as num,
-      weight: map['weight'] as num,
-      start_price: map['start_price'] as num,
-      total_quantity: map['total_quantity'] as num,
-      min_quantity: map['min_quantity'] as num,
-      available_quantity: map['available_quantity'] as num,
-      real_quantity: map['real_quantity'] as num,
-      unit: map['unit'] as String,
+      warehouse_id:
+          map['warehouse_id'] != null ? map['warehouse_id'] as int : null,
+      SKU: map['SKU'] != null ? map['SKU'] as String : null,
+      name: map['name'] != null ? map['name'] as String : null,
+      sell_price: map['sell_price'] != null ? map['sell_price'] as num : null,
+      pur_price: map['pur_price'] != null ? map['pur_price'] as num : null,
+      size_cubic_meters: map['size_cubic_meters'] != null
+          ? map['size_cubic_meters'] as num
+          : null,
+      weight: map['weight'] != null ? map['weight'] as num : null,
+      start_price:
+          map['start_price'] != null ? map['start_price'] as num : null,
+      total_quantity:
+          map['total_quantity'] != null ? map['total_quantity'] as num : null,
+      min_quantity:
+          map['min_quantity'] != null ? map['min_quantity'] as num : null,
+      available_quantity: map['available_quantity'] != null
+          ? map['available_quantity'] as num
+          : null,
+      real_quantity:
+          map['real_quantity'] != null ? map['real_quantity'] as num : null,
+      unit: map['unit'] != null ? map['unit'] as String : null,
     );
   }
 

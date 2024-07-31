@@ -5,17 +5,18 @@ import 'package:shared_preferences/shared_preferences.dart';
 getHeader({bool useToken = true}) {
   if (useToken) {
     return Options(headers: {
-      "Content-Type":"application/json",
-     "X-Requested-With":"XMLHttpRequest",
-      "authorization":
-          storage.get<SharedPreferences>().getString('token'),
-      
+      "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+      "ngrok-skip-browser-warning": "69420",
+      "Authorization":
+          "Bearer ${storage.get<SharedPreferences>().getString('token')}"
+      //  "authorization": storage.get<SharedPreferences>().getString('token'),
     });
-  }else {
-      return Options(headers: {
-     "Content-Type":"application/json",
-     "X-Requested-With":"XMLHttpRequest",
-    //  "ngrok-skip-browser-warning": "69420",
+  } else {
+    return Options(headers: {
+      "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+      "ngrok-skip-browser-warning": "69420",
     });
-   }
+  }
 }

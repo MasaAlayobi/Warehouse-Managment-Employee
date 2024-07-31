@@ -9,13 +9,17 @@ part 'warehouses_state.dart';
 
 class WarehousesBloc extends Bloc<WarehousesEvent, WarehousesState> {
   WarehousesBloc() : super(WarehousesInitial()) {
-    on<WarehousesEvent>((event, emit) async {
+    on<GetAllWarehouses>((event, emit) async {
       emit(LoadedGetWarehouse());
       var response = await InventoryServiceImpl().getAllWarehouses();
-      if (!response) {
-        List<WarehouseInfoModel> ware = List.generate(response.length,
-            (index) => WarehouseInfoModel.fromJson(response[index]));
+
+      List<WarehouseInfoModel> ware = List.generate(response.length,
+          (index) => WarehouseInfoModel.fromMap(response[index]));
+      print(ware);
+      if (ware.isNotEmpty) {
         emit(SuccessGetWarehouses(listWarehouseInState: ware));
+      } else if (ware.isEmpty) {
+        emit(EmptyGetWarehouse());
       } else {
         emit(FailedGetWarehouse());
       }

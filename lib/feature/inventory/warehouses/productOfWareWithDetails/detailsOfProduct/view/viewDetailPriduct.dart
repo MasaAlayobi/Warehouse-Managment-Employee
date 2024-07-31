@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
+import 'package:mobile_warehouse_managment/core/data/warehouseProduct.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/widget/widget_quantity.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/widget/widget_sale.dart';
 
-class ProductDetailsView extends StatelessWidget {
-  const ProductDetailsView({super.key});
+class ProductDetailsInWareView extends StatelessWidget {
+  WarehouseproductModel product;
+  ProductDetailsInWareView({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -47,23 +49,24 @@ class ProductDetailsView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Center(
-                        child: Text('Adidas Shose',
+                        child: Text(product.name.toString(),
                             style: const TextStyle(
                                 fontSize: 22,
                                 fontWeight: FontWeight.w800,
                                 color: AppColor.black)),
                       ),
-                      Text('SKU : 63545255516166',
+                      Text('SKU : ${product.SKU}',
                           style: const TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
                               color: AppColor.black)),
-                      Text('Weight : 200 g',
+                      Text('Weight : ${product.weight}',
                           style: const TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
                               color: AppColor.black)),
-                      Text('size : 200 m^2',
+                      Text(
+                          'size : ${product.size_cubic_meters} ${product.unit}',
                           style: const TextStyle(
                               fontSize: 17,
                               fontWeight: FontWeight.w700,
@@ -84,11 +87,16 @@ class ProductDetailsView extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            //  WidgetQuantity(),
+            WidgetQuantity(
+                minProduct: product.min_qty.toString(),
+                combleteNumber: product.real_qty.toString(),
+                quantityForSele: product.available_qty.toString()),
             SizedBox(
               height: 20,
             ),
-            WidgetSale(sellPrice: "1d", purPrice: "d"),
+            WidgetSale(
+                sellPrice: product.sell_price.toString(),
+                purPrice: product.pur_price.toString()),
             SizedBox(
               height: 20,
             ),
