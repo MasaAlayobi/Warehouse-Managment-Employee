@@ -22,8 +22,9 @@ class AuthServiceImp extends AuthService{
            );
 
       if (response!.statusCode == 200) {
-                print(response!.data);
+                // print(response!.data);
                 storage.get<SharedPreferences>().setString('token', response!.data['data']);
+                print(storage.get<SharedPreferences>().getString('token'));
         return response!.data["message"];
       }else{print("object");}
     } 

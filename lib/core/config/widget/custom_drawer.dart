@@ -230,20 +230,30 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('   Previous Purchases',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kPreviousPurchasesView);
+                      },
+                      child: const Text('   Previous Purchases',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                     Divider(
                       color: AppColor.white,
                       thickness: 2,
                     ),
-                    const Text('   Current Orders',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kCurrentOrderPurchases);
+                      },
+                      child: const Text('   Current Orders',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                   ],
                 ),
               ),
