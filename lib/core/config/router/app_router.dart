@@ -32,18 +32,16 @@ abstract class AppRouter {
   static const String kQualityView = '/QualityView';
   static const String kExpiringDateView = '/ExpiringDateView';
 
-
   static final routter = GoRouter(routes: [
     GoRoute(
-         path:
-         "/",
-        // kLoginView,
+        path:
+            //  "/",
+            kLoginView,
         builder: (context, state) => LoginView()),
     GoRoute(
       path: KReportView,
       builder: (context, state) => Reports(),
     ),
-
     GoRoute(
       path: kExpiringDateView,
       builder: (context, state) => ExpiringDateView(),
@@ -54,9 +52,8 @@ abstract class AppRouter {
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
     GoRoute(
-        path:
-            // "/",
-            kHomeView,
+        path: "/",
+        // kHomeView,
         builder: (context, state) => HomeView()),
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
