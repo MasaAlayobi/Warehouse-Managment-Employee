@@ -1,29 +1,34 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 
 
 import 'package:flutter/material.dart';
-import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
+import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class CustomTextField extends StatelessWidget {
   final String? validatorText;
-  String nameText;
+  String? nameText;
+  final GestureTapCallback? ontapIcon;
   final bool readOnly;
   final String? label;
   final IconData? icon;
   CustomTextField({
-    super.key,
+    Key? key,
     this.validatorText,
     required this.nameText,
-    this.nameController,
+
     required this.readOnly,
-    this.label, this.icon,
-  });
+    this.label,
+    this.icon,
+    this.nameController, this.ontapIcon,
+  }) : super(key: key);
 
   final TextEditingController? nameController;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       // textAlign: TextAlign.center,
       readOnly: readOnly,
       keyboardType: TextInputType.name,
@@ -49,7 +54,9 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(color: AppColor.white)),
         hintText: nameText,
         
-        suffixIcon: icon!=null?Icon(icon):null,
+        suffixIcon: icon!=null?InkWell(
+          onTap: ontapIcon,
+          child: Icon(icon)):null,
         hintStyle: TextStyle(fontSize: 17,fontWeight: FontWeight.bold,color: AppColor.grey3),
         labelText: label,
         floatingLabelBehavior: FloatingLabelBehavior.always,

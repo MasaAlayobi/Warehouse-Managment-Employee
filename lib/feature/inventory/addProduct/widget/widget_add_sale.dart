@@ -3,15 +3,15 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class WidgetAddSale extends StatelessWidget {
-   WidgetAddSale({super.key, required this.purchasingPrice, required this.salePrice});
+   WidgetAddSale({super.key, required this.purchasingPrice, required this.salePrice, required this.start_price});
  final TextEditingController purchasingPrice;
  final TextEditingController salePrice;
-
+ final  TextEditingController start_price;
   @override
   Widget build(BuildContext context) {
     return Center(
               child: Container(
-                height: MediaQuery.of(context).size.height / 4,
+                height: MediaQuery.of(context).size.height / 2.65,
                 width: MediaQuery.of(context).size.width / 1.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -54,12 +54,12 @@ class WidgetAddSale extends StatelessWidget {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 2.8,
-                                height: MediaQuery.of(context).size.height / 14,
+                                height: MediaQuery.of(context).size.height / 16,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.white),
                                    child:  Center(
-                                  child: CustomTextField(nameText: 'Add price',  readOnly:true,nameController: purchasingPrice,),
+                                  child: CustomTextField(nameText: 'Add price',  readOnly:false,nameController: purchasingPrice,),
                                 ),
                               )
                             ],
@@ -84,18 +84,51 @@ class WidgetAddSale extends StatelessWidget {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width / 2.8,
-                                height: MediaQuery.of(context).size.height / 14,
+                                height: MediaQuery.of(context).size.height / 16,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.white),
                                      child: Center(
-                                  child: CustomTextField(nameText: 'Add price',  readOnly:true,nameController: salePrice,),
+                                  child: CustomTextField(nameText: 'Add price',  readOnly:false,nameController: salePrice,),
                                 ),
                               )
                             ],
                           ),
                         ),
                       ],
+                    ),
+                    SizedBox(height: 10),
+                    Container(
+                      width: MediaQuery.of(context).size.width / 1.3,
+                      height: MediaQuery.of(context).size.height / 8.4,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColor.pink),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text('  Start price : ',
+                              style: const TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColor.black)),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 1.5,
+                            height: MediaQuery.of(context).size.height / 16,//18
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColor.white),
+                                child: Center(
+                                  child: CustomTextField(nameText: 'Add price',  readOnly:false,nameController: start_price,),
+                                ),
+                          ),
+                          SizedBox(height: 4,)
+                        ],
+                      ),
                     ),
                   ],
                 ),

@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class WidgetAddQuantity extends StatelessWidget {
-    WidgetAddQuantity({super.key, required this.quantityForSale, required this.completeNumber, required this.minimumQuantity});
-final  TextEditingController quantityForSale;
-final  TextEditingController completeNumber;
-final  TextEditingController minimumQuantity;
+    WidgetAddQuantity({super.key, required this.total_quantity});
+final  TextEditingController total_quantity;
+// final  TextEditingController completeNumber;
+// final  TextEditingController minimumQuantity;
 
   @override
   Widget build(BuildContext context) {
     return Center(
               child: Container(
-                height: MediaQuery.of(context).size.height / 2.7,
+                height: MediaQuery.of(context).size.height / 4,
                 width: MediaQuery.of(context).size.width / 1.2,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -38,15 +39,15 @@ final  TextEditingController minimumQuantity;
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Container(
-                          width: MediaQuery.of(context).size.width / 2.6,
-                          height: MediaQuery.of(context).size.height / 6.5,
+                          width: MediaQuery.of(context).size.width / 1.5,
+                          height: MediaQuery.of(context).size.height / 8,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               color: AppColor.purple5),
                           child: Column(
                             // crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Quantity \n for sale:',
+                              Text('Total quantity:',
                                   style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w700,
@@ -55,82 +56,51 @@ final  TextEditingController minimumQuantity;
                                 height: 5,
                               ),
                               Container(
-                                width: MediaQuery.of(context).size.width / 2.8,
-                                height: MediaQuery.of(context).size.height / 14,
+                                width: MediaQuery.of(context).size.width / 1.8,
+                                height: MediaQuery.of(context).size.height / 15,
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.white),
                                      child: Center(
-                                  child: CustomTextField(nameText: 'Add number',  readOnly:false,nameController:quantityForSale ,),
+                                  child: CustomTextField(nameText: 'Add number',  readOnly:false,nameController:total_quantity ,),
                                 ),
                               )
                             ],
                           ),
                         ),
-                        Container(
-                          width: MediaQuery.of(context).size.width / 2.6,
-                          height: MediaQuery.of(context).size.height / 6.5,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: AppColor.purple5),
-                          child: Column(
-                            // crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Complete  \n number :',
-                                  style: const TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700,
-                                      color: AppColor.black)),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              Container(
-                                width: MediaQuery.of(context).size.width / 2.8,
-                                height: MediaQuery.of(context).size.height / 14,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    color: AppColor.white),
-                                     child: Center(
-                                  child: CustomTextField(nameText: 'Add number',  readOnly:false,nameController: completeNumber,),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                        // Container(
+                        //   width: MediaQuery.of(context).size.width / 2.6,
+                        //   height: MediaQuery.of(context).size.height / 6.5,
+                        //   decoration: BoxDecoration(
+                        //       borderRadius: BorderRadius.circular(10),
+                        //       color: AppColor.purple5),
+                        //   child: Column(
+                        //     // crossAxisAlignment: CrossAxisAlignment.start,
+                        //     children: [
+                        //       Text('Complete  \n number :',
+                        //           style: const TextStyle(
+                        //               fontSize: 18,
+                        //               fontWeight: FontWeight.w700,
+                        //               color: AppColor.black)),
+                        //       SizedBox(
+                        //         height: 5,
+                        //       ),
+                        //       Container(
+                        //         width: MediaQuery.of(context).size.width / 2.8,
+                        //         height: MediaQuery.of(context).size.height / 14,
+                        //         decoration: BoxDecoration(
+                        //             borderRadius: BorderRadius.circular(10),
+                        //             color: AppColor.white),
+                        //              child: Center(
+                        //           child: CustomTextField(nameText: 'Add number',  readOnly:false,nameController: completeNumber,),
+                        //         ),
+                        //       )
+                        //     ],
+                        //   ),
+                        // ),
                       ],
                     ),
-                    SizedBox(height: 10),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.3,
-                      height: MediaQuery.of(context).size.height / 8.4,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: AppColor.pink),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text('  Minimum number of products : ',
-                              style: const TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w700,
-                                  color: AppColor.black)),
-                          SizedBox(
-                            height: 5,
-                          ),
-                          Container(
-                            width: MediaQuery.of(context).size.width / 2,
-                            height: MediaQuery.of(context).size.height / 20,//18
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: AppColor.white),
-                                child: Center(
-                                  child: CustomTextField(nameText: 'Add number',  readOnly:false,nameController: minimumQuantity,),
-                                ),
-                          )
-                        ],
-                      ),
-                    ),
+                    
                   ],
                 ),
               ),

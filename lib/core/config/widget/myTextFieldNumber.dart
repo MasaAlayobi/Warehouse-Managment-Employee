@@ -52,6 +52,7 @@ class myTextFieldNumber extends StatelessWidget {
         border:
             OutlineInputBorder(borderSide: BorderSide(color: AppColor.purple2)),
         hintText: phoneText,
+        hintStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w300),
         labelText: labelText,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelStyle: TextStyle(color: AppColor.purple2),

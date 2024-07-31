@@ -7,8 +7,9 @@ getHeader({bool useToken = true}) {
     return Options(headers: {
       "Content-Type":"application/json",
      "X-Requested-With":"XMLHttpRequest",
+    //  "Accept":"*/*",
       "authorization":
-          storage.get<SharedPreferences>().getString('token'),
+          "Bearer ${storage.get<SharedPreferences>().getString('token')}",
       
     });
   }else {

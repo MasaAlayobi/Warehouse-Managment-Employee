@@ -6,11 +6,17 @@ import 'package:mobile_warehouse_managment/feature/inventory/addProduct/view/add
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/view/inventory_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/view/product_details_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/warehouses/view/warehouses_view.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/view/current_order_purchases.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/purchasesOdrerDetails/view/purchases_order_details.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/view/previous_purchases_view.dart';
+import 'package:mobile_warehouse_managment/feature/quality/expiring_date/view/expiringDate.dart';
 import 'package:mobile_warehouse_managment/feature/reports/view/reports.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/view/current_order_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/orderDetails/view/order_details_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/view/previous_sales_view.dart';
 import 'package:mobile_warehouse_managment/feature/supplier/view/supplier.dart';
+
+import '../../../feature/quality/view/quality.dart';
 
 abstract class AppRouter {
   static const String kLoginView = '/loginView';
@@ -22,38 +28,55 @@ abstract class AppRouter {
   static const String KReportView = '/Reports';
   static const String KSupplierView = '/Supplier';
   static const String KCustomerView = '/customer';
-  static const String kPreviousSalesView='/PreviousSalesView';
-  static const String kCurrentOrderView='/CurrentOrderView';
-  static const String kOrderDetailsView='/OrderDetailsView';
-
+  static const String kPreviousSalesView = '/PreviousSalesView';
+  static const String kCurrentOrderView = '/CurrentOrderView';
+  static const String kOrderDetailsView = '/OrderDetailsView';
+  static const String kQualityView = '/QualityView';
+  static const String kExpiringDateView = '/ExpiringDateView';
+  static const String kPreviousPurchasesView = '/PreviousPurchasesView';
+  static const String kPurchasesOrderDetails = '/PurchasesOrderDetails';
+  static const String kCurrentOrderPurchases = '/CurrentOrderPurchases';
   static final routter = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => LoginView()),
-    GoRoute(
-      path: kLoginView,
-      builder: (context, state) => LoginView(),
+    GoRoute(path: kLoginView, builder: (context, state) => LoginView()),
+     GoRoute(
+      path: kHomeView,
+      builder: (context, state) => HomeView(),
     ),
     GoRoute(
       path: KReportView,
       builder: (context, state) => Reports(),
     ),
     GoRoute(
+      path: kExpiringDateView,
+      builder: (context, state) => ExpiringDateView(),
+    ),
+    GoRoute(
       path: KSupplierView,
       builder: (context, state) => Supplier(),
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
-    GoRoute(path: kHomeView, builder: (context, state) => HomeView()),
-    GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
-        GoRoute(
-        path: kAddProductView,
-        builder: (context, state) => AddProductView()),
-    GoRoute(
-        path: kProductDetailsView,
-        builder: (context, state) => ProductDetailsView()),
+    GoRoute(path: '/', builder: (context, state) => HomeView()),
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
-    GoRoute(path: kPreviousSalesView, builder: (context, state) => PreviousSalesView()),
- GoRoute(path: kCurrentOrderView, builder: (context, state) => CurrentOrderView()),
- GoRoute(path: kOrderDetailsView, builder: (context, state) => OrderDetailsView()),
+    GoRoute(
+        path: kAddProductView, builder: (context, state) => AddProductView()),
+    GoRoute(
+        path: kProductDetailsView,
+        builder: (context, state) => ProductDetailsView()),
+    GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
+    GoRoute(
+        path: kPreviousSalesView,
+        builder: (context, state) => PreviousSalesView()),
+    GoRoute(
+        path: kCurrentOrderView,
+        builder: (context, state) => CurrentOrderView()),
+    GoRoute(
+        path: kOrderDetailsView,
+        builder: (context, state) => OrderDetailsView()),
+    GoRoute(path: kQualityView, builder: (context, state) => QualityView()),
+     GoRoute(path: kPreviousPurchasesView, builder: (context, state) => PreviousPurchasesView()),
+     GoRoute(path: kPurchasesOrderDetails, builder: (context, state) => PurchasesOrderDetails()),
+     GoRoute(path: kCurrentOrderPurchases, builder: (context, state) => CurrentOrderPurchases()),
   ]);
 }

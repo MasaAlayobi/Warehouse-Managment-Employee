@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class MyButton extends StatelessWidget {
   MyButton({
@@ -41,8 +42,8 @@ class MyButton extends StatelessWidget {
               title,
               style: TextStyle(
                   fontSize: fontsize,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
+                  fontWeight: FontWeight.w700,
+                  color: textcolor==null?AppColor.white:textcolor),
             ),
           ),
         ),

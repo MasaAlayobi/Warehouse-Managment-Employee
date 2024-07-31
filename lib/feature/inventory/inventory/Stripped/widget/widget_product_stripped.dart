@@ -29,9 +29,46 @@ final String image;
                                 borderRadius: BorderRadius.circular(18),
                                 // color: AppColor.purple5
                                 ),
-                            child: Image.asset('$image'),
+                            child: image.isNotEmpty
+                            ? Image.network(
+                                            image,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                4,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                3,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Image.asset(
+                                                'assets/images/no_photo.png',
+                                                width: MediaQuery.of(context)
+                                                        .size
+                                                        .width /
+                                                    4,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height /
+                                                    3,
+                                              );
+                                            },
+                                          )
+                                        : Image.asset(
+                                            'assets/images/no_photo.png',
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                4,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                3,
+                                          ),
+                                  ),
                           ),
-                        ),
+                        
                         SizedBox(width: 30,),
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

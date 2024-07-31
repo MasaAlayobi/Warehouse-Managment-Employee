@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
@@ -10,21 +11,17 @@ class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        width: 215,
-        backgroundColor: AppColor.purple2,
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(30),
-                bottomRight: Radius.circular(30))),
-                
-        child: ListView(
-          children: [
-            Image.asset(
-              'assets/images/backgroundDrawer.png',
-              fit: BoxFit.fill,
-              height:200,
-            ),
-             const SizedBox(height: 20),
+      width: 215,
+      backgroundColor: AppColor.purple2,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), bottomRight: Radius.circular(30))),
+      child: ListView(
+        children: [
+          Lottie.asset(
+            'assets/lottie/truck.json',
+          ),
+          const SizedBox(height: 20),
           ListTile(
             leading: const Icon(
               Icons.home,
@@ -35,11 +32,11 @@ class CustomDrawer extends StatelessWidget {
                   color: AppColor.purple1,
                 )),
             onTap: () {
-               GoRouter.of(context).push(AppRouter.kHomeView);
+              GoRouter.of(context).push(AppRouter.kHomeView);
             },
           ),
-            ExpansionTile(
-              iconColor: AppColor.white,
+          ExpansionTile(
+            iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
             leading: const Icon(
               Icons.inventory,
@@ -64,16 +61,27 @@ class CustomDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () {
-                        GoRouter.of(context).push(AppRouter.kInventoryView);
-                      },
-                      child: const Text('   Inventory',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
-                    Divider(color: AppColor.white,thickness: 2,),
+                        onTap: () {
+                          GoRouter.of(context).push(AppRouter.kInventoryView);
+                        },
+                        child: const Text('   Inventory',
+                            style: TextStyle(
+                                color: AppColor.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600))),
+                    Divider(
+                      color: AppColor.white,
+                      thickness: 2,
+                    ),
                     InkWell(
-                      onTap: () {
-                        GoRouter.of(context).push(AppRouter.kWarehousesView);
-                      },
-                      child: const Text('   Warehouses',style: TextStyle(color: AppColor.white,fontSize: 16,fontWeight: FontWeight.w600))),
+                        onTap: () {
+                          GoRouter.of(context).push(AppRouter.kWarehousesView);
+                        },
+                        child: const Text('   Warehouses',
+                            style: TextStyle(
+                                color: AppColor.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600))),
                   ],
                 ),
               ),
@@ -106,26 +114,36 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('   Damaged',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kQualityView);
+                      },
+                      child: const Text('   Damaged products',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                     Divider(
                       color: AppColor.white,
                       thickness: 2,
                     ),
-                    const Text('   Expiry date',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                        GoRouter.of(context).push(AppRouter.kExpiringDateView);
+                      },
+                      child: Text('   Expiring date',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                   ],
                 ),
               ),
             ],
             // onTap: () {
-            //   // Navigator.pushNamed(context, '/quality');
+            // Navigator.pushNamed(context, '/quality');
             // },
           ),
           ExpansionTile(
@@ -153,7 +171,7 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                         GoRouter.of(context).push(AppRouter.kPreviousSalesView);
+                        GoRouter.of(context).push(AppRouter.kPreviousSalesView);
                       },
                       child: const Text('   Previous Sales',
                           style: TextStyle(
@@ -167,7 +185,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                         GoRouter.of(context).push(AppRouter.kCurrentOrderView);
+                        GoRouter.of(context).push(AppRouter.kCurrentOrderView);
                       },
                       child: const Text('   Current Orders',
                           style: TextStyle(
@@ -212,20 +230,30 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('   Previous Purchases',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kPreviousPurchasesView);
+                      },
+                      child: const Text('   Previous Purchases',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                     Divider(
                       color: AppColor.white,
                       thickness: 2,
                     ),
-                    const Text('   Current Orders',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kCurrentOrderPurchases);
+                      },
+                      child: const Text('   Current Orders',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                   ],
                 ),
               ),
@@ -256,8 +284,7 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     InkWell(
                         onTap: () {
-                          GoRouter.of(context)
-                              .push(AppRouter.KCustomerView);
+                          GoRouter.of(context).push(AppRouter.KCustomerView);
                         },
                         child: const Text('   Customers',
                             style: TextStyle(
@@ -270,8 +297,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     InkWell(
                         onTap: () {
-                          GoRouter.of(context)
-                              .push(AppRouter.KSupplierView);
+                          GoRouter.of(context).push(AppRouter.KSupplierView);
                         },
                         child: const Text('   Suppliers',
                             style: TextStyle(
