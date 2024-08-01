@@ -232,7 +232,8 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
-                         GoRouter.of(context).push(AppRouter.kPreviousPurchasesView);
+                        GoRouter.of(context)
+                            .push(AppRouter.kPreviousPurchasesView);
                       },
                       child: const Text('   Previous Purchases',
                           style: TextStyle(
@@ -246,7 +247,8 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                         GoRouter.of(context).push(AppRouter.kCurrentOrderPurchases);
+                        GoRouter.of(context)
+                            .push(AppRouter.kCurrentOrderPurchases);
                       },
                       child: const Text('   Current Orders',
                           style: TextStyle(
@@ -313,36 +315,6 @@ class CustomDrawer extends StatelessWidget {
             iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
             leading: const Icon(
-              Icons.money,
-              color: AppColor.purple1,
-            ),
-            title: const Text('Debts',
-                style: TextStyle(
-                  color: AppColor.purple1,
-                )),
-            // onTap: () {
-            //   // Navigator.pushNamed(context, '/debts');
-            // },
-          ),
-          ExpansionTile(
-            iconColor: AppColor.white,
-            collapsedIconColor: AppColor.white,
-            leading: const Icon(
-              Icons.report,
-              color: AppColor.purple1,
-            ),
-            title: const Text('Expenses',
-                style: TextStyle(
-                  color: AppColor.purple1,
-                )),
-            // onTap: () {
-            //   // Navigator.pushNamed(context, '/expenses');
-            // },
-          ),
-          ExpansionTile(
-            iconColor: AppColor.white,
-            collapsedIconColor: AppColor.white,
-            leading: const Icon(
               Icons.insert_chart,
               color: AppColor.purple1,
             ),
@@ -358,19 +330,40 @@ class CustomDrawer extends StatelessWidget {
             //   // Navigator.pushNamed(context, '/report');
             // },
           ),
-          const SizedBox(height: 20),
           ListTile(
             leading: const Icon(
-              Icons.logout,
+              Icons.report,
               color: AppColor.purple1,
             ),
-            title: const Text('Logout',
+            title: const Text('complaint to\n your manager',
                 style: TextStyle(
                   color: AppColor.purple1,
                 )),
             onTap: () {
+              GoRouter.of(context).push(AppRouter.kComplainToAdminView);
+
               // Implement logout logic
             },
+          ),
+          const SizedBox(height: 30),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: ListTile(
+                leading: const Icon(
+                  Icons.logout,
+                  color: AppColor.purple1,
+                ),
+                title: const Text('Logout',
+                    style: TextStyle(
+                      color: AppColor.purple1,
+                    )),
+                onTap: () {
+                  // Implement logout logic
+                },
+              ),
+            ),
           ),
         ],
       ),

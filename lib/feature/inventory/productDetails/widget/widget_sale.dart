@@ -8,18 +8,18 @@ class WidgetSale extends StatelessWidget {
   String sellPrice;
   String purPrice;
 
-   WidgetSale({
+  WidgetSale({
     Key? key,
-  required  this.sellPrice,
-  required  this.purPrice,
+    required this.sellPrice,
+    required this.purPrice,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height / 4,
-        width: MediaQuery.of(context).size.width / 1.2,
+        height: MediaQuery.of(context).size.height / 2.9,
+        width: MediaQuery.of(context).size.width / 1.1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: AppColor.purple4,
@@ -32,79 +32,85 @@ class WidgetSale extends StatelessWidget {
             Center(
               child: Text('Prices Summary',
                   style: const TextStyle(
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.w800,
                       color: AppColor.black)),
             ),
             SizedBox(
               height: 15,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.6,
-                  height: MediaQuery.of(context).size.height / 6.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.purple5),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Purchasing  \n price :',
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: AppColor.black)),
-                      SizedBox(
-                        height: 5,
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 1.2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 2.6,
+                      height: MediaQuery.of(context).size.height / 5.5,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColor.purple5),
+                      child: Column(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Purchasing  \n price :',
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColor.black)),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.9,
+                            height: MediaQuery.of(context).size.height / 16,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColor.white),
+                            child: Center(
+                              child: CustomTextField(
+                                  nameText: purPrice, readOnly: true),
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.8,
-                        height: MediaQuery.of(context).size.height / 14,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColor.white),
-                        child: Center(
-                          child: CustomTextField(
-                              nameText: purPrice, readOnly: true),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.6,
-                  height: MediaQuery.of(context).size.height / 6.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.purple5),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('selling  \n price :',
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: AppColor.black)),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.8,
-                        height: MediaQuery.of(context).size.height / 14,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColor.white),
-                        child: Center(
-                          child: CustomTextField(
-                              nameText: sellPrice, readOnly: true),
+                  Container(
+                    width: MediaQuery.of(context).size.width / 2.6,
+                    height: MediaQuery.of(context).size.height / 5.5,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: AppColor.purple5),
+                    child: Column(
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('selling  \n price :',
+                            style: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                                color: AppColor.black)),
+                        SizedBox(
+                          height: 5,
                         ),
-                      )
-                    ],
+                        Container(
+                          width: MediaQuery.of(context).size.width / 2.9,
+                          height: MediaQuery.of(context).size.height / 16,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: AppColor.white),
+                          child: Center(
+                            child: CustomTextField(
+                                nameText: sellPrice, readOnly: true),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),

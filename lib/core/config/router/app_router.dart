@@ -1,7 +1,7 @@
-
 import 'package:go_router/go_router.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/Home/view/home_view.dart';
+import 'package:mobile_warehouse_managment/feature/complaintToAdmin/view/complaintToAdmin.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/customer.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/addProduct/view/add_product_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/view/inventory_view.dart';
@@ -39,9 +39,13 @@ abstract class AppRouter {
   static const String kPreviousPurchasesView = '/PreviousPurchasesView';
   static const String kPurchasesOrderDetails = '/PurchasesOrderDetails';
   static const String kCurrentOrderPurchases = '/CurrentOrderPurchases';
+  static const String kComplainToAdminView = '/ComplainToAdminView';
   static final routter = GoRouter(routes: [
-    GoRoute(path: kLoginView, builder: (context, state) => LoginView()),
-     GoRoute(
+    GoRoute(path: "/", builder: (context, state) => LoginView()),
+    GoRoute(
+        path: kComplainToAdminView,
+        builder: (context, state) => ComplainToAdminView()),
+    GoRoute(
       path: kHomeView,
       builder: (context, state) => HomeView(),
     ),
@@ -49,9 +53,7 @@ abstract class AppRouter {
       path: KReportView,
       builder: (context, state) => Reports(),
     ),
-
-
-GoRoute(
+    GoRoute(
       path: kExpiringDateView,
       builder: (context, state) => ExpiringDateView(),
     ),
@@ -60,11 +62,7 @@ GoRoute(
       builder: (context, state) => Supplier(),
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
-    GoRoute(
-        path:
-             "/",
-            
-        builder: (context, state) => HomeView()),
+    GoRoute(path: kHomeView, builder: (context, state) => HomeView()),
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
@@ -84,8 +82,14 @@ GoRoute(
         path: kOrderDetailsView,
         builder: (context, state) => OrderDetailsView()),
     GoRoute(path: kQualityView, builder: (context, state) => QualityView()),
-     GoRoute(path: kPreviousPurchasesView, builder: (context, state) => PreviousPurchasesView()),
-     GoRoute(path: kPurchasesOrderDetails, builder: (context, state) => PurchasesOrderDetails()),
-     GoRoute(path: kCurrentOrderPurchases, builder: (context, state) => CurrentOrderPurchases()),
+    GoRoute(
+        path: kPreviousPurchasesView,
+        builder: (context, state) => PreviousPurchasesView()),
+    GoRoute(
+        path: kPurchasesOrderDetails,
+        builder: (context, state) => PurchasesOrderDetails()),
+    GoRoute(
+        path: kCurrentOrderPurchases,
+        builder: (context, state) => CurrentOrderPurchases()),
   ]);
 }

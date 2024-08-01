@@ -1,13 +1,13 @@
 class AppUrl {
-  static String baseUrl = 'https://5b9e-94-47-139-168.ngrok-free.app/api';
-  static String UrlPhoto='https://5b9e-94-47-139-168.ngrok-free.app/storage/';
+  static String baseUrl = 'http://127.0.0.1:8000/api';
+  static String UrlPhoto = 'https://127.0.0.1:8000/storage/';
 }
 
 abstract class EndPoint {
   static String Login = '/auth/employee/login';
   static String getWare = '/employee/warehouse/show-all';
   static String addItemToInventory = '/item/store';
-  static String getItemInStripped='/item/show-all';
-  static String DeleteItem='/item/delete/';
+  static String getItemInStripped = '/item/show-all';
+  static String DeleteItem = '/item/delete/';
+  static String updateItem = '/item/update-in-warehouse/';
 }
-  
