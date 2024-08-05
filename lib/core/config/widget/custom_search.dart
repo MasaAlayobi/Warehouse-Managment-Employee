@@ -7,14 +7,16 @@ class CustomSearch extends StatelessWidget {
   final bool readOnly;
   final String? label;
   final TextEditingController nameController;
+  final Function(String)? onChanged;
   
-  const CustomSearch({super.key, this.validatorText, required this.nameText, required this.readOnly, this.label, required this.nameController});
+  const CustomSearch({super.key, this.validatorText, required this.nameText, required this.readOnly, this.label, required this.nameController, this.onChanged});
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      readOnly: readOnly,
+    return TextField(
       
+      readOnly: readOnly,
+      onSubmitted: onChanged,
       keyboardType: TextInputType.name,
       cursorColor: AppColor.grey1,
       decoration: InputDecoration(
@@ -41,12 +43,7 @@ class CustomSearch extends StatelessWidget {
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelStyle: TextStyle(fontSize: 16, color: AppColor.black),
       ),
-      validator: (text) {
-        if (text!.isEmpty) {
-          return validatorText;
-        }
-        return null;
-      },
+      
       controller: nameController,
     );
   }

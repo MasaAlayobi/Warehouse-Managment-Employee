@@ -1,6 +1,6 @@
 class AppUrl {
   static String baseUrl = 'http://127.0.0.1:8000/api';
-  static String UrlPhoto = 'https://127.0.0.1:8000/storage/';
+  static String UrlPhoto='http://127.0.0.1:8000/storage/';
 }
 
 abstract class EndPoint {

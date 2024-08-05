@@ -6,7 +6,7 @@ import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/supplier/view/addSupplier.dart';
 import 'package:mobile_warehouse_managment/feature/supplier/view/detailSupplier.dart';
 
-import '../../../core/config/widget/custom_drawer.dart';
+import '../../../../core/config/widget/custom_drawer.dart';
 
 class Supplier extends StatelessWidget {
   const Supplier({super.key});

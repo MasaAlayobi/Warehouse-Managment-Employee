@@ -11,7 +11,7 @@ class ItemsStrippedBloc extends Bloc<ItemsStrippedEvent, ItemsStrippedState> {
     on<GetAllItemInStripped>((event, emit) async{
       emit(Loading());
        try{
-        dynamic data=await InventoryServiceImpl().getItemInStripped();
+        dynamic data=await InventoryServiceImpl().getItemInStripped(event.lable);
         if(data.isNotEmpty){
         emit(SuccessFetchItem(allProduct: data));
 

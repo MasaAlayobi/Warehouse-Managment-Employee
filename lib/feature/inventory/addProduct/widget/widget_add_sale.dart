@@ -3,7 +3,8 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class WidgetAddSale extends StatelessWidget {
-   WidgetAddSale({super.key, required this.purchasingPrice, required this.salePrice, required this.start_price});
+   WidgetAddSale({super.key, required this.purchasingPrice, required this.salePrice, required this.start_price,this.readOnly});
+   bool? readOnly;
  final TextEditingController purchasingPrice;
  final TextEditingController salePrice;
  final  TextEditingController start_price;
@@ -59,7 +60,7 @@ class WidgetAddSale extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.white),
                                    child:  Center(
-                                  child: CustomTextField(nameText: 'Add price',  readOnly:false,nameController: purchasingPrice,),
+                                  child: CustomTextField(nameText: 'Add price',  readOnly:readOnly==null?false:true,nameController: purchasingPrice,),
                                 ),
                               )
                             ],
@@ -89,7 +90,7 @@ class WidgetAddSale extends StatelessWidget {
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.white),
                                      child: Center(
-                                  child: CustomTextField(nameText: 'Add price',  readOnly:false,nameController: salePrice,),
+                                  child: CustomTextField(nameText: 'Add price',  readOnly:readOnly==null?false:true,nameController: salePrice,),
                                 ),
                               )
                             ],
@@ -123,7 +124,7 @@ class WidgetAddSale extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                                 color: AppColor.white),
                                 child: Center(
-                                  child: CustomTextField(nameText: 'Add price',  readOnly:false,nameController: start_price,),
+                                  child: CustomTextField(nameText: 'Add price',  readOnly:readOnly==null?false:true,nameController: start_price,),
                                 ),
                           ),
                           SizedBox(height: 4,)
