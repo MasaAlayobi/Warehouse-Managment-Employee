@@ -1,22 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class myTextFieldName extends StatelessWidget {
   final String? validatorText;
   String nameText;
   final bool readOnly;
+  final int? maxLines;
+  final int? minLines;
+
   final String? label;
   TextStyle? hintStyle;
   myTextFieldName({
-    super.key,
+    Key? key,
     this.validatorText,
     required this.nameText,
-    required this.nameController,
     required this.readOnly,
-    this.hintStyle,
+    this.maxLines,
+    this.minLines,
     this.label,
-  });
+    this.hintStyle,
+    required this.nameController,
+  }) : super(key: key);
 
   final TextEditingController nameController;
 
@@ -24,6 +31,8 @@ class myTextFieldName extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       readOnly: readOnly,
+      maxLines: maxLines ?? 1,
+      minLines: minLines ?? 1,
       keyboardType: TextInputType.name,
       cursorColor: AppColor.purple2,
       decoration: InputDecoration(

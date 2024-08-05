@@ -81,7 +81,7 @@ class ProductDetailsInWareView extends StatelessWidget {
             ),
             Text('   Details : ',
                 style: const TextStyle(
-                    fontSize: 24,
+                    fontSize: 20,
                     fontWeight: FontWeight.w800,
                     color: AppColor.black)),
             SizedBox(

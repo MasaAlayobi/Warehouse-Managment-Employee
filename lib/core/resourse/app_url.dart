@@ -7,7 +7,7 @@ abstract class EndPoint {
   static String Login = '/auth/employee/login';
   static String getWare = '/employee/warehouse/show-all';
   static String addItemToInventory = '/item/store';
-  static String getItemInStripped='/item/show-all';
-  static String DeleteItem='/item/delete/';
+  static String getItemInStripped = '/item/show-all';
+  static String DeleteItem = '/item/delete/';
+  static String updateItem = '/item/update-in-warehouse/';
 }
-  

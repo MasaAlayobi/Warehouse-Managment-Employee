@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class WidgetQuantity extends StatelessWidget {
@@ -19,8 +20,8 @@ class WidgetQuantity extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        height: MediaQuery.of(context).size.height / 2.7,
-        width: MediaQuery.of(context).size.width / 1.2,
+        height: MediaQuery.of(context).size.height / 2.2,
+        width: MediaQuery.of(context).size.width / 1.1,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: AppColor.purple4,
@@ -33,84 +34,93 @@ class WidgetQuantity extends StatelessWidget {
             Center(
               child: Text('Inventory summary',
                   style: const TextStyle(
-                      fontSize: 22,
+                      fontSize: 19,
                       fontWeight: FontWeight.w800,
                       color: AppColor.black)),
             ),
             SizedBox(
-              height: 15,
+              height: 10,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.6,
-                  height: MediaQuery.of(context).size.height / 6.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.purple5),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('Quantity \n for sale:',
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: AppColor.black)),
-                      SizedBox(
-                        height: 5,
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 1.2,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 2.6,
+                      height: MediaQuery.of(context).size.height / 6,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColor.purple5),
+                      child: Column(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Quantity for  sale:',
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColor.black)),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.9,
+                            height: MediaQuery.of(context).size.height / 16,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColor.white),
+                            child: Center(
+                              child: CustomTextField(
+                                  nameText: quantityForSele, readOnly: true),
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.8,
-                        height: MediaQuery.of(context).size.height / 14,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColor.white),
-                        child: Center(
-                          child: CustomTextField(
-                              nameText: quantityForSele, readOnly: true),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width / 2.6,
-                  height: MediaQuery.of(context).size.height / 6.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: AppColor.purple5),
-                  child: Column(
-                    // crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text('       Quantity  \n   in warehouse :',
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: AppColor.black)),
-                      SizedBox(
-                        height: 5,
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 2.6,
+                      height: MediaQuery.of(context).size.height / 6,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColor.purple5),
+                      child: Column(
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('  Quantity in   warehouse :',
+                              style: const TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                  color: AppColor.black)),
+                          SizedBox(
+                            height: 5,
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width / 2.9,
+                            height: MediaQuery.of(context).size.height / 16,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: AppColor.white),
+                            child: Center(
+                              child: CustomTextField(
+                                  nameText: combleteNumber, readOnly: true),
+                            ),
+                          )
+                        ],
                       ),
-                      Container(
-                        width: MediaQuery.of(context).size.width / 2.8,
-                        height: MediaQuery.of(context).size.height / 14,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                            color: AppColor.white),
-                        child: Center(
-                          child: CustomTextField(
-                              nameText: combleteNumber, readOnly: true),
-                        ),
-                      )
-                    ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             SizedBox(height: 10),
             Container(
-              width: MediaQuery.of(context).size.width / 1.3,
-              height: MediaQuery.of(context).size.height / 8.4,
+              width: MediaQuery.of(context).size.width / 1.2,
+              height: MediaQuery.of(context).size.height / 8,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: AppColor.pink),
@@ -118,7 +128,7 @@ class WidgetQuantity extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('  Minimum number of products : ',
+                  Text('  Min number of products : ',
                       style: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w700,
@@ -126,15 +136,18 @@ class WidgetQuantity extends StatelessWidget {
                   SizedBox(
                     height: 5,
                   ),
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.height / 20, //18
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: AppColor.white),
-                    child: Center(
-                      child:
-                          CustomTextField(nameText: minProduct, readOnly: true),
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 3,
+                      height: MediaQuery.of(context).size.height / 18, //18
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: AppColor.white),
+                      child: Center(
+                        child: CustomTextField(
+                            nameText: minProduct, readOnly: true),
+                      ),
                     ),
                   )
                 ],
