@@ -7,8 +7,8 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart
 import 'package:mobile_warehouse_managment/core/config/widget/widget_ships.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/bloc/login_bloc.dart';
-import 'package:mobile_warehouse_managment/feature/inventory/warehouses/showWare/bloc/warehouses_bloc.dart';
-import 'package:mobile_warehouse_managment/feature/inventory/warehouses/widget/widget_warehouse.dart';
+import 'package:mobile_warehouse_managment/feature/warehouses/showWare/bloc/warehouses_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/warehouses/widget/widget_warehouse.dart';
 
 class WarehousesView extends StatelessWidget {
   const WarehousesView({super.key});

@@ -7,7 +7,7 @@ import 'package:mobile_warehouse_managment/core/data/viacles.dart';
 import 'package:mobile_warehouse_managment/core/data/warehouseProduct.dart';
 
 class ProductwithveicleinwareModel {
-  int? id;
+  int id;
   String? name;
   String? size;
   String? capacity;
@@ -16,7 +16,7 @@ class ProductwithveicleinwareModel {
   List<WarehouseproductModel> items;
   List<ViaclesInWareModel> vehciles;
   ProductwithveicleinwareModel({
-    this.id,
+    required this.id,
     this.name,
     this.size,
     this.capacity,
@@ -59,19 +59,29 @@ class ProductwithveicleinwareModel {
 
   factory ProductwithveicleinwareModel.fromMap(Map<String, dynamic> map) {
     return ProductwithveicleinwareModel(
-      id: map['id'] != null ? map['id'] as int : null,
+      id: map['id'] as int,
       name: map['name'] != null ? map['name'] as String : null,
       size: map['size'] != null ? map['size'] as String : null,
       capacity: map['capacity'] != null ? map['capacity'] as String : null,
       location: map['location'] != null ? map['location'] as String : null,
-      items: List<WarehouseproductModel>.from((map['items'] as List<dynamic>).map<WarehouseproductModel>((x) => WarehouseproductModel.fromMap(x as Map<String,dynamic>),),),
-      vehciles: List<ViaclesInWareModel>.from((map['vehciles'] as List<dynamic>).map<ViaclesInWareModel>((x) => ViaclesInWareModel.fromMap(x as Map<String,dynamic>),),),
+      items: List<WarehouseproductModel>.from(
+        (map['items'] as List<dynamic>).map<WarehouseproductModel>(
+          (x) => WarehouseproductModel.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
+      vehciles: List<ViaclesInWareModel>.from(
+        (map['vehciles'] as List<dynamic>).map<ViaclesInWareModel>(
+          (x) => ViaclesInWareModel.fromMap(x as Map<String, dynamic>),
+        ),
+      ),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ProductwithveicleinwareModel.fromJson(String source) => ProductwithveicleinwareModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ProductwithveicleinwareModel.fromJson(String source) =>
+      ProductwithveicleinwareModel.fromMap(
+          json.decode(source) as Map<String, dynamic>);
 
   @override
   String toString() {
@@ -81,25 +91,24 @@ class ProductwithveicleinwareModel {
   @override
   bool operator ==(covariant ProductwithveicleinwareModel other) {
     if (identical(this, other)) return true;
-  
-    return 
-      other.id == id &&
-      other.name == name &&
-      other.size == size &&
-      other.capacity == capacity &&
-      other.location == location &&
-      listEquals(other.items, items) &&
-      listEquals(other.vehciles, vehciles);
+
+    return other.id == id &&
+        other.name == name &&
+        other.size == size &&
+        other.capacity == capacity &&
+        other.location == location &&
+        listEquals(other.items, items) &&
+        listEquals(other.vehciles, vehciles);
   }
 
   @override
   int get hashCode {
     return id.hashCode ^
-      name.hashCode ^
-      size.hashCode ^
-      capacity.hashCode ^
-      location.hashCode ^
-      items.hashCode ^
-      vehciles.hashCode;
+        name.hashCode ^
+        size.hashCode ^
+        capacity.hashCode ^
+        location.hashCode ^
+        items.hashCode ^
+        vehciles.hashCode;
   }
 }

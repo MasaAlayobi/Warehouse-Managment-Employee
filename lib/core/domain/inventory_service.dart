@@ -147,9 +147,9 @@ class InventoryServiceImpl extends InventoryService {
   @override
   updateItemInWare(storeItemInWHModel addItem, int idItem) async {
     try {
-      response = await dio.post(URL + EndPoint.updateItem + idItem.toString(),
-          data: addItem.toMap(), options: getHeader());
-      if (response!.statusCode == 201) {
+      response = await dio.put(URL + EndPoint.updateItem + idItem.toString(),
+          data: addItem.toJson(), options: getHeader());
+      if (response!.statusCode == 200) {
         print(response!.data["message"]);
         return true;
       } else {
@@ -160,7 +160,7 @@ class InventoryServiceImpl extends InventoryService {
     } on DioException catch (e) {
       print(e.response!.data);
       print(e.response!.statusCode);
-      throw false;
+      throw e;
     } on Error {
       print(Error());
     }

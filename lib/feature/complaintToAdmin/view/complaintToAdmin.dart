@@ -62,10 +62,13 @@ class ComplainToAdminView extends StatelessWidget {
                           .sendComplaint(complient.text);
                       if (temp == true) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text('Complaint sent successfully')));
+                            backgroundColor: Colors.green,
+                            content: Text(
+                                'Thanks for participating in the improvement of the application')));
                       } else {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Complaint sent failed')));
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text('Sorry, try again latter')));
                       }
                     },
                     colors: AppColor.purple3,

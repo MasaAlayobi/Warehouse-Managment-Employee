@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
-import 'package:mobile_warehouse_managment/feature/inventory/warehouses/productOfWareWithDetails/productsInWare/view/product_in_ware.dart';
+import 'package:mobile_warehouse_managment/feature/warehouses/productOfWareWithDetails/productsInWare/view/product_in_ware.dart';
 
 class WidgetWarehouse extends StatelessWidget {
   WidgetWarehouse(

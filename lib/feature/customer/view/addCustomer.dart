@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextField.dart';
@@ -6,26 +7,31 @@ import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldDate.da
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldEmail.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldNumber.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
+import 'package:mobile_warehouse_managment/core/data/addClient.dart';
+import 'package:mobile_warehouse_managment/core/data/location.dart';
+import 'package:mobile_warehouse_managment/core/domain/customer_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/feature/customer/customers/view/customer.dart';
 
 import '../../../core/config/widget/myButton.dart';
 
 class AddDetailCustomer extends StatelessWidget {
   AddDetailCustomer({super.key});
   TextEditingController supplier = TextEditingController();
-  TextEditingController phone = TextEditingController();
+  TextEditingController phone1 = TextEditingController();
+  TextEditingController phone2 = TextEditingController();
   TextEditingController email = TextEditingController();
-  TextEditingController position = TextEditingController();
-  TextEditingController total = TextEditingController();
-  TextEditingController debtDate = TextEditingController();
-  TextEditingController payDate = TextEditingController();
+  TextEditingController country = TextEditingController();
+  TextEditingController city = TextEditingController();
+  TextEditingController region = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColor.purple1,
       drawer: const CustomDrawer(),
       appBar: CustomAppbar(
-        title: "Edit",
+        title: "Add customer",
         isnNotification: false,
         ispop: true,
       ),
@@ -47,20 +53,22 @@ class AddDetailCustomer extends StatelessWidget {
                 ),
               ),
               const sizedBox50(),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: HeaderText(
+                      text: "Customer Information:",
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
+                ),
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: myTextFieldName(
                     nameText: "supplier",
                     nameController: supplier,
                     readOnly: false),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myTextFieldNumber(
-                  phoneController: phone,
-                  ReadeOnly: false,
-                  phoneText: "phone",
-                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -84,42 +92,101 @@ class AddDetailCustomer extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: myTextFieldName(
-                    nameText: "location",
-                    nameController: position,
-                    readOnly: false),
+                child: myTextFieldNumber(
+                  phoneController: phone1,
+                  ReadeOnly: false,
+                  phoneText: "phone number 1",
+                  maxLength: 10,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: myTextFieldNumber(
-                  phoneController: total,
+                  phoneController: phone2,
                   ReadeOnly: false,
-                  phoneText: "total",
+                  phoneText: "phone number 2",
+                  maxLength: 10,
+                ),
+              ),
+              const sizedBox50(),
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: HeaderText(
+                      text: "Customer location:",
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: myTextFieldDate(
-                  circular: 12,
-                  readOnly: false,
-                  nameController: debtDate,
-                  hintName: "dapt date",
-                  fillColor: Colors.grey[200],
-                ),
+                child: myTextFieldName(
+                    nameText: "country",
+                    nameController: country,
+                    readOnly: false),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: myTextFieldDate(
-                  circular: 12,
-                  readOnly: false,
-                  nameController: payDate,
-                  hintName: "pay date",
-                  fillColor: Colors.grey[200],
-                ),
+                child: myTextFieldName(
+                    nameText: "city", nameController: city, readOnly: false),
               ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: myTextFieldName(
+                    nameText: "region",
+                    nameController: region,
+                    readOnly: false),
+              ),
+              sizedBox30(),
               MyButton(
                   title: "save",
-                  onpress: () {},
+                  onpress: () async {
+                    if (supplier.text.isNotEmpty &&
+                        email.text.isNotEmpty &&
+                        phone1.text.isNotEmpty) {
+                      var response = await CustomerServiceImpl()
+                          .addCustomer(AddclientModel(
+                        name: supplier.text,
+                        email: email.text,
+                        location: LocationModel(
+                                city: city.text,
+                                country: country.text,
+                                region: region.text)
+                            .toMap(),
+                        phones: [
+                          {"number": phone1.text},
+                          {"number": phone2.text}
+                        ],
+                      ));
+                      if (response == true) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.green,
+                            content: Text('create customer successfully')));
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Customer(),
+                        ));
+                      } else {
+                        print(AddclientModel(
+                          location: LocationModel(
+                                  city: city.text,
+                                  country: country.text,
+                                  region: region.text)
+                              .toMap(),
+                          name: supplier.text,
+                          email: email.text,
+                          phones: [
+                            {"number": phone1.text},
+                            {"number": phone2.text}
+                          ],
+                        ).toMap());
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            backgroundColor: Colors.red,
+                            content: Text(
+                                'sometheing failed, please try again latter')));
+                      }
+                    }
+                  },
                   colors: AppColor.purple3,
                   fontsize: 20,
                   width: MediaQuery.of(context).size.width / 1,
