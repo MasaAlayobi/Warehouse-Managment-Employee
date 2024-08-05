@@ -1,12 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
 import 'package:mobile_warehouse_managment/core/config/store/getit.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
+import 'package:mobile_warehouse_managment/feature/inventory/inventory/Stripped/bloc/items_stripped_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   initial();
   runApp(const MyApp());
 }
@@ -16,9 +18,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.routter,
-      debugShowCheckedModeBanner: false,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ItemsStrippedBloc>(
+            create: (BuildContext context) => ItemsStrippedBloc(),
+            lazy: true,
+          ),
+      ],
+      child: MaterialApp.router(
+        routerConfig: AppRouter.routter,
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }
@@ -88,12 +98,13 @@ class MyApp extends StatelessWidget {
 //   }
 // }
 
- class QRViewExample extends StatefulWidget {
+class QRViewExample extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _QRViewExampleState();
 }
 
-class _QRViewExampleState extends State<QRViewExample> with SingleTickerProviderStateMixin {
+class _QRViewExampleState extends State<QRViewExample>
+    with SingleTickerProviderStateMixin {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   Barcode? result;
   QRViewController? controller;
@@ -103,9 +114,11 @@ class _QRViewExampleState extends State<QRViewExample> with SingleTickerProvider
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 2))
-      ..repeat(reverse: true);
-    _animation = Tween<double>(begin:150, end: 500).animate(_animationController!);
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(seconds: 2))
+          ..repeat(reverse: true);
+    _animation =
+        Tween<double>(begin: 150, end: 500).animate(_animationController!);
   }
 
   @override
@@ -145,7 +158,8 @@ class _QRViewExampleState extends State<QRViewExample> with SingleTickerProvider
                 flex: 1,
                 child: Center(
                   child: (result != null)
-                      ? Text('Barcode Type: ${result!.format}   Data: ${result!.code}')
+                      ? Text(
+                          'Barcode Type: ${result!.format}   Data: ${result!.code}')
                       : Text('Scan a code'),
                 ),
               )

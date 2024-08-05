@@ -12,7 +12,7 @@ import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
 abstract class InventoryService extends BaseService {
   getAllWarehouses();
   addProductToInventory(AddItemInInventory product,File image );
-  Future<List<ItemInStripped>> getItemInStripped();
+  Future<List<ItemInStripped>> getItemInStripped(String lable);
   DeletItem(int Id);
   Future<List<ProductwithveicleinwareModel>> getProductsInWarehouse(int id);
 }
@@ -98,9 +98,10 @@ print(formData);
   }
   
   @override
-  Future<List<ItemInStripped>> getItemInStripped() async{
+  Future<List<ItemInStripped>> getItemInStripped(String lable) async{
+    String ser='';
    try{
-       response=await dio.get(URL + EndPoint.getItemInStripped,
+       response=await dio.get(URL + EndPoint.getItemInStripped+'?filter[item]=$lable',
        options: getHeader());
        if(response!.statusCode==200){
          print(response!.data["data"]);

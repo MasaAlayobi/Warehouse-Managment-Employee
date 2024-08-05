@@ -5,7 +5,8 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class WidgetAddQuantity extends StatelessWidget {
-    WidgetAddQuantity({super.key, required this.total_quantity});
+    WidgetAddQuantity({super.key, required this.total_quantity,this.readOnly});
+    bool? readOnly;
 final  TextEditingController total_quantity;
 // final  TextEditingController completeNumber;
 // final  TextEditingController minimumQuantity;
@@ -62,7 +63,7 @@ final  TextEditingController total_quantity;
                                     borderRadius: BorderRadius.circular(10),
                                     color: AppColor.white),
                                      child: Center(
-                                  child: CustomTextField(nameText: 'Add number',  readOnly:false,nameController:total_quantity ,),
+                                  child: CustomTextField(nameText: 'Add number',  readOnly:readOnly==null?false:true,nameController:total_quantity ,),
                                 ),
                               )
                             ],

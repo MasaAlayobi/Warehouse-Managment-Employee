@@ -1,5 +1,6 @@
 
 import 'package:go_router/go_router.dart';
+import 'package:mobile_warehouse_managment/core/data/item_in_stripped.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/Home/view/home_view.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/customer.dart';
@@ -17,7 +18,7 @@ import 'package:mobile_warehouse_managment/feature/reports/view/reports.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/view/current_order_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/orderDetails/view/order_details_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/view/previous_sales_view.dart';
-import 'package:mobile_warehouse_managment/feature/supplier/view/supplier.dart';
+import 'package:mobile_warehouse_managment/feature/supplier/AllSupplier/view/supplier.dart';
 
 import '../../../feature/quality/view/quality.dart';
 
@@ -64,15 +65,15 @@ GoRoute(
         path:
              "/",
             
-        builder: (context, state) => HomeView()),
+        builder: (context, state) =>HomeView()),
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
     GoRoute(
         path: kAddProductView, builder: (context, state) => AddProductView()),
-    GoRoute(
-        path: kProductDetailsView,
-        builder: (context, state) => ProductDetailsView()),
+    // GoRoute(
+    //     path: kProductDetailsView,
+    //     builder: (context, state) => ProductDetailsView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
     GoRoute(
         path: kPreviousSalesView,

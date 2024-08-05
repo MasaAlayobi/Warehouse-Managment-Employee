@@ -3,7 +3,12 @@ part of 'items_stripped_bloc.dart';
 
 @immutable
 sealed class ItemsStrippedEvent {}
-class GetAllItemInStripped extends ItemsStrippedEvent{}
+class GetAllItemInStripped extends ItemsStrippedEvent {
+  String lable;
+  GetAllItemInStripped({
+    required this.lable,
+  });
+}
 class DeleteItem extends ItemsStrippedEvent {
   int Id;
   DeleteItem({
