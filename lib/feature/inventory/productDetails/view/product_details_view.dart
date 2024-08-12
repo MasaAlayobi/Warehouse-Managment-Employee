@@ -59,7 +59,7 @@ class ProductDetailsView extends StatelessWidget {
                     child: Center(
                         child: item.photo != null
                             ? Image.network(
-                                            item.photo!,
+                                            '${AppUrl.UrlPhoto}${item.photo!}',
                                             fit: BoxFit.cover,
                                             // width: MediaQuery.of(context)
                                             //         .size

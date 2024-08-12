@@ -1,26 +1,24 @@
+
+
 import 'package:go_router/go_router.dart';
-import 'package:mobile_warehouse_managment/core/data/item_in_stripped.dart';
-import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/Home/view/home_view.dart';
 import 'package:mobile_warehouse_managment/feature/complaintToAdmin/view/complaintToAdmin.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/view/customer.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/addProduct/view/add_product_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/view/inventory_view.dart';
-import 'package:mobile_warehouse_managment/feature/inventory/productDetails/view/product_details_view.dart';
-
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/view/current_order_purchases.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/purchasesOdrerDetails/view/purchases_order_details.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/view/previous_purchases_view.dart';
-import 'package:mobile_warehouse_managment/feature/warehouses/showWare/view/warehouses_view.dart';
-import 'package:mobile_warehouse_managment/feature/warehouses/productOfWareWithDetails/productsInWare/view/product_in_ware.dart';
 import 'package:mobile_warehouse_managment/feature/quality/expiring_date/view/expiringDate.dart';
+import 'package:mobile_warehouse_managment/feature/quality/view/quality.dart';
 import 'package:mobile_warehouse_managment/feature/reports/view/reports.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/view/current_order_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/orderDetails/view/order_details_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/view/previous_sales_view.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/shipments/allShipment/view/all_shipments_view.dart';
 import 'package:mobile_warehouse_managment/feature/supplier/AllSupplier/view/supplier.dart';
+import 'package:mobile_warehouse_managment/feature/warehouses/showWare/view/warehouses_view.dart';
 
-import '../../../feature/quality/view/quality.dart';
 
 abstract class AppRouter {
   static const String kLoginView = '/loginView';
@@ -41,15 +39,13 @@ abstract class AppRouter {
   static const String kPurchasesOrderDetails = '/PurchasesOrderDetails';
   static const String kCurrentOrderPurchases = '/CurrentOrderPurchases';
   static const String kComplainToAdminView = '/ComplainToAdminView';
+  static const String kAllShipmentsView = '/AllShipmentsView';
   static final routter = GoRouter(routes: [
-    GoRoute(path: "/", builder: (context, state) => LoginView()),
+    // GoRoute(path: "/", builder: (context, state) => HomeView()),
     GoRoute(
         path: kComplainToAdminView,
         builder: (context, state) => ComplainToAdminView()),
-    GoRoute(
-      path: kHomeView,
-      builder: (context, state) => HomeView(),
-    ),
+   
     GoRoute(
       path: KReportView,
       builder: (context, state) => Reports(),
@@ -65,10 +61,9 @@ abstract class AppRouter {
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
     GoRoute(
         path:
-             "/",
-            
+           "/",
         builder: (context, state) =>HomeView()),
-    GoRoute(path: kHomeView, builder: (context, state) => HomeView()),
+    GoRoute(path: kHomeView,builder: (context, state) => HomeView(),),
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
@@ -77,7 +72,7 @@ abstract class AppRouter {
     // GoRoute(
     //     path: kProductDetailsView,
     //     builder: (context, state) => ProductDetailsView()),
-    GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
+    // GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
     GoRoute(
         path: kPreviousSalesView,
         builder: (context, state) => PreviousSalesView()),
@@ -97,5 +92,8 @@ abstract class AppRouter {
     GoRoute(
         path: kCurrentOrderPurchases,
         builder: (context, state) => CurrentOrderPurchases()),
+        GoRoute(
+        path: kAllShipmentsView,
+        builder: (context, state) => AllShipmentsView()),
   ]);
 }

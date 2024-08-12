@@ -10,4 +10,6 @@ abstract class EndPoint {
   static String getItemInStripped = '/item/show-all';
   static String DeleteItem = '/item/delete/';
   static String updateItem = '/item/update-in-warehouse/';
+  static String allShipment='/shipment/show-all';
+  static String allSupplier='/employee/supplier/show-all';
 }

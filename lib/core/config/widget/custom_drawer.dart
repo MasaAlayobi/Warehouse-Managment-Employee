@@ -197,11 +197,16 @@ class CustomDrawer extends StatelessWidget {
                       color: AppColor.white,
                       thickness: 2,
                     ),
-                    const Text('   Shipments',
-                        style: TextStyle(
-                            color: AppColor.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600)),
+                    InkWell(
+                      onTap: () {
+                         GoRouter.of(context).push(AppRouter.kAllShipmentsView);
+                      },
+                      child: const Text('   Shipments',
+                          style: TextStyle(
+                              color: AppColor.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600)),
+                    ),
                   ],
                 ),
               ),
