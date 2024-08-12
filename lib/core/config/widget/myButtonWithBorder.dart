@@ -7,9 +7,9 @@ import 'package:flutter/widgets.dart';
 
 class myButtonWithBorder extends StatelessWidget {
   VoidCallback onTap;
-  double height;
+  double? height;
   Color fillColor;
-  double width;
+  double? width;
   BoxBorder border;
   double radius;
 
@@ -22,8 +22,8 @@ class myButtonWithBorder extends StatelessWidget {
     Key? key,
     required this.fillColor,
     required this.onTap,
-    required this.height,
-    required this.width,
+    this.height,
+    this.width,
     required this.border,
     required this.radius,
     required this.text,

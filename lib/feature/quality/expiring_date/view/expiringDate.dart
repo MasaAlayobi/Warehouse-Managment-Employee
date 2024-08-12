@@ -40,6 +40,7 @@ class ExpiringDateView extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: myNestedExpansionTile(
+                        isAppearClock: true,
                         text1: "last week",
                         children: List.generate(
                           4,

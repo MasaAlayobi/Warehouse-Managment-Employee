@@ -95,31 +95,33 @@ class LoginView extends StatelessWidget {
                         ),
                         BlocListener<LoginBloc, LoginState>(
                           listener: (context, state) {
-                             if(state is successlogin){
-                               ScaffoldMessenger.of(context)
-                                      .showSnackBar(new SnackBar(
-                                    content: Text(state.message),
-                                    backgroundColor: AppColor.green1,
-                                  ));
-                                    GoRouter.of(context)
-                                    .pushReplacement(AppRouter.kHomeView);
-                             }else if(state is NoConnection){
-                               ScaffoldMessenger.of(context)
-                                      .showSnackBar(new SnackBar(
-                                    content: Text(state.message),
-                                    backgroundColor: AppColor.red,
-                                  ));
-                             }
+                            if (state is successlogin) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(new SnackBar(
+                                content: Text(state.message),
+                                backgroundColor: AppColor.green1,
+                              ));
+                              GoRouter.of(context)
+                                  .pushReplacement(AppRouter.kHomeView);
+                            } else if (state is NoConnection) {
+                              ScaffoldMessenger.of(context)
+                                  .showSnackBar(new SnackBar(
+                                content: Text(state.message),
+                                backgroundColor: AppColor.red,
+                              ));
+                            }
                           },
                           child: CustomButton(
                               icon: Icons.arrow_forward,
                               sixeIcon: 33,
                               colorIcon: AppColor.purple1,
                               onpress: () {
-                               if (email.text.isNotEmpty &&
+                                if (email.text.isNotEmpty &&
                                     password.text.isNotEmpty) {
                                   LoginModel user = LoginModel(
-                                      email: email.text, password: password.text);
+                                      firebase_token: "1234rdew23cx@#",
+                                      email: email.text,
+                                      password: password.text);
                                   context
                                       .read<LoginBloc>()
                                       .add(loginUser(User: user));

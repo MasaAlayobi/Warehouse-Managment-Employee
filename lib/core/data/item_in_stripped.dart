@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 class ItemInStripped {
-  int? id;
+  int id;
   String? SKU;
   String? name;
   String? sell_price;
@@ -14,7 +14,7 @@ class ItemInStripped {
   String? photo;
   String? unit;
   ItemInStripped({
-    this.id,
+    required this.id,
     this.SKU,
     this.name,
     this.sell_price,
@@ -26,7 +26,6 @@ class ItemInStripped {
     this.photo,
     this.unit,
   });
-  
 
   ItemInStripped copyWith({
     int? id,
@@ -74,17 +73,17 @@ class ItemInStripped {
 
   factory ItemInStripped.fromMap(Map<String, dynamic> map) {
     return ItemInStripped(
-      id: map['id'] != null ? map['id'] as int : 0,
-      SKU: map['SKU'] != null ? map['SKU'] as String : '',
-      name: map['name'] != null ? map['name'] as String : '',
-      sell_price: map['sell_price'] != null ? map['sell_price'] as String : '',
-      pur_price: map['pur_price'] != null ? map['pur_price'] as String : '',
-      size_cubic_meters: map['size_cubic_meters'] != null ? map['size_cubic_meters'] as String : '',
-      weight: map['weight'] != null ? map['weight'] as String : '',
-      str_price: map['str_price'] != null ? map['str_price'] as String : '',
-      total_qty: map['total_qty'] != null ? map['total_qty'] as num : 0,
-      photo: map['photo'] != null ? map['photo'] as String : '',
-      unit: map['unit'] != null ? map['unit'] as String : '',
+      id: map['id'] as int,
+      SKU: map['SKU'] != null ? map['SKU'] as String : null,
+      name: map['name'] != null ? map['name'] as String : null,
+      sell_price: map['sell_price'] != null ? map['sell_price'] as String : null,
+      pur_price: map['pur_price'] != null ? map['pur_price'] as String : null,
+      size_cubic_meters: map['size_cubic_meters'] != null ? map['size_cubic_meters'] as String : null,
+      weight: map['weight'] != null ? map['weight'] as String : null,
+      str_price: map['str_price'] != null ? map['str_price'] as String : null,
+      total_qty: map['total_qty'] != null ? map['total_qty'] as num : null,
+      photo: map['photo'] != null ? map['photo'] as String : null,
+      unit: map['unit'] != null ? map['unit'] as String : null,
     );
   }
 

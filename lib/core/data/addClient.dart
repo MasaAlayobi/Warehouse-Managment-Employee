@@ -10,11 +10,15 @@ class AddclientModel {
   Map<String, dynamic> location;
   String? name;
   String? email;
+  double? latitude;
+  double? longitude;
   AddclientModel({
     required this.phones,
     required this.location,
     this.name,
     this.email,
+    this.latitude,
+    this.longitude,
   });
 
   AddclientModel copyWith({
@@ -22,12 +26,16 @@ class AddclientModel {
     Map<String, dynamic>? location,
     String? name,
     String? email,
+    double? latitude,
+    double? longitude,
   }) {
     return AddclientModel(
       phones: phones ?? this.phones,
       location: location ?? this.location,
       name: name ?? this.name,
       email: email ?? this.email,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
     );
   }
 
@@ -37,6 +45,8 @@ class AddclientModel {
       'location': location,
       'name': name,
       'email': email,
+      'latitude': latitude,
+      'longitude': longitude,
     };
   }
 
@@ -52,6 +62,8 @@ class AddclientModel {
       ),
       name: map['name'] != null ? map['name'] as String : null,
       email: map['email'] != null ? map['email'] as String : null,
+      latitude: map['latitude'] != null ? map['latitude'] as double : null,
+      longitude: map['longitude'] != null ? map['longitude'] as double : null,
     );
   }
 
@@ -62,7 +74,7 @@ class AddclientModel {
 
   @override
   String toString() {
-    return 'AddclientModel(phones: $phones, location: $location, name: $name, email: $email)';
+    return 'AddclientModel(phones: $phones, location: $location, name: $name, email: $email, latitude: $latitude, longitude: $longitude)';
   }
 
   @override
@@ -72,11 +84,18 @@ class AddclientModel {
     return listEquals(other.phones, phones) &&
         mapEquals(other.location, location) &&
         other.name == name &&
-        other.email == email;
+        other.email == email &&
+        other.latitude == latitude &&
+        other.longitude == longitude;
   }
 
   @override
   int get hashCode {
-    return phones.hashCode ^ location.hashCode ^ name.hashCode ^ email.hashCode;
+    return phones.hashCode ^
+        location.hashCode ^
+        name.hashCode ^
+        email.hashCode ^
+        latitude.hashCode ^
+        longitude.hashCode;
   }
 }

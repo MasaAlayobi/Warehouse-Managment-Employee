@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/myButtonWidget.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/myButtonWithBorder.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextField.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldDate.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldEmail.dart';
@@ -12,11 +15,13 @@ import 'package:mobile_warehouse_managment/core/data/location.dart';
 import 'package:mobile_warehouse_managment/core/domain/customer_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/view/customer.dart';
+import 'package:mobile_warehouse_managment/feature/customer/customers/map.dart';
 
 import '../../../core/config/widget/myButton.dart';
 
 class AddDetailCustomer extends StatelessWidget {
-  AddDetailCustomer({super.key});
+  LatLng? latlng;
+  AddDetailCustomer({super.key, this.latlng});
   TextEditingController supplier = TextEditingController();
   TextEditingController phone1 = TextEditingController();
   TextEditingController phone2 = TextEditingController();
@@ -53,6 +58,27 @@ class AddDetailCustomer extends StatelessWidget {
                 ),
               ),
               const sizedBox50(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: myButtonWithBorder(
+                  fillColor: const Color.fromARGB(255, 239, 235, 235),
+                  onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => MapPage(
+                        isEdit: false,
+                      ),
+                    ));
+                  },
+                  textColor: AppColor.purple2,
+                  border: Border.all(color: AppColor.purple2),
+                  text: "select your location",
+                  fontsize: 16,
+                  // width: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.height / 15,
+                  radius: 12,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
@@ -108,13 +134,12 @@ class AddDetailCustomer extends StatelessWidget {
                   maxLength: 10,
                 ),
               ),
-              const sizedBox50(),
               Align(
                 alignment: Alignment.bottomLeft,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: HeaderText(
-                      text: "Customer location:",
+                      text: "Customer Information:",
                       fontSize: 18,
                       fontWeight: FontWeight.w500),
                 ),
@@ -142,13 +167,18 @@ class AddDetailCustomer extends StatelessWidget {
               MyButton(
                   title: "save",
                   onpress: () async {
+                    print(latlng);
                     if (supplier.text.isNotEmpty &&
                         email.text.isNotEmpty &&
-                        phone1.text.isNotEmpty) {
+                        phone1.text.isNotEmpty &&
+                        latlng!.latitude != null &&
+                        latlng!.longitude != null) {
                       var response = await CustomerServiceImpl()
                           .addCustomer(AddclientModel(
                         name: supplier.text,
                         email: email.text,
+                        latitude: latlng!.latitude,
+                        longitude: latlng!.longitude,
                         location: LocationModel(
                                 city: city.text,
                                 country: country.text,
@@ -185,6 +215,10 @@ class AddDetailCustomer extends StatelessWidget {
                             content: Text(
                                 'sometheing failed, please try again latter')));
                       }
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          backgroundColor: Colors.red,
+                          content: Text('fill all information ,please!')));
                     }
                   },
                   colors: AppColor.purple3,
