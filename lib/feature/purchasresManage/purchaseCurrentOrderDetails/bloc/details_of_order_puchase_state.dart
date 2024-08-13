@@ -5,7 +5,7 @@ sealed class DetailsOfOrderPuchaseState {}
 
 final class DetailsOfOrderPuchaseInitial extends DetailsOfOrderPuchaseState {}
 class SuccessGetDetailsPurchase extends DetailsOfOrderPuchaseState {
-  List<DetailsPurchaseOrderModel> detailsOrderInState;
+  DetailsPurchaseOrderModel detailsOrderInState;
   SuccessGetDetailsPurchase({
     required this.detailsOrderInState,
   });

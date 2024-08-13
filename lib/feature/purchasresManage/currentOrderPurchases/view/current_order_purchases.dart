@@ -8,6 +8,8 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/bloc/purchase_order_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/purchaseCurrentOrderDetails/view/purchases_order_details.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/purchasesPreviosOdrerDetails/view/purchases_order_details.dart';
 
 class CurrentOrderPurchases extends StatelessWidget {
   const CurrentOrderPurchases({super.key});
@@ -43,18 +45,19 @@ class CurrentOrderPurchases extends StatelessWidget {
                 if (state is SuccessGetPurchase) {
                   return Expanded(
                       child: ListView.builder(
-                          itemCount: 6,
+                          itemCount: state.listWarehouseInState.length,
                           itemBuilder: (context, index) {
                             return InkWell(
                               onTap: () {
-                                GoRouter.of(context)
-                                    .push(AppRouter.kPurchasesOrderDetails);
+                                Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => PurchasesOrderDetails(),
+                                ));
                               },
                               child: Card(
                                 elevation: 5,
                                 color: AppColor.white,
                                 child: Container(
-                                    height: 130,
+                                    // height: 130,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(15),
                                         color: AppColor.white),
@@ -87,9 +90,9 @@ class CurrentOrderPurchases extends StatelessWidget {
                                                         .width /
                                                     2.7,
                                                 child: FittedBox(
-                                                    fit: BoxFit.contain,
+                                                    fit: BoxFit.scaleDown,
                                                     child: Text(
-                                                      '#505EE0',
+                                                      "No${state.listWarehouseInState[index].id.toString()}",
                                                       style: TextStyle(
                                                           fontSize: 16,
                                                           fontWeight:
@@ -103,7 +106,7 @@ class CurrentOrderPurchases extends StatelessWidget {
                                                 child: FittedBox(
                                                     fit: BoxFit.contain,
                                                     child: Text(
-                                                      'Supplier : Ahmad mohsin',
+                                                      'Supplier : ${state.listWarehouseInState[index].supplier!.name}',
                                                       style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:
@@ -115,7 +118,7 @@ class CurrentOrderPurchases extends StatelessWidget {
                                                         .width /
                                                     2.7,
                                                 child: Text(
-                                                  'Total : 4500\$ ',
+                                                  'Total : ${state.listWarehouseInState[index].order!.price.toString()} ',
                                                   style: TextStyle(
                                                       fontSize: 14,
                                                       fontWeight:
@@ -129,21 +132,7 @@ class CurrentOrderPurchases extends StatelessWidget {
                                                 child: FittedBox(
                                                     fit: BoxFit.contain,
                                                     child: Text(
-                                                      'Order Status: Received',
-                                                      style: TextStyle(
-                                                          fontSize: 14,
-                                                          fontWeight:
-                                                              FontWeight.w600),
-                                                    ))),
-                                            Container(
-                                                width: MediaQuery.of(context)
-                                                        .size
-                                                        .width /
-                                                    2.7,
-                                                child: FittedBox(
-                                                    fit: BoxFit.contain,
-                                                    child: Text(
-                                                      'Manager acceptance: Yes',
+                                                      'Order Status: ${state.listWarehouseInState[index].status}',
                                                       style: TextStyle(
                                                           fontSize: 14,
                                                           fontWeight:

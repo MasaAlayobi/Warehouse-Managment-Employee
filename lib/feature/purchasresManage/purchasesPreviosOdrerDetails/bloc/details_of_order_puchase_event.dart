@@ -1,9 +1,9 @@
-part of 'details_of_order_puchase_bloc.dart';
+// part of 'details_of_order_puchase_bloc.dart';
 
-@immutable
-sealed class DetailsOfOrderPuchaseEvent {}
+// @immutable
+// sealed class DetailsOfOrderPuchaseEvent {}
 
-class GetDetailsPurchaseOrder extends DetailsOfOrderPuchaseEvent {
-  int id;
-  GetDetailsPurchaseOrder({required this.id});
-}
+// class GetDetailsPurchaseOrder extends DetailsOfOrderPuchaseEvent {
+//   int id;
+//   GetDetailsPurchaseOrder({required this.id});
+// }
