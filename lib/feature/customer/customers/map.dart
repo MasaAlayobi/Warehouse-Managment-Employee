@@ -4,13 +4,17 @@ import 'package:latlong2/latlong.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myButton.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/feature/customer/customers/detailsClient/view/detailsCustomer.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/view/customer.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/addCustomer.dart';
 import 'package:mobile_warehouse_managment/feature/customer/view/editCustomer.dart';
 
+import '../../../core/data/detailsACleint.dart';
+
 class MapPage extends StatefulWidget {
+  DetailsacleintModel? details;
   bool isEdit;
-  MapPage({super.key, required this.isEdit});
+  MapPage({super.key, required this.isEdit, this.details});
   @override
   State<MapPage> createState() => _MapPageState();
 }
@@ -68,6 +72,7 @@ class _MapPageState extends State<MapPage> {
                         ? Navigator.of(context)
                             .pushReplacement(MaterialPageRoute(
                             builder: (context) => EditDetailCustomer(
+                              details: detailsAClient,
                               latLng: _latLng,
                             ),
                           ))

@@ -9,6 +9,7 @@ abstract class CustomerService extends BaseService {
   getDetailToClient(int id);
   addCustomer(AddclientModel client);
   deleteCustomer(int id);
+  updateCustomer(AddclientModel client, int id);
 }
 
 class CustomerServiceImpl extends CustomerService {
@@ -83,6 +84,30 @@ class CustomerServiceImpl extends CustomerService {
       return false;
     } catch (e) {
       return false;
+    }
+  }
+
+  @override
+  updateCustomer(AddclientModel client, int id) async {
+    try {
+      print(client.toMap());
+      response = await dio.put("$URL/client/update/$id",
+          options: getHeader(), data: client.toMap());
+      if (response!.statusCode == 200) {
+        print(response!.data);
+        return true;
+      } else {
+        print(response!.statusCode);
+        print(response!.data);
+        print("444444444");
+        return false;
+      }
+    } on DioException catch (e) {
+      print(e);
+      print("5555555");
+      return false;
+    } catch (e) {
+      print(e);
     }
   }
 }

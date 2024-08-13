@@ -11,6 +11,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldEmail.d
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldNumber.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
 import 'package:mobile_warehouse_managment/core/data/customerInfo.dart';
+import 'package:mobile_warehouse_managment/core/data/detailsACleint.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/bloc/customers_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/detailsClient/bloc/detail_of_client_bloc.dart';
@@ -18,6 +19,8 @@ import 'package:mobile_warehouse_managment/feature/customer/view/editCustomer.da
 import 'package:mobile_warehouse_managment/feature/supplier/view/editDetailSupp.dart';
 
 import '../../../../../core/config/widget/myButton.dart';
+
+DetailsacleintModel? detailsAClient;
 
 class DetailCustomer extends StatelessWidget {
   int id;
@@ -48,6 +51,12 @@ class DetailCustomer extends StatelessWidget {
         child: BlocBuilder<DetailOfClientBloc, DetailOfClientState>(
           builder: (context, state) {
             if (state is SuccessgetDetailsClient) {
+              detailsAClient = DetailsacleintModel(
+                  id: id,
+                  phones: state.detailsClient.phones,
+                  email: state.detailsClient.email,
+                  name: state.detailsClient.name,
+                  location: state.detailsClient.location);
               print(id);
               return SingleChildScrollView(
                 child: SafeArea(
@@ -126,7 +135,7 @@ class DetailCustomer extends StatelessWidget {
                           onpress: () {
                             Navigator.of(context).push(MaterialPageRoute(
                               builder: (context) => EditDetailCustomer(
-                                  details: state.detailsClient),
+                                 ),
                             ));
                           },
                           colors: AppColor.purple3,

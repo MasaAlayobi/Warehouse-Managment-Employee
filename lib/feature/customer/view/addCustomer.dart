@@ -171,6 +171,7 @@ class AddDetailCustomer extends StatelessWidget {
                     if (supplier.text.isNotEmpty &&
                         email.text.isNotEmpty &&
                         phone1.text.isNotEmpty &&
+                    
                         latlng!.latitude != null &&
                         latlng!.longitude != null) {
                       var response = await CustomerServiceImpl()
@@ -186,7 +187,7 @@ class AddDetailCustomer extends StatelessWidget {
                             .toMap(),
                         phones: [
                           {"number": phone1.text},
-                          {"number": phone2.text}
+                          if (phone2.text.isNotEmpty) {"number": phone2.text}
                         ],
                       ));
                       if (response == true) {
@@ -197,19 +198,6 @@ class AddDetailCustomer extends StatelessWidget {
                           builder: (context) => Customer(),
                         ));
                       } else {
-                        print(AddclientModel(
-                          location: LocationModel(
-                                  city: city.text,
-                                  country: country.text,
-                                  region: region.text)
-                              .toMap(),
-                          name: supplier.text,
-                          email: email.text,
-                          phones: [
-                            {"number": phone1.text},
-                            {"number": phone2.text}
-                          ],
-                        ).toMap());
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             backgroundColor: Colors.red,
                             content: Text(

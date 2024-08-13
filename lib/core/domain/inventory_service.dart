@@ -185,17 +185,11 @@ class InventoryServiceImpl extends InventoryService {
       if (response!.statusCode == 201) {
         print(response!.data["message"]);
         return response!.data["message"];
-      } else if (response!.statusCode == 403) {
-        print(response!.data["message"]);
-
-        return response!.data["message"];
-      } else {
-        print(response!.data);
       }
     } on DioException catch (e) {
       print(e.response!.data);
       print(e.response!.statusCode);
- 
+      throw e.response!.data["message"];
     } on Error {
       print(Error());
     }
