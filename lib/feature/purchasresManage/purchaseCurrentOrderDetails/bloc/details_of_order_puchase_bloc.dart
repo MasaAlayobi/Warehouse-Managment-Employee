@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:mobile_warehouse_managment/core/data/detailsOrderPurchase.dart';
+import 'package:mobile_warehouse_managment/core/data/purchase/HollModelDetailsAnOrderPurchase.dart';
+import 'package:mobile_warehouse_managment/core/data/purchase/detailsOrderPurchase.dart';
 import 'package:mobile_warehouse_managment/core/domain/purchase_service.dart';
 
 part 'details_of_order_puchase_event.dart';
@@ -12,7 +13,7 @@ class DetailsOfOrderPuchaseBloc
     on<GetDetailsPurchaseOrder>((event, emit) async {
       try {
         var response =
-            await purchaseServiceImpl().showDetailsAnOrderPurchase(1);
+            await purchaseServiceImpl().showDetailsAnOrderPurchase(event.id);
 
         emit(SuccessGetDetailsPurchase(detailsOrderInState: response));
       } catch (e) {

@@ -9,7 +9,6 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/bloc/purchase_order_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/purchaseCurrentOrderDetails/view/purchases_order_details.dart';
-import 'package:mobile_warehouse_managment/feature/purchasresManage/purchasesPreviosOdrerDetails/view/purchases_order_details.dart';
 
 class CurrentOrderPurchases extends StatelessWidget {
   const CurrentOrderPurchases({super.key});

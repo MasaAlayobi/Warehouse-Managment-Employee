@@ -30,7 +30,8 @@ class purchaseServiceImpl extends PurchaseService {
       response =
           await dio.get("$URL/orders/purchase/show/1", options: getHeader());
       if (response!.statusCode == 200) {
-        print(response);
+
+        print(response!.statusCode);
         return response!.data["data"];
       } else {
         return response!.data["message"];
