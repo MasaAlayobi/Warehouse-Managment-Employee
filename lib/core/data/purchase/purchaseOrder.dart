@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:mobile_warehouse_managment/core/data/OrderPurchase.dart';
+import 'package:mobile_warehouse_managment/core/data/purchase/OrderPurchase.dart';
 import 'package:mobile_warehouse_managment/core/data/customerInfo.dart';
 
 class AllPurchaseOrderModel {

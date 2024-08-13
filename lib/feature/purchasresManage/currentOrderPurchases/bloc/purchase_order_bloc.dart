@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:mobile_warehouse_managment/core/data/purchaseOrder.dart';
+import 'package:mobile_warehouse_managment/core/data/purchase/purchaseOrder.dart';
 import 'package:mobile_warehouse_managment/core/domain/purchase_service.dart';
 
 part 'purchase_order_event.dart';

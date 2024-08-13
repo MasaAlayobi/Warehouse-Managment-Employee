@@ -32,7 +32,7 @@ class PurchasesOrderDetails extends StatelessWidget {
             return BlocBuilder<DetailsOfOrderPuchaseBloc,
                 DetailsOfOrderPuchaseState>(
               builder: (context, state) {
-                if (state is SuccessGetPurchase) {
+                if (state is SuccessGetDetailsPurchase) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
