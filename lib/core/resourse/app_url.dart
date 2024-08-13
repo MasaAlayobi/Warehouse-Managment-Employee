@@ -12,4 +12,6 @@ abstract class EndPoint {
   static String updateItem = '/item/update-in-warehouse/';
   static String allShipment='/shipment/show-all';
   static String allSupplier='/employee/supplier/show-all';
+  static String warehousefromNeartoFar='/orders/sell/show-nearest-warehouse/with-quantity/';
+  static String addSaleOrder='/orders/sell/store';
 }

@@ -1,6 +1,7 @@
 
 
 import 'package:go_router/go_router.dart';
+import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/Home/view/home_view.dart';
 import 'package:mobile_warehouse_managment/feature/complaintToAdmin/view/complaintToAdmin.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/view/customer.dart';
@@ -12,6 +13,7 @@ import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurc
 import 'package:mobile_warehouse_managment/feature/quality/expiring_date/view/expiringDate.dart';
 import 'package:mobile_warehouse_managment/feature/quality/view/quality.dart';
 import 'package:mobile_warehouse_managment/feature/reports/view/reports.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/addOrder/view/add_order_sale_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/view/current_order_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/orderDetails/view/order_details_view.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/previousSales/view/previous_sales_view.dart';
@@ -25,7 +27,7 @@ abstract class AppRouter {
   static const String kHomeView = '/HomeView';
   static const String kWarehousesView = '/WarehousesView';
   static const String kInventoryView = '/InventoryView';
-  static const String kProductDetailsView = '/ProductDetailsView';
+  // static const String kProductDetailsView = '/ProductDetailsView';
   static const String kAddProductView = '/AddProductView';
   static const String KReportView = '/Reports';
   static const String KSupplierView = '/Supplier';
@@ -40,6 +42,7 @@ abstract class AppRouter {
   static const String kCurrentOrderPurchases = '/CurrentOrderPurchases';
   static const String kComplainToAdminView = '/ComplainToAdminView';
   static const String kAllShipmentsView = '/AllShipmentsView';
+  static const String kAddOrderSaleView='/AddOrderSaleView';
   static final routter = GoRouter(routes: [
     // GoRoute(path: "/", builder: (context, state) => HomeView()),
     GoRoute(
@@ -72,7 +75,7 @@ abstract class AppRouter {
     // GoRoute(
     //     path: kProductDetailsView,
     //     builder: (context, state) => ProductDetailsView()),
-    // GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
+     GoRoute(path: kLoginView, builder: (context, state) => LoginView()),
     GoRoute(
         path: kPreviousSalesView,
         builder: (context, state) => PreviousSalesView()),
@@ -95,5 +98,8 @@ abstract class AppRouter {
         GoRoute(
         path: kAllShipmentsView,
         builder: (context, state) => AllShipmentsView()),
+         GoRoute(
+        path: kAddOrderSaleView,
+        builder: (context, state) => AddOrderSaleView()),
   ]);
 }

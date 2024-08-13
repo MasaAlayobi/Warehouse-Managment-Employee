@@ -51,7 +51,7 @@ class CurrentOrderView extends StatelessWidget {
             ),
             backgroundColor: AppColor.purple4,
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.kAddProductView);
+              GoRouter.of(context).push(AppRouter.kAddOrderSaleView);
             }),
       ),
     );

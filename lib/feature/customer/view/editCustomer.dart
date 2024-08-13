@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/myButtonWithBorder.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextField.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldDate.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldEmail.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myTextFieldNumber.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
+import 'package:mobile_warehouse_managment/core/data/detailsACleint.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/feature/customer/customers/map.dart';
 
 import '../../../core/config/widget/myButton.dart';
 
 class EditDetailCustomer extends StatelessWidget {
-  EditDetailCustomer({super.key});
+  DetailsacleintModel? details;
+  LatLng? latLng;
+  EditDetailCustomer({super.key, this.details, this.latLng});
   TextEditingController customer = TextEditingController();
-  TextEditingController phone = TextEditingController();
+  TextEditingController phone1 = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController position = TextEditingController();
-  TextEditingController total = TextEditingController();
+  TextEditingController phone2 = TextEditingController();
   TextEditingController debtDate = TextEditingController();
   TextEditingController payDate = TextEditingController();
   @override
@@ -25,7 +31,7 @@ class EditDetailCustomer extends StatelessWidget {
       backgroundColor: AppColor.purple1,
       drawer: const CustomDrawer(),
       appBar: CustomAppbar(
-        title: "Edit",
+        title: "Edit ",
         isnNotification: false,
         ispop: true,
       ),
@@ -51,18 +57,9 @@ class EditDetailCustomer extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: myTextFieldName(
                     label: "customer",
-                    nameText: "Dania Bakoura",
+                    nameText: details!.name.toString(),
                     nameController: customer,
                     readOnly: false),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myTextFieldNumber(
-                  labelText: "phone",
-                  phoneController: phone,
-                  ReadeOnly: false,
-                  phoneText: "0959585797",
-                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -80,50 +77,51 @@ class EditDetailCustomer extends StatelessWidget {
                     },
                     label: "email",
                     colorOfTextField: AppColor.purple2,
-                    nameText: "rdwa516@gmail.com",
+                    nameText: details!.email.toString(),
                     readOnly: false,
                     radius: 8,
                     email: email),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
+                child: myTextFieldNumber(
+                  labelText: "phone 1",
+                  phoneController: phone1,
+                  ReadeOnly: false,
+                  phoneText: details!.phones[0]["number"].toString(),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: myTextFieldName(
-                    label: "location",
-                    nameText: "damas",
-                    nameController: position,
+                    label: "phone 2",
+                    nameText: details!.phones[1]["number"].toString(),
+                    nameController: phone2,
                     readOnly: false),
               ),
+              sizedBox30(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: myTextFieldNumber(
-                  labelText: "total",
-                  phoneController: total,
-                  ReadeOnly: false,
-                  phoneText: "50000 SP",
+                child: myButtonWithBorder(
+                  fillColor: const Color.fromARGB(255, 239, 235, 235),
+                  onTap: () {
+                   Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      builder: (context) => MapPage(
+                        isEdit: true,
+                      ),
+                    ));
+                  },
+                  textColor: AppColor.purple2,
+                  border: Border.all(color: AppColor.purple2),
+                  text: "edit your location",
+                  fontsize: 16,
+                  // width: MediaQuery.of(context).size.width / 2,
+                  height: MediaQuery.of(context).size.height / 18,
+                  radius: 12,
+                  fontWeight: FontWeight.w600,
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myTextFieldDate(
-                  circular: 12,
-                  readOnly: false,
-                  nameController: debtDate,
-                  label: "dapt date",
-                  hintName: "2012/12/12",
-                  fillColor: Colors.grey[200],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: myTextFieldDate(
-                  circular: 12,
-                  readOnly: false,
-                  nameController: payDate,
-                  label: "pay date",
-                  hintName: "2011/11/11",
-                  fillColor: Colors.grey[200],
-                ),
-              ),
+              sizedBox30(),
               MyButton(
                   title: "save",
                   onpress: () {},

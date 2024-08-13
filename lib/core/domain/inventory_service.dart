@@ -12,11 +12,15 @@ import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
 
 abstract class InventoryService extends BaseService {
   getAllWarehouses();
-  addProductToInventory(AddItemInInventory product,File image );
+  addProductToInventory(AddItemInInventory product, File image);
   Future<List<ItemInStripped>> getItemInStripped(String lable);
   DeletItem(int Id);
   Future<List<ProductwithveicleinwareModel>> getProductsInWarehouse(int id);
   updateItemInWare(storeItemInWHModel addItem, int idItem);
+  addItemToWarehouse(
+    int idItem,
+    storeItemInWHModel addItem,
+  );
 }
 
 class InventoryServiceImpl extends InventoryService {
@@ -97,15 +101,17 @@ class InventoryServiceImpl extends InventoryService {
   }
 
   @override
-  Future<List<ItemInStripped>> getItemInStripped(String lable) async{
-    String ser='';
-   try{
-       response=await dio.get(URL + EndPoint.getItemInStripped+'?filter[item]=$lable',
-       options: getHeader());
-       if(response!.statusCode==200){
-         print(response!.data["data"]);
-        dynamic temp=response!.data["data"];
-        List<ItemInStripped> allProduct=List.generate(temp.length, (index) => ItemInStripped.fromMap(temp[index]));
+  Future<List<ItemInStripped>> getItemInStripped(String lable) async {
+    String ser = '';
+    try {
+      response = await dio.get(
+          URL + EndPoint.getItemInStripped + '?filter[item]=$lable',
+          options: getHeader());
+      if (response!.statusCode == 200) {
+        print(response!.data["data"]);
+        dynamic temp = response!.data["data"];
+        List<ItemInStripped> allProduct = List.generate(
+            temp.length, (index) => ItemInStripped.fromMap(temp[index]));
         print(allProduct);
         return allProduct;
       } else {
@@ -165,5 +171,33 @@ class InventoryServiceImpl extends InventoryService {
       print(Error());
     }
     print("object");
+  }
+
+  @override
+  addItemToWarehouse(
+    int idItem,
+    storeItemInWHModel addItem,
+  ) async {
+    try {
+      print(addItem.toMap());
+      response = await dio.post("$URL/item/store-in-warehouse/$idItem",
+          data: addItem.toMap(), options: getHeader());
+      if (response!.statusCode == 201) {
+        print(response!.data["message"]);
+        return response!.data["message"];
+      } else if (response!.statusCode == 403) {
+        print(response!.data["message"]);
+
+        return response!.data["message"];
+      } else {
+        print(response!.data);
+      }
+    } on DioException catch (e) {
+      print(e.response!.data);
+      print(e.response!.statusCode);
+ 
+    } on Error {
+      print(Error());
+    }
   }
 }

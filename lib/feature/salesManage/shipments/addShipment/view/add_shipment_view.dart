@@ -41,7 +41,7 @@ void updatevehcileId(num vehcileId) {
                children: [
                 SizedBox(height: 30,),
                 HeaderText(
-                                            text: ''
+                                            text: 'Please enter in order '
                                                 ,
                                             fontSize: 16,
                                             textcolor: AppColor.black,
@@ -55,7 +55,7 @@ void updatevehcileId(num vehcileId) {
                                   onDataChanged: updatewarehouseId1,
                                   // variable: true,
                                   widget: Text(""),
-                                  text1: "اختر المستودع المطلوب",
+                                  text1: "Choose warehouse",
                                   // text2: "دمشق",
                                   // text3: "ركن الدين",
                                 )),
@@ -68,7 +68,7 @@ void updatevehcileId(num vehcileId) {
                                   onDataChanged: updatevehcileId,
                                   // variable: true,
                                   widget: Text(""),
-                                  text1: "اختر المركبة التي تريدها من المستودع",
+                                  text1: "Choose vehicle",
                                   // text2: "دمشق",
                                   // text3: "ركن الدين",
                                 )),

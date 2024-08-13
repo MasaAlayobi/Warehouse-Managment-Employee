@@ -75,7 +75,6 @@ class DetailCustomer extends StatelessWidget {
                             nameController: customer,
                             readOnly: true),
                       ),
-
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: myTextFieldEmail(
@@ -105,20 +104,6 @@ class DetailCustomer extends StatelessWidget {
                             nameController: position,
                             readOnly: true),
                       ),
-
-                      // MyButton(
-                      //     title: "Edit",
-                      //     onpress: () {
-                      //       Navigator.of(context).push(MaterialPageRoute(
-                      //         builder: (context) => EditDetailCustomer(),
-                      //       ));
-                      //     },
-                      //     colors: AppColor.purple3,
-                      //     fontsize: 20,
-                      //     width: MediaQuery.of(context).size.width / 1,
-                      //     height: MediaQuery.of(context).size.height / 15,
-                      //     radius: 12),
-                      // const sizedBox15(),
                       SizedBox(
                           child: ListView.builder(
                         shrinkWrap: true,
@@ -135,6 +120,20 @@ class DetailCustomer extends StatelessWidget {
                           ),
                         ),
                       )),
+                      const sizedBox15(),
+                      MyButton(
+                          title: "Edit",
+                          onpress: () {
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => EditDetailCustomer(
+                                  details: state.detailsClient),
+                            ));
+                          },
+                          colors: AppColor.purple3,
+                          fontsize: 20,
+                          width: MediaQuery.of(context).size.width / 1,
+                          height: MediaQuery.of(context).size.height / 15,
+                          radius: 12),
                     ],
                   ),
                 ),
