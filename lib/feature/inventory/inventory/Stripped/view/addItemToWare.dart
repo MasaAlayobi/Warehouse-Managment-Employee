@@ -162,31 +162,31 @@ class AdditemtowareView extends StatelessWidget {
                     myButtonWithBorder(
                         fillColor: AppColor.green1,
                         onTap: () async {
-                          var response = await InventoryServiceImpl()
-                              .addItemToWarehouse(
-                                  idItem,
-                                  storeItemInWHModel(
-                                      warehouse_id: selectedWare,
-                                      min_quantity: num.parse(min.text),
-                                      available_quantity:
-                                          num.parse(available.text),
-                                      real_quantity: num.parse(real.text)));
-                          print(response);
-                          print(storeItemInWHModel(
-                              warehouse_id: selectedWare,
-                              min_quantity: num.parse(min.text),
-                              available_quantity: num.parse(available.text),
-                              real_quantity: num.parse(real.text)));
-                          if (response == "here message of403") {
-                            ScaffoldMessenger.of(context)
-                                .showSnackBar( SnackBar(
-                              content: Text(response),
-                              backgroundColor: AppColor.red,
-                            ));
-                          } else {
+                          try {
+                            var response = await InventoryServiceImpl()
+                                .addItemToWarehouse(
+                                    idItem,
+                                    storeItemInWHModel(
+                                        warehouse_id: selectedWare,
+                                        min_quantity: num.parse(min.text),
+                                        available_quantity:
+                                            num.parse(available.text),
+                                        real_quantity: num.parse(real.text)));
+                            print(response);
+                            print(storeItemInWHModel(
+                                warehouse_id: selectedWare,
+                                min_quantity: num.parse(min.text),
+                                available_quantity: num.parse(available.text),
+                                real_quantity: num.parse(real.text)));
+
                             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                               content: Text(response.toString()),
                               backgroundColor: AppColor.green2,
+                            ));
+                          } catch (e) {
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                              content: Text(e.toString()),
+                              backgroundColor: AppColor.red,
                             ));
                           }
                         },

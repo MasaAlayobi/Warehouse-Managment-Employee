@@ -9,7 +9,7 @@ import 'package:mobile_warehouse_managment/feature/inventory/inventory/view/inve
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/view/product_details_view.dart';
 
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/view/current_order_purchases.dart';
-import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/purchasesOdrerDetails/view/purchases_order_details.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/purchasesPreviosOdrerDetails/view/purchases_order_details.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/previousPurchases/view/previous_purchases_view.dart';
 import 'package:mobile_warehouse_managment/feature/warehouses/showWare/view/warehouses_view.dart';
 import 'package:mobile_warehouse_managment/feature/warehouses/productOfWareWithDetails/productsInWare/view/product_in_ware.dart';
