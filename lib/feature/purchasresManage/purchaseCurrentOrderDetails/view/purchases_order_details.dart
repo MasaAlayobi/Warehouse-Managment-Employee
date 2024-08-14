@@ -38,7 +38,7 @@ class PurchasesOrderDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        height: MediaQuery.of(context).size.height / 3,
+                        height: MediaQuery.of(context).size.height / 2.7,
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(30),
@@ -70,103 +70,83 @@ class PurchasesOrderDetails extends StatelessWidget {
                                                   .size
                                                   .width /
                                               1.8,
-                                          child: FittedBox(
-                                              fit: BoxFit.contain,
-                                              child: Text(
-                                                'Supplier :',
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: AppColor.white),
-                                              ))),
+                                          child: Text(
+                                            '${state.detailsOrderInState.supplier!.name}',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.white),
+                                          )),
                                       Container(
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
                                               1.8,
-                                          child: FittedBox(
-                                              fit: BoxFit.contain,
-                                              child: Text(
-                                                'Order No : 505EE0 ',
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: AppColor.white),
-                                              ))),
+                                          child: Text(
+                                            '${state.detailsOrderInState.supplier!.location}',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.white),
+                                          )),
                                       Container(
                                           width: MediaQuery.of(context)
                                                   .size
                                                   .width /
                                               1.8,
-                                          child: FittedBox(
-                                              fit: BoxFit.contain,
-                                              child: Text(
-                                                'Total  : 149999.99\$',
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: AppColor.white),
-                                              ))),
-                                      // Container(
-                                      //     width: MediaQuery.of(context).size.width / 1.8,
-                                      //     child: FittedBox(
-                                      //         fit: BoxFit.contain,
-                                      //         child: Text(
-                                      //           'Manager acceptance: Yes',
-                                      //           style: TextStyle(
-                                      //               fontSize: 14,
-                                      //               fontWeight: FontWeight.w500,
-                                      //                color: AppColor.white),
-                                      //         ))),
-                                      Container(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width /
-                                              1.8,
-                                          child: FittedBox(
-                                              fit: BoxFit.contain,
-                                              child: Text(
-                                                'Payment status : cash',
-                                                style: TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: AppColor.white),
-                                              ))),
+                                          child: Text(
+                                            'Total price: ${state.detailsOrderInState.order!.price}\nwarehouse name: ${state.detailsOrderInState.order!.warehouse!.name}',
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                                color: AppColor.white),
+                                          )),
+                                      if (state.detailsOrderInState.order!
+                                              .payment_at ==
+                                          "depts")
+                                        Container(
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width /
+                                                1.8,
+                                            child: FittedBox(
+                                                fit: BoxFit.contain,
+                                                child: Text(
+                                                  'Order date : ${state.detailsOrderInState.order!.payment_at} ',
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: AppColor.white),
+                                                ))),
                                     ])
                               ],
                             ),
-                            SizedBox(
-                              height: 10,
-                            ),
                             Container(
-                                width: MediaQuery.of(context).size.width / 1.8,
-                                child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Text(
-                                      'Manager acceptance: Yes',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColor.white),
-                                    ))),
+                                width: MediaQuery.of(context).size.width / 1.7,
+                                child: Text(
+                                  'Payment status : ${state.detailsOrderInState.status}',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColor.white),
+                                )),
                             Container(
-                                width: MediaQuery.of(context).size.width / 1.8,
-                                child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Text(
-                                      'Order date : 2004 / 1 / 1 ',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w500,
-                                          color: AppColor.white),
-                                    ))),
+                                width: MediaQuery.of(context).size.width / 1.7,
+                                child: Text(
+                                  'count of products : ${state.detailsOrderInState.order!.items.length}',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: AppColor.white),
+                                )),
                           ],
                         ),
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Text('  Ordre Product :',
+                      Text('  Ordre Products :',
                           style: const TextStyle(
                               fontSize: 23,
                               fontWeight: FontWeight.w700,
@@ -185,53 +165,79 @@ class PurchasesOrderDetails extends StatelessWidget {
                                     mainAxisSpacing: 11,
                                     crossAxisSpacing: 2,
                                     crossAxisCount: 2,
-                                    childAspectRatio: 0.56),
-                            itemCount: 11,
+                                    childAspectRatio: 0.5),
+                            itemCount:
+                                state.detailsOrderInState.order!.items.length,
                             itemBuilder: (context, index) {
+                              var order = state.detailsOrderInState.order;
                               return Card(
                                   elevation: 11,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Image.asset(
-                                            "assets/images/Rectangle (4).png",
-                                            fit: BoxFit.fill,
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                5,
-                                            // width: MediaQuery.of(context).size.width / 1.1,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Column(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Image.asset(
+                                              "assets/images/Rectangle (4).png",
+                                              fit: BoxFit.fill,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  7,
+                                              // width: MediaQuery.of(context).size.width / 1.1,
+                                            ),
                                           ),
-                                        ),
-                                        Divider(
-                                            color: const Color.fromARGB(
-                                                255, 1, 206, 83)),
-                                        Align(
-                                          alignment: Alignment.center,
-                                          child: HeaderText(
-                                              text: "ADIDAS",
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.bottomLeft,
-                                          child: HeaderText(
-                                              text: "quality: 30",
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        Align(
-                                          alignment: Alignment.bottomLeft,
-                                          child: HeaderText(
-                                              text: "price: 1000\$",
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                        sizedBox40(),
-                                      ],
+                                          Divider(
+                                            // thickness: 22,
+                                            color: AppColor.purple4,
+                                          ),
+                                          Align(
+                                            alignment: Alignment.center,
+                                            child: HeaderText(
+                                                text: order!
+                                                    .items[index].item!.SKU
+                                                    .toString(),
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomLeft,
+                                            child: HeaderText(
+                                                text:
+                                                    "name: ${order!.items[index].item!.name.toString()}",
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomLeft,
+                                            child: HeaderText(
+                                                text:
+                                                    "quantity: ${state.detailsOrderInState.order!.items[index].quantity} ${state.detailsOrderInState.order!.items[index].item!.unit} ",
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomLeft,
+                                            child: HeaderText(
+                                                text:
+                                                    "price: ${order!.items[index].item!.pur_price.toString()}S.P",
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          Align(
+                                            alignment: Alignment.bottomLeft,
+                                            child: HeaderText(
+                                                text:
+                                                    "weight: ${state.detailsOrderInState.order!.items[index].item!.weight}\nsize m*m: ${state.detailsOrderInState.order!.items[index].item!.weight}",
+                                                fontSize: 17,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          sizedBox40(),
+                                        ],
+                                      ),
                                     ),
                                   ));
                             },
