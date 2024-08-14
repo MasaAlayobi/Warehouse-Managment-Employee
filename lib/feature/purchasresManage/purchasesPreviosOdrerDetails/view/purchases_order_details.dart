@@ -9,6 +9,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart'
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/detailsClient/bloc/detail_of_client_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/bloc/purchase_order_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/purchaseCurrentOrderDetails/bloc/details_of_order_puchase_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/purchasesPreviosOdrerDetails/bloc/details_of_order_puchase_bloc.dart';
 
 class PurchasesOrderDetails extends StatelessWidget {
@@ -32,7 +33,7 @@ class PurchasesOrderDetails extends StatelessWidget {
             return BlocBuilder<DetailsOfOrderPuchaseBloc,
                 DetailsOfOrderPuchaseState>(
               builder: (context, state) {
-                if (state is SuccessGetDetailsPurchase) {
+                if (state is SuccessGetPurchase) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
