@@ -1,5 +1,5 @@
 class AppUrl {
-  static String baseUrl = 'https://f2e3-149-34-244-166.ngrok-free.app/api';
+  static String baseUrl = 'https://2e2f-178-171-184-24.ngrok-free.app/api';
   static String UrlPhoto = 'http://127.0.0.1:8000/storage/';
 }
 

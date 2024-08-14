@@ -119,8 +119,7 @@ class LoginView extends StatelessWidget {
                                 if (email.text.isNotEmpty &&
                                     password.text.isNotEmpty) {
                                   LoginModel user = LoginModel(
-                                      firebase_token:
-                                          "1234rw22dddde2dxw2d3cx@#",
+                                      firebase_token: "12e2dxw2d3cx@#",
                                       email: email.text,
                                       password: password.text);
                                   context
