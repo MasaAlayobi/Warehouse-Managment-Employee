@@ -6,6 +6,8 @@ import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/myButton.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/myButtonWithBorder.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
 import 'package:mobile_warehouse_managment/core/data/add_sale_order.dart';
 import 'package:mobile_warehouse_managment/core/data/warehouseProduct.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
@@ -80,13 +82,14 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 17,
+                      height: 25,
                     ),
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: 10,
-                        ),
+                        // SizedBox(
+                        //   width: 10,
+                        // ),
                         Icon(
                           Icons.error,
                           color: AppColor.red,
@@ -111,7 +114,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                       ],
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 30,
                     ),
                     HeaderText(
                       text: '   Choose customer  :',
@@ -120,7 +123,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     //  SizedBox(height: 30,),
                     Padding(
@@ -134,7 +137,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                           // text3: "ركن الدين",
                         )),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     HeaderText(
                       text: '   Choose warehouse  :',
@@ -143,7 +146,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -158,7 +161,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                           // text3: "ركن الدين",
                         )),
                         SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     HeaderText(
                       text: '   Choose Payment type :',
@@ -167,7 +170,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                       fontWeight: FontWeight.w600,
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 20,
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 12),
@@ -266,7 +269,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                     ),
               
                  SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 HeaderText(
                   text: '   Choose items :',
@@ -275,7 +278,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                   fontWeight: FontWeight.w600,
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                  Padding(
                                     padding:
@@ -307,6 +310,9 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                                           // text3: "ركن الدين",
                                           variable: isCheckedCheckBox2),
                                     )),
+                                    SizedBox(
+                                      height: 50,
+                                    ),
                                     BlocListener<AddOrderBloc, AddOrderState>(
                       listener: (context, state) {
                         if (state is SuccessAddSaleOrder) {
@@ -328,18 +334,25 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                                       ));
                         }
                       },
-                      child: MyButton(
-                          title: 'Add',
-                          textcolor: AppColor.black,
-                          fontsize: 20,
-                          onpress: () {
-                         AddSaleOrderModel order =   AddSaleOrderModel(client_id:customerId1!.toInt() , warehouse_id: warehouseId1!.toInt(), payment_type: selectedTitle!, items: chooseItems);
-                              context.read<AddOrderBloc>().add(AddSaleOrder(order: order));
-                          },
-                          colors: AppColor.blue1,
-                          width: 150,
-                          height: 50,
-                          radius: 20),
+                      child:Center(
+                        child: myButtonWithBorder(
+                          height: 40,
+                          width:
+                                          MediaQuery.of(context).size.width / 2.8,
+                                      fillColor: AppColor.blue2,
+                                      onTap: () {
+                                        AddSaleOrderModel order =   AddSaleOrderModel(client_id:customerId1!.toInt() , warehouse_id: warehouseId1!.toInt(), payment_type: selectedTitle!, items: chooseItems);
+                                context.read<AddOrderBloc>().add(AddSaleOrder(order: order));
+                                      },
+                                      border: Border.all(color: AppColor.blue1),
+                                      radius: 12,
+                                      text: "Add",
+                                      textColor: AppColor.black,
+                                      fontsize: 17,
+                                      // width:
+                                      //     MediaQuery.of(context).size.width / 2.8,
+                                      fontWeight: FontWeight.w700),
+                      ),
                     ),
                 
               

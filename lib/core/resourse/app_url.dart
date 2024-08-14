@@ -14,4 +14,5 @@ abstract class EndPoint {
   static String allSupplier='/employee/supplier/show-all';
   static String warehousefromNeartoFar='/orders/sell/show-nearest-warehouse/with-quantity/';
   static String addSaleOrder='/orders/sell/store';
+  static String allCurrentSaleOrder='/orders/sell/show-all?filter[order]=';
 }
