@@ -170,7 +170,8 @@ class _StrippedViewState extends State<StrippedView> {
                                         builder: (context) => AdditemtowareView(
                                           idItem: state.allProduct[index].id,
                                         ),
-                                      ));
+                                      )
+                                      );
                                     },
                                     border: Border.all(color: AppColor.green2),
                                     radius: 12,
