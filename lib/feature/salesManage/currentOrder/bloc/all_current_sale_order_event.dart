@@ -16,3 +16,16 @@ class NoConnection extends AllCurrentSaleOrderState {
   });
 }
 class Loading extends AllCurrentSaleOrderState{}
+class SuccessAdd extends AllCurrentSaleOrderState {
+  String message;
+  SuccessAdd({
+    required this.message,
+  });
+}
+class NotAdded extends AllCurrentSaleOrderState{
+  String message;
+  NotAdded({
+    required this.message,
+  });
+}
+class LoadingAdd extends AllCurrentSaleOrderState{}

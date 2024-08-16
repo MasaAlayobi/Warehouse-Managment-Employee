@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
+import 'package:mobile_warehouse_managment/core/data/previous_sale_shipment_model.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/orderDitails/view/order_sale_details.dart';
 
 class WidgetShipmentsAndOrders extends StatefulWidget {
-  const WidgetShipmentsAndOrders({super.key});
-
+  const WidgetShipmentsAndOrders({super.key, required this.shipment});
+final PreviousSaleShipmentModel shipment;
   @override
   State<WidgetShipmentsAndOrders> createState() => _WidgetShipmentsAndOrdersState();
 }
@@ -33,13 +35,13 @@ class _WidgetShipmentsAndOrdersState extends State<WidgetShipmentsAndOrders> {
                         // color: AppColor.purple1,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Container(
                                 child: FittedBox(
                                     fit: BoxFit.contain,
                                     child: Text(
-                                      'Date: 2004/1/1',
+                                      'Capacity : ${widget.shipment.current_capacity} %',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600),
@@ -48,29 +50,29 @@ class _WidgetShipmentsAndOrdersState extends State<WidgetShipmentsAndOrders> {
                                 child: FittedBox(
                                     fit: BoxFit.contain,
                                     child: Text(
-                                      'Delivery Agent: el-mahaseeb',
+                                      'Status : ${widget.shipment.status}',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600),
                                     ))),
-                            Container(
-                                child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Text(
-                                      'Delivery Num: 0957257941',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    ))),
+                            // Container(
+                            //     child: FittedBox(
+                            //         fit: BoxFit.contain,
+                            //         child: Text(
+                            //           'Delivery Num: 0957257941',
+                            //           style: TextStyle(
+                            //               fontSize: 14,
+                            //               fontWeight: FontWeight.w600),
+                            //         ))),
                           ],
                         ),
                       ),
                       title: Padding(
                         padding: const EdgeInsets.only(top: 0),
                         child: Text(
-                          '#505EE0',
+                          '${widget.shipment.tracking_number}',
                           style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                              fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                       ),
                       onExpansionChanged: (bool expanded) {
@@ -88,7 +90,7 @@ class _WidgetShipmentsAndOrdersState extends State<WidgetShipmentsAndOrders> {
                             child: ListView.builder(
                                 shrinkWrap: true, // مهم لتجنب مشاكل التخطيط
                                 physics: NeverScrollableScrollPhysics(),
-                                itemCount: 2,
+                                itemCount: widget.shipment.sell_order.length,
                                 itemBuilder: (context, index) {
                                   return Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,7 +112,7 @@ class _WidgetShipmentsAndOrdersState extends State<WidgetShipmentsAndOrders> {
                                         child: InkWell(
                                             onTap: () {
 
-                                                  GoRouter.of(context).push(AppRouter.kOrderDetailsView);
+                                                  Navigator.push(context, MaterialPageRoute(builder: (context) => OrderSaleDetails(id: widget.shipment.sell_order[index].id),));
                                               return ExpansionTileController.of(
                                                       context)
                                                   .collapse();
@@ -138,46 +140,47 @@ class _WidgetShipmentsAndOrdersState extends State<WidgetShipmentsAndOrders> {
                                                           ),
                                                           child: Image.asset('assets/images/order.png')),
                                                       ),
+                                                      SizedBox(
+                                                        width: 10,
+                                                      ),
                                                       Column(
                                                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                         crossAxisAlignment: CrossAxisAlignment.start,
                                                         children: [
                                                            Container(
                                                             width: MediaQuery.of(context).size.width/2.7,
-                                child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Text(
-                                      'client : Tamer Hossni',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    ))),
-                            Container(
-                              width: MediaQuery.of(context).size.width/2.7,
-                                child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Text(
-                                      'storehouse : Tamer ',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    ))),
-                            Container(
-                              width: MediaQuery.of(context).size.width/2.7,
-                                child: FittedBox(
-                                    fit: BoxFit.contain,
-                                    child: Text(
-                                      'Total  : 149999.99\$',
-                                      style: TextStyle(
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w600),
-                                    ))),
+                                child: Text(
+                                  'Number : ${widget.shipment.sell_order[index].id}',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600),
+                                )),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width/2.7,
+                            //     child: FittedBox(
+                            //         fit: BoxFit.contain,
+                            //         child: Text(
+                            //           'storehouse : Tamer ',
+                            //           style: TextStyle(
+                            //               fontSize: 14,
+                            //               fontWeight: FontWeight.w600),
+                            //         ))),
+                            // Container(
+                            //   width: MediaQuery.of(context).size.width/2.7,
+                            //     child: FittedBox(
+                            //         fit: BoxFit.contain,
+                            //         child: Text(
+                            //           'Total  : 149999.99\$',
+                            //           style: TextStyle(
+                            //               fontSize: 14,
+                            //               fontWeight: FontWeight.w600),
+                            //         ))),
                                     Container(
                               width: MediaQuery.of(context).size.width/2.7,
                                 child: FittedBox(
                                     fit: BoxFit.contain,
                                     child: Text(
-                                      'Order Status: Packging',
+                                      'Order Status: ${widget.shipment.sell_order[index].status}',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600),

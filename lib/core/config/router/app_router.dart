@@ -73,7 +73,7 @@ abstract class AppRouter {
     // GoRoute(
     //     path: kProductDetailsView,
     //     builder: (context, state) => ProductDetailsView()),
-    GoRoute(path: '/', builder: (context, state) => LoginView()),
+    GoRoute(path: '/', builder: (context, state) => HomeView()),
     GoRoute(
         path: kPreviousSalesView,
         builder: (context, state) => PreviousSalesView()),

@@ -7,6 +7,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/bloc/all_current_sale_order_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/orderDitails/view/order_sale_details.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/widget/widget_new_order.dart';
 
 class CurrentOrderView extends StatelessWidget {
@@ -19,6 +20,7 @@ class CurrentOrderView extends StatelessWidget {
       child: Builder(builder: (context) {
         context.read<AllCurrentSaleOrderBloc>().add(GetAllCurrentSaleOrder());
         return Scaffold(
+          backgroundColor: AppColor.purple1,
           drawer: CustomDrawer(),
           appBar: CustomAppbar(
             isnNotification: false,
@@ -42,10 +44,16 @@ class CurrentOrderView extends StatelessWidget {
               Expanded(child: BlocBuilder<AllCurrentSaleOrderBloc, AllCurrentSaleOrderState>(
                 builder: (context, state) {
                   if(state is SuccessfetchOrder){
+                    print('99999999999999999999999');
                     return ListView.builder(
                     itemCount: state.orders.length,
                     itemBuilder: (context, index) {
-                      return WidgetNewOrder(order: state.orders[index],);
+                      return InkWell(
+                        onTap: (){
+                          print('object');
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => OrderSaleDetails(id: state.orders[index].id),));
+                        },
+                        child: WidgetNewOrder(order: state.orders[index],));
                     },
                   );
                   }
