@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:mobile_warehouse_managment/core/data/all_shipment_model.dart';
 import 'package:mobile_warehouse_managment/core/data/customerInfo.dart';
 import 'package:mobile_warehouse_managment/core/data/purchase/OrderPurchase.dart';
 
@@ -9,7 +10,7 @@ class ShowAllCurrentSaleOrderModel {
   String? status;
   PurchaseOrderModel? order;
   CustomerinfoModel? client;
-  String? shipment;
+  AllShipmentModel? shipment;
   ShowAllCurrentSaleOrderModel({
     required this.id,
     this.status,
@@ -24,7 +25,7 @@ class ShowAllCurrentSaleOrderModel {
     String? status,
     PurchaseOrderModel? order,
     CustomerinfoModel? client,
-    String? shipment,
+    AllShipmentModel? shipment,
   }) {
     return ShowAllCurrentSaleOrderModel(
       id: id ?? this.id,
@@ -51,7 +52,7 @@ class ShowAllCurrentSaleOrderModel {
       status: map['status'] != null ? map['status'] as String : null,
       order: map['order'] != null ? PurchaseOrderModel.fromMap(map['order'] as Map<String,dynamic>) : null,
       client: map['client'] != null ? CustomerinfoModel.fromMap(map['client'] as Map<String,dynamic>) : null,
-      shipment: map['shipment'] != null ? map['shipment'] as String : null,
+      shipment: map['shipment'] != null ?  AllShipmentModel.fromMap(map['shipment'] as Map<String,dynamic>) : null,
     );
   }
 

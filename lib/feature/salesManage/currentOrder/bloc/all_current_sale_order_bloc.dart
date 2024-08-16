@@ -23,5 +23,15 @@ class AllCurrentSaleOrderBloc extends Bloc<AllCurrentSaleOrderEvent, AllCurrentS
         emit(NoConnection(message: e.toString()));
        }
     });
+    on<AddOrderInShipment>((event, emit) async{
+      emit(Loading());
+      String data;
+       try{
+       data= await SalesManageServiceImp().AddOrderInShipment(event.orderId, event.shipmentId);
+        emit(SuccessAdd(message: data));
+      }catch(e){
+        emit(NotAdded(message: e.toString()));
+      }
+    });
   }
 }

@@ -5,6 +5,8 @@ import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
 import 'package:mobile_warehouse_managment/core/config/store/getit.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/Stripped/bloc/items_stripped_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/bloc/all_current_sale_order_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/shipments/allShipment/bloc/all_shipment_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 void main() {
@@ -22,6 +24,14 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<ItemsStrippedBloc>(
             create: (BuildContext context) => ItemsStrippedBloc(),
+            lazy: true,
+          ),
+          BlocProvider<AllShipmentBloc>(
+            create: (BuildContext context) => AllShipmentBloc(),
+            lazy: true,
+          ),
+           BlocProvider<AllCurrentSaleOrderBloc>(
+            create: (BuildContext context) => AllCurrentSaleOrderBloc(),
             lazy: true,
           ),
       ],

@@ -41,7 +41,7 @@ class WarehouseInfoModel {
     };
   }
 
-  factory WarehouseInfoModel.fromMap(Map<String, dynamic> map) {
+  factory WarehouseInfoModel.fromMap(Map<dynamic, dynamic> map) {
     return WarehouseInfoModel(
       id: map['id'] as int,
       name: map['name'] != null ? map['name'] as String : null,

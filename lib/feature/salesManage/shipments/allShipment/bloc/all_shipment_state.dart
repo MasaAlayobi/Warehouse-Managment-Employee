@@ -12,9 +12,9 @@ class SuccessFetchAllShipment extends AllShipmentState {
   });
 }
 class Loading extends AllShipmentState{}
-class NoConnection extends AllShipmentState {
+class NoConnectionWithAllShipment extends AllShipmentState {
   String message;
-  NoConnection({
+  NoConnectionWithAllShipment({
     required this.message,
   });
 }

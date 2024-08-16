@@ -17,10 +17,10 @@ class AllShipmentBloc extends Bloc<AllShipmentEvent, AllShipmentState> {
 
         }
         else{
-         emit(NoConnection(message:'The inventory is empty')); 
+         emit(NoConnectionWithAllShipment(message:'The inventory is empty')); 
         }
        }catch(e){
-        emit(NoConnection(message: e.toString()));
+        emit(NoConnectionWithAllShipment(message: e.toString()));
        }
     });
   }

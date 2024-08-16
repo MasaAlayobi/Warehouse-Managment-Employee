@@ -36,7 +36,7 @@ class AllShipmentModel {
     };
   }
 
-  factory AllShipmentModel.fromMap(Map<String, dynamic> map) {
+  factory AllShipmentModel.fromMap(Map<dynamic, dynamic> map) {
     return AllShipmentModel(
       id: map['id'] as int,
       tracking_number: map['tracking_number'] as String,
@@ -47,7 +47,7 @@ class AllShipmentModel {
 
   String toJson() => json.encode(toMap());
 
-  factory AllShipmentModel.fromJson(String source) => AllShipmentModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory AllShipmentModel.fromJson(String source) => AllShipmentModel.fromMap(json.decode(source) as Map<dynamic, dynamic>);
 
   @override
   String toString() {
