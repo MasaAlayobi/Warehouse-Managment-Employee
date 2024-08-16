@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_button.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/myButton.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
 import 'package:mobile_warehouse_managment/core/data/login_model.dart';
+import 'package:mobile_warehouse_managment/core/domain/auth_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_image.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/bloc/login_bloc.dart';
@@ -14,6 +18,7 @@ class LoginView extends StatelessWidget {
 
   @override
   TextEditingController email = TextEditingController();
+  TextEditingController email2 = TextEditingController();
   TextEditingController password = TextEditingController();
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -77,21 +82,138 @@ class LoginView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(right: 0),
-                          child: Center(
-                              child: Text(
-                            'Forget Password',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: AppColor.black,
-                              decoration: TextDecoration.underline,
-                              decorationThickness: 5,
-                              decorationColor: AppColor.purple2,
-                              decorationStyle: TextDecorationStyle.solid,
-                            ),
-                          )),
+                        InkWell(
+                          onTap: () async {
+                            showModalBottomSheet(
+                                context: context,
+                                isScrollControlled: true,
+                                builder: (BuildContext context) {
+                                  return SingleChildScrollView(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          bottom: MediaQuery.of(context)
+                                              .viewInsets
+                                              .bottom),
+                                      child: Container(
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                4,
+                                        color: Colors.white,
+                                        child: Center(
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              HeaderText(
+                                                  fontSize: 22,
+                                                  fontWeight: FontWeight.w600,
+                                                  text: "enter your email:"),
+                                              sizedBox15(),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            left: 60,
+                                                            right: 60),
+                                                    child: CustomTextField(
+                                                        nameText: 'Email',
+                                                        nameController: email2,
+                                                        readOnly: false),
+                                                  ),
+                                                  MyButton(
+                                                      title: "accept",
+                                                      onpress: () async {
+                                                        try {
+                                                          var response =
+                                                              await AuthServiceImp()
+                                                                  .forget(email2
+                                                                      .text);
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(SnackBar(
+                                                                  duration:
+                                                                      Duration(
+                                                                          seconds:
+                                                                              3),
+                                                                  backgroundColor:
+                                                                      AppColor
+                                                                          .green2,
+                                                                  content: SizedBox(
+                                                                      height:
+                                                                          50,
+                                                                      child: Center(
+                                                                          child:
+                                                                              SubTitle3(text: response.toString())))));
+                                                        } catch (e) {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(SnackBar(
+                                                                  duration:
+                                                                      Duration(
+                                                                          seconds:
+                                                                              3),
+                                                                  backgroundColor:
+                                                                      AppColor
+                                                                          .red,
+                                                                  content: SizedBox(
+                                                                      height:
+                                                                          50,
+                                                                      child: Center(
+                                                                          child:
+                                                                              SubTitle3(text: e.toString())))));
+                                                        }
+                                                      },
+                                                      colors: AppColor.green2,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height: 44,
+                                                      radius: 9),
+                                                  MyButton(
+                                                      title: "cancel",
+                                                      onpress: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      colors: AppColor.red,
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              3,
+                                                      height: 44,
+                                                      radius: 9),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 0),
+                            child: Center(
+                                child: Text(
+                              'Forget Password',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: AppColor.black,
+                                decoration: TextDecoration.underline,
+                                decorationThickness: 5,
+                                decorationColor: AppColor.purple2,
+                                decorationStyle: TextDecorationStyle.solid,
+                              ),
+                            )),
+                          ),
                         ),
                         BlocListener<LoginBloc, LoginState>(
                           listener: (context, state) {
@@ -119,7 +241,7 @@ class LoginView extends StatelessWidget {
                                 if (email.text.isNotEmpty &&
                                     password.text.isNotEmpty) {
                                   LoginModel user = LoginModel(
-                                      firebase_token: "12e2dxw2d3cx@#",
+                                      firebase_token: "12e2dxwvي2dsss3ddcx@#",
                                       email: email.text,
                                       password: password.text);
                                   context

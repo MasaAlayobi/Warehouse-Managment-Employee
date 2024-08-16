@@ -30,7 +30,7 @@ class CardOfProduct extends StatelessWidget {
     return InkWell(
       onTap: onTapCard,
       child: FittedBox(
-        fit: BoxFit.contain,
+        fit: BoxFit.fill,
         child: Card(
             elevation: 11,
             child: Padding(

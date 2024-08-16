@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
+import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
+import 'package:mobile_warehouse_managment/core/domain/auth_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -199,7 +201,7 @@ class CustomDrawer extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                         GoRouter.of(context).push(AppRouter.kAllShipmentsView);
+                        GoRouter.of(context).push(AppRouter.kAllShipmentsView);
                       },
                       child: const Text('   Shipments',
                           style: TextStyle(
@@ -364,8 +366,25 @@ class CustomDrawer extends StatelessWidget {
                     style: TextStyle(
                       color: AppColor.purple1,
                     )),
-                onTap: () {
-                  // Implement logout logic
+                onTap: () async {
+                  var res = await AuthServiceImp().logout();
+                  try {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        duration: Duration(seconds: 3),
+                        backgroundColor: AppColor.green2,
+                        content: SizedBox(
+                            height: 50,
+                            child: Center(
+                                child: SubTitle3(text: res.toString())))));
+                  } catch (e) {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        duration: Duration(seconds: 3),
+                        backgroundColor: AppColor.red,
+                        content: SizedBox(
+                            height: 50,
+                            child:
+                                Center(child: SubTitle3(text: e.toString())))));
+                  }
                 },
               ),
             ),

@@ -7,6 +7,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_button.dart
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/widget_ships.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/addOrderView/addOrderPurchase.dart';
 
 // GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 class HomeView extends StatefulWidget {
@@ -17,7 +18,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
   dynamic _currentPage = 0;
 
   final List<String> _productImages = [
@@ -41,7 +41,6 @@ class _HomeViewState extends State<HomeView> {
     '\$210.00',
   ];
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +48,10 @@ class _HomeViewState extends State<HomeView> {
       drawer: CustomDrawer(),
       backgroundColor: AppColor.purple1,
 
-
-
-      appBar: CustomAppbar(isnNotification: true,ispop: false,),
+      appBar: CustomAppbar(
+        isnNotification: true,
+        ispop: false,
+      ),
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -144,10 +144,26 @@ class _HomeViewState extends State<HomeView> {
           Expanded(
               child: ListView(
             children: [
-            WidgetShips(image: 'assets/images/car.png',title: '200 Ships',subTitle: 'This Ship Has Sent',),
-            WidgetShips(image: 'assets/images/icon reciv.png',title: '333 Ships',subTitle: 'This Ship Has Recived',),
-            WidgetShips(image: 'assets/images/icon packg.png',title: '111 Ships',subTitle: 'This Ship is packging',),
-            WidgetShips(image: 'assets/images/car.png',title: '200 Ships',subTitle: 'This Ship Has Sent',),
+              WidgetShips(
+                image: 'assets/images/car.png',
+                title: '200 Ships',
+                subTitle: 'This Ship Has Sent',
+              ),
+              WidgetShips(
+                image: 'assets/images/icon reciv.png',
+                title: '333 Ships',
+                subTitle: 'This Ship Has Recived',
+              ),
+              WidgetShips(
+                image: 'assets/images/icon packg.png',
+                title: '111 Ships',
+                subTitle: 'This Ship is packging',
+              ),
+              WidgetShips(
+                image: 'assets/images/car.png',
+                title: '200 Ships',
+                subTitle: 'This Ship Has Sent',
+              ),
             ],
           )),
         ],
@@ -155,5 +171,3 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
-
-

@@ -7,13 +7,16 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/my_sized_box.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
 import 'package:mobile_warehouse_managment/feature/customer/customers/detailsClient/bloc/detail_of_client_bloc.dart';
+import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/addOrderView/addOrderPurchase.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/bloc/purchase_order_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/purchaseCurrentOrderDetails/bloc/details_of_order_puchase_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/purchasresManage/purchasesPreviosOdrerDetails/bloc/details_of_order_puchase_bloc.dart';
 
 class PurchasesOrderDetails extends StatelessWidget {
-  const PurchasesOrderDetails({super.key});
+  int id;
+  PurchasesOrderDetails({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
@@ -180,15 +183,55 @@ class PurchasesOrderDetails extends StatelessWidget {
                                         children: [
                                           Padding(
                                             padding: const EdgeInsets.all(8.0),
-                                            child: Image.asset(
-                                              "assets/images/Rectangle (4).png",
-                                              fit: BoxFit.fill,
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .height /
-                                                  7,
-                                              // width: MediaQuery.of(context).size.width / 1.1,
-                                            ),
+                                            child: state
+                                                        .detailsOrderInState
+                                                        .order!
+                                                        .items[index]
+                                                        .item!
+                                                        .photo !=
+                                                    null
+                                                ? Image.network(
+                                                    '${AppUrl.UrlPhoto}${state.detailsOrderInState.order!.items[index].item!.photo}',
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            4,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            3,
+                                                    errorBuilder: (context,
+                                                        error, stackTrace) {
+                                                      return Image.asset(
+                                                        'assets/images/no_photo.png',
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            4,
+                                                        height: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height /
+                                                            3,
+                                                      );
+                                                    },
+                                                  )
+                                                : Image.asset(
+                                                    'assets/images/no_photo.png',
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width /
+                                                            3,
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .height /
+                                                            3,
+                                                  ),
                                           ),
                                           Divider(
                                             // thickness: 22,
@@ -207,7 +250,7 @@ class PurchasesOrderDetails extends StatelessWidget {
                                             alignment: Alignment.bottomLeft,
                                             child: HeaderText(
                                                 text:
-                                                    "name: ${order!.items[index].item!.name.toString()}",
+                                                    "name: ${order.items[index].item!.name.toString()}",
                                                 fontSize: 17,
                                                 fontWeight: FontWeight.w400),
                                           ),

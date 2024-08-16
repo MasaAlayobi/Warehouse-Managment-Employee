@@ -34,7 +34,7 @@ class myNestedExpansionTile extends StatelessWidget {
                 fit: BoxFit.contain, width: 33, height: 33),
         title: HeaderText(
             text: text1,
-            textcolor: AppColor.black,
+            textcolor: Colors.grey,
             fontSize: 16,
             fontWeight: FontWeight.w400),
         backgroundColor: Colors.grey[200],

@@ -39,48 +39,54 @@ class CurrentOrderView extends StatelessWidget {
               SizedBox(
                 height: 10,
               ),
-              Expanded(child: BlocBuilder<AllCurrentSaleOrderBloc, AllCurrentSaleOrderState>(
+              Expanded(child: BlocBuilder<AllCurrentSaleOrderBloc,
+                  AllCurrentSaleOrderState>(
                 builder: (context, state) {
-                  if(state is SuccessfetchOrder){
+                  if (state is SuccessfetchOrder) {
                     return ListView.builder(
-                    itemCount: state.orders.length,
-                    itemBuilder: (context, index) {
-                      return WidgetNewOrder(order: state.orders[index],);
-                    },
-                  );
+                      itemCount: state.orders.length,
+                      itemBuilder: (context, index) {
+                        return WidgetNewOrder(
+                          order: state.orders[index],
+                        );
+                      },
+                    );
+                  } else if (state is NoConnection) {
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        print("object");
+                        context
+                            .read<AllCurrentSaleOrderBloc>()
+                            .add(GetAllCurrentSaleOrder());
+                      },
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Lottie.asset("assets/lottie/empty.json",
+                                width: 200, height: 333),
+                            Text(state.message),
+                          ],
+                        ),
+                      ),
+                    );
+                  } else {
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        context
+                            .read<AllCurrentSaleOrderBloc>()
+                            .add(GetAllCurrentSaleOrder());
+                      },
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Lottie.asset("assets/lottie/loading.json",
+                                width: 200, height: 333),
+                            Text("Loading..."),
+                          ],
+                        ),
+                      ),
+                    );
                   }
-                  else if (state is NoConnection) {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  print("object");
-                  context.read<AllCurrentSaleOrderBloc>().add(GetAllCurrentSaleOrder());
-                },
-                child: Center(
-                  child: Column(
-                    children: [
-                      Lottie.asset("assets/lottie/empty.json",
-                          width: 200, height: 333),
-                      Text(state.message),
-                    ],
-                  ),
-                ),
-              );
-            } else {
-              return RefreshIndicator(
-                onRefresh: () async {
-                  context.read<AllCurrentSaleOrderBloc>().add(GetAllCurrentSaleOrder());
-                },
-                child: Center(
-                  child: Column(
-                    children: [
-                      Lottie.asset("assets/lottie/loading.json",
-                          width: 200, height: 333),
-                      Text("Loading..."),
-                    ],
-                  ),
-                ),
-              );
-            }
                 },
               ))
             ],

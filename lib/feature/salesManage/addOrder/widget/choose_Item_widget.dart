@@ -224,7 +224,7 @@ class _myExpansionTileState extends State<ChooseItemWidget> {
                                                 ),
                                                 actions: <Widget>[
                                                   TextButton(
-                                                    child: Text('إضافة',
+                                                    child: Text('add',
                                                         style: TextStyle(
                                                             color: AppColor
                                                                 .purple3)),
@@ -247,7 +247,7 @@ class _myExpansionTileState extends State<ChooseItemWidget> {
                                                   ),
                                                   TextButton(
                                                     child: Text(
-                                                      'رجوع',
+                                                      'cancel',
                                                       style: TextStyle(
                                                           color:AppColor
                                                               .purple3),

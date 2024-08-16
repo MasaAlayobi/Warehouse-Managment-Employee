@@ -17,6 +17,7 @@ import 'package:mobile_warehouse_managment/core/data/storeItemInWH.dart';
 import 'package:mobile_warehouse_managment/core/data/viacles.dart';
 import 'package:mobile_warehouse_managment/core/domain/inventory_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
 import 'package:mobile_warehouse_managment/feature/warehouses/productOfWareWithDetails/bloc/products_in_ware_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/warehouses/productOfWareWithDetails/detailsOfProduct/view/viewDetailPriduct.dart';
 import 'package:mobile_warehouse_managment/feature/warehouses/widget/ShowMBSInware.dart';
@@ -50,14 +51,14 @@ class ProductInWares extends StatelessWidget {
                 child: StatefulBuilder(builder: (context, setState) {
                   return Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            left: 15, right: 15, top: 20, bottom: 20),
-                        child: CustomTextField(
-                            nameText: 'search',
-                            nameController: search,
-                            readOnly: false),
-                      ),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(
+                      //       left: 15, right: 15, top: 20, bottom: 20),
+                      //   child: CustomTextField(
+                      //       nameText: 'search',
+                      //       nameController: search,
+                      //       readOnly: false),
+                      // ),
                       Padding(
                         padding: EdgeInsets.only(left: 19, bottom: 1),
                         child: Align(
@@ -103,15 +104,45 @@ class ProductInWares extends StatelessWidget {
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: [
-                                                    Image.asset(
-                                                      'assets/images/car.png',
-                                                      height:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height /
-                                                              18,
-                                                      width: 77,
-                                                    ),
+                                                    state.listProductInWareInState
+                                                                .items[index].photo !=
+                                                            null
+                                                        ? Image.network(
+                                                            '${AppUrl.UrlPhoto}${state.listProductInWareInState.items[index].photo}',
+                                                            // width: MediaQuery.of(context).size.width / 4,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                4,
+                                                            errorBuilder:
+                                                                (context, error,
+                                                                    stackTrace) {
+                                                              return Image
+                                                                  .asset(
+                                                                'assets/images/no_photo.png',
+                                                                // width: MediaQuery.of(context).size.width / 4,
+                                                                height: MediaQuery.of(
+                                                                            context)
+                                                                        .size
+                                                                        .height /
+                                                                    4,
+                                                              );
+                                                            },
+                                                          )
+                                                        : Image.asset(
+                                                            'assets/images/no_photo.png',
+                                                            // width: MediaQuery.of(
+                                                            //             context)
+                                                            //         .size
+                                                            //         .width /
+                                                            //     4,
+                                                            height: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height /
+                                                                4,
+                                                          ),
                                                     myContainer(
                                                       borderRaduis:
                                                           BorderRadius.circular(
@@ -195,7 +226,8 @@ class ProductInWares extends StatelessWidget {
                                 },
                               ),
                             )
-                          : Text("No veicles to show "),
+                          : SizedBox(
+                              height: 100, child: Text("No veicles to show ")),
                       state.listProductInWareInState.vehciles.length > 0
                           ? DotsIndicator(
                               dotsCount: state
@@ -262,9 +294,9 @@ class ProductInWares extends StatelessWidget {
                       GridView.builder(
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
-                            childAspectRatio: 0.6,
+                            childAspectRatio: 0.55,
                             mainAxisSpacing: 22,
-                            crossAxisSpacing: 0),
+                            crossAxisSpacing: 22),
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         itemCount: state.listProductInWareInState.items.length,
@@ -365,13 +397,37 @@ class ProductInWares extends StatelessWidget {
                                       ),
                                     );
                                   },
-                                  image: Image.asset(
-                                    "assets/images/Rectangle (4).png",
-                                    fit: BoxFit.fill,
-                                    height:
-                                        MediaQuery.of(context).size.height / 5,
-                                    // width: MediaQuery.of(context).size.width / 1.1,
-                                  ),
+                                  image: state.listProductInWareInState
+                                              .items[index].photo !=
+                                          null
+                                      ? Image.network(
+                                          '${AppUrl.UrlPhoto}${state.listProductInWareInState.items[index].photo}',
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              4,
+                                          errorBuilder:
+                                              (context, error, stackTrace) {
+                                            return Image.asset(
+                                              'assets/images/no_photo.png',
+                                              // width: MediaQuery.of(context)
+                                              //         .size
+                                              //         .width /
+                                              //     4,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  4,
+                                            );
+                                          },
+                                        )
+                                      : Image.asset(
+                                          'assets/images/no_photo.png',
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              4,
+                                        ),
                                   textOfButtom: "Edit quantity",
                                   price: state.listProductInWareInState
                                       .items[index].sell_price,
@@ -456,13 +512,41 @@ class ProductInWares extends StatelessWidget {
                                         minQuantityController: min),
                                   );
                                 },
-                                image: Image.asset(
-                                  "assets/images/Rectangle (4).png",
-                                  fit: BoxFit.fill,
-                                  height:
-                                      MediaQuery.of(context).size.height / 5,
-                                  // width: MediaQuery.of(context).size.width / 1.1,
-                                ),
+                                image: state.listProductInWareInState
+                                            .items[index].photo !=
+                                        null
+                                    ? Image.network(
+                                        '${AppUrl.UrlPhoto}${state.listProductInWareInState.items[index].photo}',
+                                        // width:
+                                        //     MediaQuery.of(context).size.width /
+                                        //         4,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                4,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Image.asset(
+                                            'assets/images/no_photo.png',
+                                            // width: MediaQuery.of(context)
+                                            //         .size
+                                            //         .width /
+                                            //     4,
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height /
+                                                4,
+                                          );
+                                        },
+                                      )
+                                    : Image.asset(
+                                        'assets/images/no_photo.png',
+                                        // width:
+                                        //     MediaQuery.of(context).size.width /
+                                        //         4,
+                                        height:
+                                            MediaQuery.of(context).size.height /
+                                                4,
+                                      ),
                                 textOfButtom: "Edit quantity",
                                 price: state.listProductInWareInState
                                     .items[index].sell_price,

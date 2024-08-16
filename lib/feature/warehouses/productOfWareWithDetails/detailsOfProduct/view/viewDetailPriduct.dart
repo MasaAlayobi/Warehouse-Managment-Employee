@@ -3,6 +3,7 @@ import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
 import 'package:mobile_warehouse_managment/core/data/warehouseProduct.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/widget/widget_quantity.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/productDetails/widget/widget_sale.dart';
 
@@ -37,12 +38,35 @@ class ProductDetailsInWareView extends StatelessWidget {
               ),
               child: Row(
                 children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width / 2.7,
-                    height: MediaQuery.of(context).size.height / 5,
-                    //  color: AppColor.black,
-                    child: Center(
-                        child: Image.asset('assets/images/Rectangle (4).png')),
+                  Padding(
+                    padding: const EdgeInsets.all(22.0),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width / 4,
+                      height: MediaQuery.of(context).size.height / 5,
+                      //  color: AppColor.black,
+                      child: product.photo != null
+                          ? Center(
+                              child: Image.network(
+                                '${AppUrl.UrlPhoto}${product.photo}',
+                                width: MediaQuery.of(context).size.width / 4,
+                                height: MediaQuery.of(context).size.height / 3,
+                                errorBuilder: (context, error, stackTrace) {
+                                  return Image.asset(
+                                    'assets/images/no_photo.png',
+                                    width:
+                                        MediaQuery.of(context).size.width / 4,
+                                    height:
+                                        MediaQuery.of(context).size.height / 3,
+                                  );
+                                },
+                              ),
+                            )
+                          : Image.asset(
+                              'assets/images/no_photo.png',
+                              width: MediaQuery.of(context).size.width / 4,
+                              height: MediaQuery.of(context).size.height / 3,
+                            ),
+                    ),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
