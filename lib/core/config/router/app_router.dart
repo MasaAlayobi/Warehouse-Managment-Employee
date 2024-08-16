@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:mobile_warehouse_managment/feature/Auth/login/bloc/login_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/Home/view/home_view.dart';
 import 'package:mobile_warehouse_managment/feature/complaintToAdmin/view/complaintToAdmin.dart';
@@ -61,10 +62,7 @@ abstract class AppRouter {
     ),
     GoRoute(path: KCustomerView, builder: (context, state) => Customer()),
     GoRoute(path: kHomeView, builder: (context, state) => HomeView()),
-    GoRoute(
-      path: kHomeView,
-      builder: (context, state) => HomeView(),
-    ),
+
     GoRoute(
         path: kWarehousesView, builder: (context, state) => WarehousesView()),
     GoRoute(path: kInventoryView, builder: (context, state) => InventoryView()),
@@ -73,7 +71,8 @@ abstract class AppRouter {
     // GoRoute(
     //     path: kProductDetailsView,
     //     builder: (context, state) => ProductDetailsView()),
-    GoRoute(path: '/', builder: (context, state) => HomeView()),
+    GoRoute(path: '/', builder: (context, state) => LoginView()),
+    GoRoute(path: kLoginView, builder: (context, state) => LoginView()),
     GoRoute(
         path: kPreviousSalesView,
         builder: (context, state) => PreviousSalesView()),

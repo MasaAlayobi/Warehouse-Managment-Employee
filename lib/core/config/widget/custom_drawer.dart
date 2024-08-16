@@ -318,25 +318,6 @@ class CustomDrawer extends StatelessWidget {
               ),
             ],
           ),
-          ExpansionTile(
-            iconColor: AppColor.white,
-            collapsedIconColor: AppColor.white,
-            leading: const Icon(
-              Icons.insert_chart,
-              color: AppColor.purple1,
-            ),
-            title: InkWell(
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.KReportView);
-                },
-                child: const Text('Creat Reporte',
-                    style: TextStyle(
-                      color: AppColor.purple1,
-                    ))),
-            // onTap: () {
-            //   // Navigator.pushNamed(context, '/report');
-            // },
-          ),
           ListTile(
             leading: const Icon(
               Icons.report,
@@ -352,7 +333,7 @@ class CustomDrawer extends StatelessWidget {
               // Implement logout logic
             },
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 55),
           Align(
             alignment: Alignment.centerLeft,
             child: Align(
@@ -369,6 +350,7 @@ class CustomDrawer extends StatelessWidget {
                 onTap: () async {
                   var res = await AuthServiceImp().logout();
                   try {
+                    GoRouter.of(context).pushReplacement(AppRouter.kLoginView);
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                         duration: Duration(seconds: 3),
                         backgroundColor: AppColor.green2,

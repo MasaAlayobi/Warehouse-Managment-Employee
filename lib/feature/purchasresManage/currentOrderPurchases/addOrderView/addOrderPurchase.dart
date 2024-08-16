@@ -370,7 +370,6 @@ class _AddOrderPurchaseViewState extends State<AddOrderPurchaseView> {
                               onDataChanged: updateData,
                               text1: "Items",
                               widget: Text(""),
-                            
                               variable: isCheckedCheckBox2),
                         )),
                     SizedBox(
@@ -387,10 +386,11 @@ class _AddOrderPurchaseViewState extends State<AddOrderPurchaseView> {
                                 warehouse_id: warehouseId1!.toInt(),
                                 payment_type: selectedTitle!,
                                 items: chooseItems);
-                            var response = await purchaseServiceImpl()
-                                .addOrderPurchase(order);
-                            print(order);
+
                             try {
+                              var response = await purchaseServiceImpl()
+                                  .addOrderPurchase(order);
+                              print(order);
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
                                       duration: Duration(seconds: 3),
@@ -401,6 +401,8 @@ class _AddOrderPurchaseViewState extends State<AddOrderPurchaseView> {
                                               child: SubTitle3(
                                                   text:
                                                       response.toString())))));
+                              GoRouter.of(context)
+                                  .push(AppRouter.kCurrentOrderPurchases);
                             } catch (e) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(

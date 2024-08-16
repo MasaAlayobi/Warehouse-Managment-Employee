@@ -1,13 +1,11 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
+
 import 'package:mobile_warehouse_managment/core/config/widget/custom_appbar.dart';
-import 'package:mobile_warehouse_managment/core/config/widget/custom_button.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_drawer.dart';
+
 import 'package:mobile_warehouse_managment/core/config/widget/widget_ships.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
-import 'package:mobile_warehouse_managment/feature/purchasresManage/currentOrderPurchases/addOrderView/addOrderPurchase.dart';
 
 // GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 class HomeView extends StatefulWidget {
@@ -16,6 +14,9 @@ class HomeView extends StatefulWidget {
   @override
   State<HomeView> createState() => _HomeViewState();
 }
+
+// TextEditingController sDate = TextEditingController();
+// TextEditingController lDate = TextEditingController();
 
 class _HomeViewState extends State<HomeView> {
   dynamic _currentPage = 0;
@@ -56,9 +57,196 @@ class _HomeViewState extends State<HomeView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            ' The Most Selling :',
-            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+          InkWell(
+            onTap: () {
+              // showModalBottomSheet(
+              //     context: context,
+              //     isScrollControlled: true,
+              //     builder: (BuildContext context) {
+              //       return Builder(builder: (context) {
+              //         return SingleChildScrollView(
+              //           child: Padding(
+              //             padding: EdgeInsets.only(
+              //                 bottom: MediaQuery.of(context).viewInsets.bottom),
+              //             child: Container(
+              //               decoration: BoxDecoration(
+              //                   color: AppColor.purple1,
+              //                   borderRadius: BorderRadius.circular(19)),
+              //               height: MediaQuery.of(context).size.height / 2,
+              //               child: Center(
+              //                 child: Column(
+              //                   mainAxisAlignment: MainAxisAlignment.center,
+              //                   children: <Widget>[
+              //                     HeaderText(
+              //                         fontSize: 22,
+              //                         fontWeight: FontWeight.w600,
+              //                         text: "enter first and end date:"),
+              //                     sizedBox30(),
+              //                     StatefulBuilder(builder: (context, setState) {
+              //                       return Column(
+              //                         children: [
+              //                           Padding(
+              //                             padding: const EdgeInsets.all(22.0),
+              //                             child: myTextFieldDate(
+              //                                 suffixIcon: InkWell(
+              //                                     onTap: () async {
+              //                                       DateTime? date =
+              //                                           await showDatePicker(
+              //                                               context: context,
+              //                                               firstDate:
+              //                                                   DateTime(1990),
+              //                                               lastDate:
+              //                                                   DateTime(2025));
+              //                                       if (date == null) {
+              //                                         return;
+              //                                       }
+              //                                       setState(
+              //                                         () {
+              //                                           sDate.text =
+              //                                               "${date.year}/${date.month}/${date.day}";
+              //                                         },
+              //                                       );
+              //                                     },
+              //                                     child:
+              //                                         Icon(Icons.date_range)),
+              //                                 hintName: "start date",
+              //                                 hintStyle: TextStyle(
+              //                                     color: AppColor.grey1),
+              //                                 fillColor: AppColor.white,
+              //                                 circular: 25,
+              //                                 nameController: sDate,
+              //                                 readOnly: false),
+              //                           ),
+              //                           Padding(
+              //                             padding: const EdgeInsets.all(22.0),
+              //                             child: myTextFieldDate(
+              //                                 suffixIcon: InkWell(
+              //                                     onTap: () async {
+              //                                       DateTime? date =
+              //                                           await showDatePicker(
+              //                                               context: context,
+              //                                               firstDate:
+              //                                                   DateTime(1990),
+              //                                               lastDate:
+              //                                                   DateTime(2025));
+              //                                       if (date == null) {
+              //                                         return;
+              //                                       }
+              //                                       setState(
+              //                                         () {
+              //                                           lDate.text =
+              //                                               "${date.year}/${date.month}/${date.day}";
+              //                                         },
+              //                                       );
+              //                                     },
+              //                                     child:
+              //                                         Icon(Icons.date_range)),
+              //                                 hintName: "last date",
+              //                                 hintStyle: TextStyle(
+              //                                     color: AppColor.grey1),
+              //                                 fillColor: AppColor.white,
+              //                                 circular: 25,
+              //                                 nameController: lDate,
+              //                                 readOnly: false),
+              //                           ),
+              //                         ],
+              //                       );
+              //                     }),
+              //                     sizedBox30(),
+              //                     Row(
+              //                       mainAxisAlignment:
+              //                           MainAxisAlignment.spaceAround,
+              //                       children: [
+              //                         MyButton(
+              //                             title: "accept",
+              //                             onpress: () async {
+              //                               // Request storage permission
+              //                               if (await Permission
+              //                                   .manageExternalStorage
+              //                                   .request()
+              //                                   .isGranted) {
+              //                                 var response =
+              //                                     await purchaseServiceImpl()
+              //                                         .createReport(
+              //                                             DateReportModel(
+              //                                                 toDate:
+              //                                                     sDate.text,
+              //                                                 fromDate:
+              //                                                     lDate.text));
+              //                                 saveFile(response,
+              //                                     "warehouse report.pdf");
+              //                                 print(response);
+              //                                 if (response != "false") {
+              //                                   ScaffoldMessenger.of(context)
+              //                                       .showSnackBar(
+              //                                     SnackBar(
+              //                                       duration:
+              //                                           Duration(seconds: 22),
+              //                                       backgroundColor:
+              //                                           AppColor.green2,
+              //                                       content: SizedBox(
+              //                                         height: 50,
+              //                                         child: Center(
+              //                                           child: SubTitle3(
+              //                                               text:
+              //                                                   "تم تنزيل الملف بنجاح "),
+              //                                         ),
+              //                                       ),
+              //                                     ),
+              //                                   );
+              //                                 }
+              //                               } else {
+              //                                 ScaffoldMessenger.of(context)
+              //                                     .showSnackBar(SnackBar(
+              //                                         duration:
+              //                                             Duration(seconds: 3),
+              //                                         backgroundColor:
+              //                                             AppColor.green2,
+              //                                         content: SizedBox(
+              //                                           height: 50,
+              //                                           child: Center(
+              //                                               child: SubTitle3(
+              //                                                   text:
+              //                                                       "تم إلغاء إعطاء الإذن")),
+              //                                         )));
+              //                                 print(
+              //                                     "Storage permission denied");
+              //                               }
+              //                             },
+              //                             colors: AppColor.green2,
+              //                             width: MediaQuery.of(context)
+              //                                     .size
+              //                                     .width /
+              //                                 3,
+              //                             height: 44,
+              //                             radius: 9),
+              //                         MyButton(
+              //                             title: "cancel",
+              //                             onpress: () {
+              //                               Navigator.pop(context);
+              //                             },
+              //                             colors: AppColor.red,
+              //                             width: MediaQuery.of(context)
+              //                                     .size
+              //                                     .width /
+              //                                 3,
+              //                             height: 44,
+              //                             radius: 9),
+              //                       ],
+              //                     ),
+              //                   ],
+              //                 ),
+              //               ),
+              //             ),
+              //           ),
+              //         );
+              //       });
+              //     });
+            },
+            child: Text(
+              ' The Most Selling :',
+              style: const TextStyle(fontSize: 26, fontWeight: FontWeight.w800),
+            ),
           ),
           SizedBox(
             height: 220,

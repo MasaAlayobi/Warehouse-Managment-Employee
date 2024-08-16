@@ -27,7 +27,7 @@ class AuthServiceImp extends AuthService {
         // print(response!.data);
         storage
             .get<SharedPreferences>()
-            .setString('token', response!.data['data']);
+            .setString('token', response!.data['data']["token"]);
         print(storage.get<SharedPreferences>().getString('token'));
         return response!.data["message"];
       } else {

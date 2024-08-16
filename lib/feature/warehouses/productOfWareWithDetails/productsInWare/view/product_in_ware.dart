@@ -104,45 +104,19 @@ class ProductInWares extends StatelessWidget {
                                                       MainAxisAlignment
                                                           .spaceAround,
                                                   children: [
-                                                    state.listProductInWareInState
-                                                                .items[index].photo !=
-                                                            null
-                                                        ? Image.network(
-                                                            '${AppUrl.UrlPhoto}${state.listProductInWareInState.items[index].photo}',
-                                                            // width: MediaQuery.of(context).size.width / 4,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height /
-                                                                4,
-                                                            errorBuilder:
-                                                                (context, error,
-                                                                    stackTrace) {
-                                                              return Image
-                                                                  .asset(
-                                                                'assets/images/no_photo.png',
-                                                                // width: MediaQuery.of(context).size.width / 4,
-                                                                height: MediaQuery.of(
-                                                                            context)
-                                                                        .size
-                                                                        .height /
-                                                                    4,
-                                                              );
-                                                            },
-                                                          )
-                                                        : Image.asset(
-                                                            'assets/images/no_photo.png',
-                                                            // width: MediaQuery.of(
-                                                            //             context)
-                                                            //         .size
-                                                            //         .width /
-                                                            //     4,
-                                                            height: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height /
-                                                                4,
-                                                          ),
+                                                    Image.asset(
+                                                      "assets/images/car.png",
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width /
+                                                              4,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height /
+                                                              11,
+                                                    ),
                                                     myContainer(
                                                       borderRaduis:
                                                           BorderRadius.circular(
@@ -534,7 +508,7 @@ class ProductInWares extends StatelessWidget {
                                             height: MediaQuery.of(context)
                                                     .size
                                                     .height /
-                                                4,
+                                                3,
                                           );
                                         },
                                       )
