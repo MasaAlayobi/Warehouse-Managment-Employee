@@ -1,6 +1,6 @@
 class AppUrl {
-  static String baseUrl = 'http://192.168.1.4:8000/api';
-  static String UrlPhoto = 'http://192.168.1.4:8000/storage/';
+  static String baseUrl = 'https://a8a2-178-52-82-149.ngrok-free.app/api';
+  static String UrlPhoto = 'https://a8a2-178-52-82-149.ngrok-free.app/storage/';
 }
 
 //http://127.0.0.1:8000

@@ -34,6 +34,7 @@ class ProductDetailsView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            
             Container(
               height: MediaQuery.of(context).size.height / 3.5,
               decoration: BoxDecoration(

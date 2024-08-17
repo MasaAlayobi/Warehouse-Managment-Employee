@@ -90,114 +90,130 @@ class LoginView extends StatelessWidget {
                                 context: context,
                                 isScrollControlled: true,
                                 builder: (BuildContext context) {
-                                  return SingleChildScrollView(
-                                    child: Padding(
-                                      padding: EdgeInsets.only(
-                                          bottom: MediaQuery.of(context)
-                                              .viewInsets
-                                              .bottom),
-                                      child: Container(
-                                        height:
-                                            MediaQuery.of(context).size.height /
-                                                4,
-                                        color: Colors.white,
-                                        child: Center(
-                                          child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              HeaderText(
-                                                  fontSize: 22,
-                                                  fontWeight: FontWeight.w600,
-                                                  text: "enter your email:"),
-                                              sizedBox15(),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceAround,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.only(
-                                                            left: 60,
-                                                            right: 60),
-                                                    child: CustomTextField(
-                                                        nameText: 'Email',
-                                                        nameController: email2,
-                                                        readOnly: false),
-                                                  ),
-                                                  MyButton(
-                                                      title: "accept",
-                                                      onpress: () async {
-                                                        try {
-                                                          var response =
-                                                              await AuthServiceImp()
-                                                                  .forget(email2
-                                                                      .text);
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(SnackBar(
-                                                                  duration:
-                                                                      Duration(
-                                                                          seconds:
-                                                                              3),
-                                                                  backgroundColor:
-                                                                      AppColor
-                                                                          .green2,
-                                                                  content: SizedBox(
-                                                                      height:
-                                                                          50,
-                                                                      child: Center(
-                                                                          child:
-                                                                              SubTitle3(text: response.toString())))));
-                                                        } catch (e) {
-                                                          ScaffoldMessenger.of(
-                                                                  context)
-                                                              .showSnackBar(SnackBar(
-                                                                  duration:
-                                                                      Duration(
-                                                                          seconds:
-                                                                              3),
-                                                                  backgroundColor:
-                                                                      AppColor
-                                                                          .red,
-                                                                  content: SizedBox(
-                                                                      height:
-                                                                          50,
-                                                                      child: Center(
-                                                                          child:
-                                                                              SubTitle3(text: e.toString())))));
-                                                        }
-                                                      },
-                                                      colors: AppColor.green2,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              3,
-                                                      height: 44,
-                                                      radius: 9),
-                                                  MyButton(
-                                                      title: "cancel",
-                                                      onpress: () {
-                                                        Navigator.pop(context);
-                                                      },
-                                                      colors: AppColor.red,
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .width /
-                                                              3,
-                                                      height: 44,
-                                                      radius: 9),
-                                                ],
-                                              ),
-                                            ],
+                                  return Builder(builder: (context) {
+                                    return SingleChildScrollView(
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            bottom: MediaQuery.of(context)
+                                                .viewInsets
+                                                .bottom),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              color: AppColor.purple1,
+                                              borderRadius:
+                                                  BorderRadius.circular(19)),
+                                          height: MediaQuery.of(context)
+                                                  .size
+                                                  .height /
+                                              3,
+                                          child: Center(
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                HeaderText(
+                                                    fontSize: 22,
+                                                    fontWeight: FontWeight.w600,
+                                                    text: "enter your email:"),
+                                                sizedBox30(),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 60, right: 60),
+                                                  child: CustomTextField(
+                                                      nameText: 'Email',
+                                                      nameController: email2,
+                                                      readOnly: false),
+                                                ),
+                                                sizedBox30(),
+                                                Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceAround,
+                                                  children: [
+                                                    MyButton(
+                                                        title: "accept",
+                                                        onpress: () async {
+                                                          try {
+                                                            var response =
+                                                                await AuthServiceImp()
+                                                                    .forget(email2
+                                                                        .text);
+
+                                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                                duration:
+                                                                    Duration(
+                                                                        seconds:
+                                                                            3),
+                                                                backgroundColor:
+                                                                    AppColor
+                                                                        .green2,
+                                                                content: SizedBox(
+                                                                    child: Center(
+                                                                        child: SubTitle3(
+                                                                            text:
+                                                                                response.toString())))));
+                                                            Navigator.of(
+                                                                    context)
+                                                                .pop();
+                                                          } catch (e) {
+                                                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                                                duration:
+                                                                    Duration(
+                                                                        seconds:
+                                                                            3),
+                                                                backgroundColor:
+                                                                    AppColor
+                                                                        .red,
+                                                                content: SizedBox(
+                                                                    child: Center(
+                                                                        child: SubTitle3(
+                                                                            text:
+                                                                                e.toString())))));
+                                                            Navigator.of(
+                                                                    context)
+                                                                .pop();
+                                                            // Navigator.of(
+                                                            //         context)
+                                                            //     .push(
+                                                            //         MaterialPageRoute(
+                                                            //   builder:
+                                                            //       (context) =>
+                                                            //           LoginView(),
+                                                            // ));
+                                                          }
+                                                        },
+                                                        colors: AppColor.green2,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            4,
+                                                        height: 44,
+                                                        radius: 9),
+                                                    MyButton(
+                                                        title: "cancel",
+                                                        onpress: () {
+                                                          Navigator.pop(
+                                                              context);
+                                                        },
+                                                        colors: AppColor.red,
+                                                        width: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .width /
+                                                            4,
+                                                        height: 44,
+                                                        radius: 9),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  );
+                                    );
+                                  });
                                 });
                           },
                           child: Padding(

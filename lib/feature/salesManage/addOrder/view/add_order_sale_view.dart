@@ -31,31 +31,36 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
       customerId1 = customerId;
     });
   }
- List<Map> chooseItems = [];
+
+  List<Map> chooseItems = [];
   void updateData(List<Map> chooseItems1) {
     setState(() {
       chooseItems = chooseItems1;
     });
   }
+
   num? warehouseId1;
   void updateWarehouseId(num warehouseId) {
     setState(() {
       warehouseId1 = warehouseId;
     });
   }
-  List<WarehouseproductModel> items=[];
- void updateWarehouseItem(List<WarehouseproductModel> Items) {
+
+  List<WarehouseproductModel> items = [];
+  void updateWarehouseItem(List<WarehouseproductModel> Items) {
     setState(() {
       items = Items;
     });
   }
+
   bool _isExpanded = false;
   void _handleTap() {
     setState(() {
       _isExpanded = false;
     });
   }
- bool isCheckedCheckBox2 = false;
+
+  bool isCheckedCheckBox2 = false;
   String? selectedTitle;
   @override
   void initState() {
@@ -67,18 +72,17 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddOrderBloc(),
-      child: Builder(
-        builder: (context) {
-          return Scaffold(
-              drawer: CustomDrawer(),
-              backgroundColor: AppColor.purple1,
-              appBar: CustomAppbar(
-                ispop: false,
-                isnNotification: false,
-                title: "Add Order",
-              ),
-              body: SingleChildScrollView(
-                child: Column(
+      child: Builder(builder: (context) {
+        return Scaffold(
+            drawer: CustomDrawer(),
+            backgroundColor: AppColor.purple1,
+            appBar: CustomAppbar(
+              ispop: true,
+              isnNotification: false,
+              title: "Add Order",
+            ),
+            body: SingleChildScrollView(
+              child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
@@ -100,8 +104,8 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                         Container(
                           height: 40,
                           width: 200,
-                          decoration:
-                              BoxDecoration(border: Border.all(color: AppColor.red)),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: AppColor.red)),
                           child: Center(
                             child: HeaderText(
                               text: 'Please enter in order  :',
@@ -160,7 +164,7 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                           // text2: "دمشق",
                           // text3: "ركن الدين",
                         )),
-                        SizedBox(
+                    SizedBox(
                       height: 20,
                     ),
                     HeaderText(
@@ -208,9 +212,11 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                         ),
                         backgroundColor: Colors.grey[200],
                         collapsedShape: ContinuousRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
                         shape: ContinuousRectangleBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(20))),
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(20))),
                         collapsedBackgroundColor: Colors.grey[200],
                         textColor: AppColor.black,
                         iconColor: AppColor.black,
@@ -229,12 +235,15 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                                   // تحديث الحالة بالقيمة الجديدة
                                   selectedTitle = 'cash';
                                 });
-                                return ExpansionTileController.of(context).collapse();
+                                return ExpansionTileController.of(context)
+                                    .collapse();
                               },
                               child: Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 33, vertical: 11),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 33, vertical: 11),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Expanded(
                                       child: Container(
@@ -267,99 +276,96 @@ class _AddOrderSaleViewState extends State<AddOrderSaleView> {
                         ],
                       ),
                     ),
-              
-                 SizedBox(
-                  height: 20,
-                ),
-                HeaderText(
-                  text: '   Choose items :',
-                  fontSize: 16,
-                  textcolor: AppColor.black,
-                  fontWeight: FontWeight.w600,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                 Padding(
-                                    padding:
-                                        const EdgeInsets.symmetric(horizontal: 12),
-                                    child: InkWell(
-                                      onTap: () {
-                                        
-                                        // context
-                                        //     .read<RegisterBloc>()
-                                        //     .add(getCities());
-                                      },
-                                      child: ChooseItemWidget(
-                                        items: items,
-                                          onDataChanged: updateData,
-                                          text1: "Items",
-                                          widget: Text(""),
-                                          // widget: StatefulBuilder(
-                                          //   builder: (context, setState) => Checkbox(
-                                          //     activeColor: ColorManager().red,
-                                          //     value: isCheckedCheckBox2,
-                                          //     onChanged: (bool? value) {
-                                          //       setState(() {
-                                          //         isCheckedCheckBox2 = value!;
-                                          //       });
-                                          //     },
-                                          //   ),
-          
-                                          // text2: "دمشق",
-                                          // text3: "ركن الدين",
-                                          variable: isCheckedCheckBox2),
-                                    )),
-                                    SizedBox(
-                                      height: 50,
-                                    ),
-                                    BlocListener<AddOrderBloc, AddOrderState>(
+
+                    SizedBox(
+                      height: 20,
+                    ),
+                    HeaderText(
+                      text: '   Choose items :',
+                      fontSize: 16,
+                      textcolor: AppColor.black,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: InkWell(
+                          onTap: () {
+                            // context
+                            //     .read<RegisterBloc>()
+                            //     .add(getCities());
+                          },
+                          child: ChooseItemWidget(
+                              items: items,
+                              onDataChanged: updateData,
+                              text1: "Items",
+                              widget: Text(""),
+                              // widget: StatefulBuilder(
+                              //   builder: (context, setState) => Checkbox(
+                              //     activeColor: ColorManager().red,
+                              //     value: isCheckedCheckBox2,
+                              //     onChanged: (bool? value) {
+                              //       setState(() {
+                              //         isCheckedCheckBox2 = value!;
+                              //       });
+                              //     },
+                              //   ),
+
+                              // text2: "دمشق",
+                              // text3: "ركن الدين",
+                              variable: isCheckedCheckBox2),
+                        )),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    BlocListener<AddOrderBloc, AddOrderState>(
                       listener: (context, state) {
                         if (state is SuccessAddSaleOrder) {
-                              GoRouter.of(context).pushReplacement(
-                                          AppRouter.kCurrentOrderView);
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(new SnackBar(
-                                        content: Text(state.message),
-                                        backgroundColor: AppColor.blue1,
-                                      ));
-                        }
-                        else if(state is NoConnectionWithAdd){
+                          GoRouter.of(context)
+                              .pushReplacement(AppRouter.kCurrentOrderView);
                           ScaffoldMessenger.of(context)
-                                          .showSnackBar(new SnackBar(
-                                        content: Text(
-                                          state.message 
-                                        ),
-                                        backgroundColor: AppColor.red,
-                                      ));
+                              .showSnackBar(new SnackBar(
+                            content: Text(state.message),
+                            backgroundColor: AppColor.blue1,
+                          ));
+                        } else if (state is NoConnectionWithAdd) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(new SnackBar(
+                            content: Text(state.message),
+                            backgroundColor: AppColor.red,
+                          ));
                         }
                       },
-                      child:Center(
+                      child: Center(
                         child: myButtonWithBorder(
-                          height: 40,
-                          width:
-                                          MediaQuery.of(context).size.width / 2.8,
-                                      fillColor: AppColor.blue2,
-                                      onTap: () {
-                                        AddSaleOrderModel order =   AddSaleOrderModel(client_id:customerId1!.toInt() , warehouse_id: warehouseId1!.toInt(), payment_type: selectedTitle!, items: chooseItems);
-                                context.read<AddOrderBloc>().add(AddSaleOrder(order: order));
-                                      },
-                                      border: Border.all(color: AppColor.blue1),
-                                      radius: 12,
-                                      text: "Add",
-                                      textColor: AppColor.black,
-                                      fontsize: 17,
-                                      // width:
-                                      //     MediaQuery.of(context).size.width / 2.8,
-                                      fontWeight: FontWeight.w700),
+                            height: 40,
+                            width: MediaQuery.of(context).size.width / 2.8,
+                            fillColor: AppColor.blue2,
+                            onTap: () {
+                              AddSaleOrderModel order = AddSaleOrderModel(
+                                  client_id: customerId1!.toInt(),
+                                  warehouse_id: warehouseId1!.toInt(),
+                                  payment_type: selectedTitle!,
+                                  items: chooseItems);
+                              context
+                                  .read<AddOrderBloc>()
+                                  .add(AddSaleOrder(order: order));
+                            },
+                            border: Border.all(color: AppColor.blue1),
+                            radius: 12,
+                            text: "Add",
+                            textColor: AppColor.black,
+                            fontsize: 17,
+                            // width:
+                            //     MediaQuery.of(context).size.width / 2.8,
+                            fontWeight: FontWeight.w700),
                       ),
                     ),
-                
-              
-            ]),
-          ));
-        }
-      ),
+                  ]),
+            ));
+      }),
     );
   }
 }
