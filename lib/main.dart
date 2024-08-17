@@ -1,17 +1,24 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mobile_warehouse_managment/FirebaseApi.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
 import 'package:mobile_warehouse_managment/core/config/store/getit.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/view/login_view.dart';
 import 'package:mobile_warehouse_managment/feature/inventory/inventory/Stripped/bloc/items_stripped_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/currentOrder/bloc/all_current_sale_order_bloc.dart';
 import 'package:mobile_warehouse_managment/feature/salesManage/shipments/allShipment/bloc/all_shipment_bloc.dart';
+import 'package:mobile_warehouse_managment/firebase_options.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-void main() {
+void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
   initial();
+  await FirebaseApi().initNotiification();
   runApp(const MyApp());
 }
 

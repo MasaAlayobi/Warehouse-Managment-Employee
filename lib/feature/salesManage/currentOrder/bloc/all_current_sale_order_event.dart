@@ -29,3 +29,16 @@ class NotAdded extends AllCurrentSaleOrderState{
   });
 }
 class LoadingAdd extends AllCurrentSaleOrderState{}
+class SuccessChangeStatus extends AllCurrentSaleOrderState {
+  String message;
+  SuccessChangeStatus({
+    required this.message,
+  });
+}
+class LoadingChange extends AllCurrentSaleOrderState{}
+class NoConnectionWithChange extends AllCurrentSaleOrderState{
+  String message;
+  NoConnectionWithChange({
+    required this.message,
+  });
+}

@@ -14,3 +14,11 @@ class AddOrderInShipment extends AllCurrentSaleOrderEvent {
     required this.shipmentId,
   });
 }
+class ChangeOrderStatus extends AllCurrentSaleOrderEvent {
+  int orderId;
+  String status;
+  ChangeOrderStatus({
+    required this.orderId,
+    required this.status,
+  });
+}

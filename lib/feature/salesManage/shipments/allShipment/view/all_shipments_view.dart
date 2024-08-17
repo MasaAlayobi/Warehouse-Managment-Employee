@@ -46,12 +46,12 @@ class AllShipmentsView extends StatelessWidget {
                           itemCount: state.allShipment.length,
                           itemBuilder: (context, index) {
                             return ShipmentWidget(
-                              id: 2,
+                              id:state.allShipment[index].id,
                               image: 'assets/images/car.png',
                               title:
                                   'Tracking number : \n${state.allShipment[index].tracking_number}',
                               subTitle: "current_capacity : ${state.allShipment[index].current_capacity}",
-                              status: "status : ${state.allShipment[index].status}",
+                              status: "${state.allShipment[index].status}",
                             );
                           }));
                   }

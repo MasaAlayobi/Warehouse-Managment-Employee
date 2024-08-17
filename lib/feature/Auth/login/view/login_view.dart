@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
+import 'package:mobile_warehouse_managment/core/config/store/getit.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_button.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/custom_text_field.dart';
@@ -12,6 +13,7 @@ import 'package:mobile_warehouse_managment/core/domain/auth_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_image.dart';
 import 'package:mobile_warehouse_managment/feature/Auth/login/bloc/login_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginView extends StatelessWidget {
   LoginView({super.key});
@@ -31,7 +33,7 @@ class LoginView extends StatelessWidget {
               Row(
                 children: [
                   SizedBox(
-                    width: MediaQuery.of(context).size.width / 1.72,
+                    width: MediaQuery.of(context).size.width / 1.78,
                   ),
                   Image.asset(
                     '${AppImage.vectorLogin1}',
@@ -241,9 +243,11 @@ class LoginView extends StatelessWidget {
                                 if (email.text.isNotEmpty &&
                                     password.text.isNotEmpty) {
                                   LoginModel user = LoginModel(
-                                      firebase_token: "12e2dxwvي2dsss3ddcx@#",
+                                      firebase_token: storage.get<SharedPreferences>().getString('deviceToken')!,
                                       email: email.text,
                                       password: password.text);
+                                      print(user);
+                                      print('-------------------');
                                   context
                                       .read<LoginBloc>()
                                       .add(loginUser(User: user));

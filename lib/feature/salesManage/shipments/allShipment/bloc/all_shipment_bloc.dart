@@ -23,5 +23,15 @@ class AllShipmentBloc extends Bloc<AllShipmentEvent, AllShipmentState> {
         emit(NoConnectionWithAllShipment(message: e.toString()));
        }
     });
+     on<ChangeShipmentStatus>((event, emit) async{
+      emit(LoadingChange());
+      String data;
+        try{
+       data= await SalesManageServiceImp().ChangeShipmentStatus(event.shipmentId, event.status);
+        emit(SuccessChangeShipmentStatus(message: data));
+      }catch(e){
+        emit(NoConnectionWithChangeShipment(message: e.toString()));
+      }
+    });
   }
 }

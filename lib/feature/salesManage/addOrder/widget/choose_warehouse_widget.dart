@@ -220,17 +220,17 @@ bool _isExpanded = false;
                   } else if (state is Loading) {
                     return Center(
                         child: Lottie.asset("assets/lottie/loading.json",
-                              width: 200, height: 333));
-                  // } else if (state is NoConnection) {
-                  //   return Center(
-                  //   child: Column(
-                  //     children: [
-                  //       Lottie.asset("assets/lottie/empty.json",
-                  //           width: 200, height: 333),
-                  //       Text("Empty")
-                  //     ],
-                  //   ),
-                  // );
+                              width: 200, height: 100));
+                  } else if (state is NoConnection) {
+                    return Center(
+                    child: Column(
+                      children: [
+                        Lottie.asset("assets/lottie/empty.json",
+                            width: 200, height: 100),
+                        Text("Empty")
+                      ],
+                    ),
+                  );
                   // } 
                   }else {
                     return Center(

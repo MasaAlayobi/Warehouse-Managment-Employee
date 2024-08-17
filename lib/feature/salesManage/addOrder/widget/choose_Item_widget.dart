@@ -105,7 +105,7 @@ class _myExpansionTileState extends State<ChooseItemWidget> {
                         },
                         child: Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 33, vertical: 11),
+                              horizontal: 10, vertical: 11),
                           child: Row(
                             mainAxisAlignment:
                                 MainAxisAlignment.spaceBetween,

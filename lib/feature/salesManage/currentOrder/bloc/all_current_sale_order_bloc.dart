@@ -24,13 +24,23 @@ class AllCurrentSaleOrderBloc extends Bloc<AllCurrentSaleOrderEvent, AllCurrentS
        }
     });
     on<AddOrderInShipment>((event, emit) async{
-      emit(Loading());
+      emit(LoadingAdd());
       String data;
        try{
        data= await SalesManageServiceImp().AddOrderInShipment(event.orderId, event.shipmentId);
         emit(SuccessAdd(message: data));
       }catch(e){
         emit(NotAdded(message: e.toString()));
+      }
+    });
+    on<ChangeOrderStatus>((event, emit) async{
+      emit(LoadingChange());
+      String data;
+        try{
+       data= await SalesManageServiceImp().ChangeOrderStatus(event.orderId, event.status);
+        emit(SuccessChangeStatus(message: data));
+      }catch(e){
+        emit(NoConnectionWithChange(message: e.toString()));
       }
     });
   }

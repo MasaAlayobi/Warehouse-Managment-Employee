@@ -18,3 +18,16 @@ class NoConnectionWithAllShipment extends AllShipmentState {
     required this.message,
   });
 }
+class SuccessChangeShipmentStatus extends AllShipmentState {
+  String message;
+  SuccessChangeShipmentStatus({
+    required this.message,
+  });
+}
+class LoadingChange extends AllShipmentState{}
+class NoConnectionWithChangeShipment extends AllShipmentState{
+  String message;
+  NoConnectionWithChangeShipment({
+    required this.message,
+  });
+}

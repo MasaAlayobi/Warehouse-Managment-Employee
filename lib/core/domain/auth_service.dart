@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:mobile_warehouse_managment/core/config/store/get_header.dart';
 import 'package:mobile_warehouse_managment/core/config/store/getit.dart';
 import 'package:mobile_warehouse_managment/core/data/login_model.dart';
+import 'package:mobile_warehouse_managment/core/data/permission_model.dart';
 import 'package:mobile_warehouse_managment/core/domain/base_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,8 +30,26 @@ class AuthServiceImp extends AuthService {
         // print(response!.data);
         storage
             .get<SharedPreferences>()
-            .setString('token', response!.data['data']);
+            .setString('token', response!.data['data']['token']);
         print(storage.get<SharedPreferences>().getString('token'));
+        //print('=================================');
+       // print(response!.data['data']['employee']['roles'][0]['permissions'].toString());
+        dynamic permission = List.generate(
+          response!.data['data']['employee']['roles'][0]['permissions'].length,
+          (index) => PermissionModel.fromMap(response!.data['data']['employee']
+              ['roles'][0]['permissions'][index]),
+        );
+        //print(permission);
+        List<int> ids =
+            permission.map<int>((permission) => permission.id as int).toList();
+       print(ids);
+       String number =jsonEncode(ids);
+       storage
+            .get<SharedPreferences>()
+            .setString('role', number);
+            print(storage
+            .get<SharedPreferences>()
+            .getString('role'));
         return response!.data["message"];
       } else {
         print("object");

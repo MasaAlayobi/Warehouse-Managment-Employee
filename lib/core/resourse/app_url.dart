@@ -1,6 +1,6 @@
 class AppUrl {
-  static String baseUrl = 'https://733f-149-34-244-156.ngrok-free.app/api';
-  static String UrlPhoto = 'http://127.0.0.1:8000/storage/';
+  static String baseUrl = 'http://192.168.1.4:8000/api';
+  static String UrlPhoto = 'http://192.168.1.4:8000/storage/';
 }
 
 //http://127.0.0.1:8000
@@ -20,4 +20,8 @@ abstract class EndPoint {
   static String detailsOrderInCurrentSale = '/orders/sell/show/';
   static String previousSaleShipment = '/shipment/show-all-received';
   static String addOrderInShipment = '/shipment/add-order-in-shipment/';
+  static String changeOrderStatus='/orders/sell/changeStatus/';
+  static String allDriver='/shipment/show-drivers';
+  static String addshipment='/shipment/store';
+  static String changeShipmentStatus='/orders/sell/shipment/changeStatus/';
 }

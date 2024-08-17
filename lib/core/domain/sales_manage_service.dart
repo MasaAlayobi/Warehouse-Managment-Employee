@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:mobile_warehouse_managment/core/config/store/get_header.dart';
 import 'package:mobile_warehouse_managment/core/data/add_sale_order.dart';
+import 'package:mobile_warehouse_managment/core/data/add_shipment_model.dart';
+import 'package:mobile_warehouse_managment/core/data/all_drevier_model.dart';
 import 'package:mobile_warehouse_managment/core/data/all_shipment_model.dart';
 import 'package:mobile_warehouse_managment/core/data/details_order_in_current_sale.dart';
 import 'package:mobile_warehouse_managment/core/data/previous_sale_shipment_model.dart';
@@ -11,6 +13,7 @@ import 'package:mobile_warehouse_managment/core/data/warehouse_in_order_sale.dar
 import 'package:mobile_warehouse_managment/core/domain/base_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_end_point.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_url.dart';
+import 'package:mobile_warehouse_managment/feature/salesManage/shipments/addShipment/bloc/add_shipment_bloc.dart';
 
 abstract class SalesManageService extends BaseService {
   Future<List<AllShipmentModel>> AllShipment();
@@ -20,6 +23,10 @@ abstract class SalesManageService extends BaseService {
   ShowDetailsOrderInCurrentsale(int id);
   Future<List<PreviousSaleShipmentModel>> AllPreviousSaleOrder();
   AddOrderInShipment(int orderId ,int shipmentId);
+  ChangeOrderStatus(int orderId,String status);
+  Future<List<AllDrevierModel>> AllDriver();
+  AddShipment(AddShipmentModel shipment);
+  ChangeShipmentStatus(int shipmentId,String status);
 }
 
 class SalesManageServiceImp extends SalesManageService {
@@ -183,5 +190,90 @@ class SalesManageServiceImp extends SalesManageService {
       print(Error());
     }
     print("object");
+  }
+  
+  @override
+  ChangeOrderStatus(int orderId, String status) async{
+    try {
+      response = await dio.post("$URL${EndPoint.changeOrderStatus}$orderId",
+          data: jsonEncode({"status": status }), options: getHeader());
+      if (response!.statusCode == 200) {
+        print(response!.data["message"]);
+        return response!.data["message"];
+      } else {
+        print(response!.statusCode);
+      }
+    } on DioException catch (e) {
+      print('*****************************');
+      print(e.response!.data["message"]);
+     throw e.response!.data["message"];
+    } catch (e) {
+      print(e);
+    }
+  }
+  
+  @override
+  Future<List<AllDrevierModel>> AllDriver() async{
+    try {
+      response = await dio.get("$URL${EndPoint.allDriver}",
+          options: getHeader());
+      List<AllDrevierModel> temp = List.generate(
+        response!.data["data"].length,
+        (index) =>
+            AllDrevierModel.fromMap(response!.data["data"][index]),
+      );
+      if (response!.statusCode == 200) {
+        print("temp$temp");
+        return temp;
+      } else {
+        print("error in get data");
+        return [];
+      }
+    } on DioException catch (e) {
+      print(e.response!.data);
+      throw e.response!.data["message"];
+    }
+  }
+  
+  @override
+  AddShipment(AddShipmentModel shipment) async{
+    try {
+      response = await dio.post("$URL${EndPoint.addshipment}",
+          options: getHeader(), data: shipment.toJson());
+      if (response!.statusCode == 200) {
+        print(response!.data);
+        return response!.data["message"];
+      } else {
+        print(response!.data["message"]);
+        print("error in get data");
+      }
+    } on DioException catch (e) {
+      print(e.response!.data);
+      print(e.response!.statusCode);
+      throw e.response!.data["message"];
+    } on Error {
+      print(Error());
+    }
+    print("object");
+  }
+  
+  @override
+  ChangeShipmentStatus(int shipmentId, String status) async{
+     try {
+      response = await dio.post("$URL${EndPoint.changeShipmentStatus}$shipmentId",
+          data: jsonEncode({"status": status }), options: getHeader());
+      if (response!.statusCode == 200) {
+        print(response!.data["message"]);
+        return response!.data["message"];
+      } else {
+        print(response!.statusCode);
+      }
+    } on DioException catch (e) {
+      print('*****************************');
+      print(e.response!.data["message"]);
+     throw e.response!.data["message"];
+    } catch (e) {
+      print(e);
+    }
   }
 }

@@ -160,7 +160,7 @@ bool _isExpanded = false;
                 return Center(
                   child: 
                       Lottie.asset("assets/lottie/empty.json",
-                          width: 200, height: 333),
+                          width: 200, height: 100),
                      
                    
                 );
@@ -168,7 +168,7 @@ bool _isExpanded = false;
                 return Center(
                   child: 
                       Lottie.asset("assets/lottie/loading.json",
-                          width: 200, height: 333),
+                          width: 200, height: 100),
                    
                 );
               }

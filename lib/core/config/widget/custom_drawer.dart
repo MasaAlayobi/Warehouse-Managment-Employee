@@ -1,17 +1,40 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mobile_warehouse_managment/core/config/router/app_router.dart';
+import 'package:mobile_warehouse_managment/core/config/store/getit.dart';
 import 'package:mobile_warehouse_managment/core/config/widget/Titles.dart';
 import 'package:mobile_warehouse_managment/core/domain/auth_service.dart';
 import 'package:mobile_warehouse_managment/core/resourse/app_color.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class CustomDrawer extends StatelessWidget {
+class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
 
   @override
+  State<CustomDrawer> createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  List<int>? number;
+  @override
+  
   Widget build(BuildContext context) {
+     String? role = storage
+            .get<SharedPreferences>()
+            .getString('role');
+    
+    if (role != null) {
+      List<dynamic> jsonList = jsonDecode(role);
+      setState(() {
+        number = jsonList.map((e) => e as int).toList();
+      });
+      print(number);
+    }
+  
     return Drawer(
       width: 215,
       backgroundColor: AppColor.purple2,
@@ -37,6 +60,7 @@ class CustomDrawer extends StatelessWidget {
               GoRouter.of(context).push(AppRouter.kHomeView);
             },
           ),
+          if(number!.contains(4)||number!.contains(3)||number!.contains(1))
           ExpansionTile(
             iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
@@ -44,7 +68,8 @@ class CustomDrawer extends StatelessWidget {
               Icons.inventory,
               color: AppColor.purple1,
             ),
-            title: const Text(
+            title:
+            const Text(
               'Inventory',
               style: TextStyle(
                 color: AppColor.purple1,
@@ -62,6 +87,7 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                     if(number!.contains(1)||number!.contains(3))
                     InkWell(
                         onTap: () {
                           GoRouter.of(context).push(AppRouter.kInventoryView);
@@ -75,6 +101,7 @@ class CustomDrawer extends StatelessWidget {
                       color: AppColor.white,
                       thickness: 2,
                     ),
+                    if(number!.contains(1)||number!.contains(4))
                     InkWell(
                         onTap: () {
                           GoRouter.of(context).push(AppRouter.kWarehousesView);
@@ -148,6 +175,7 @@ class CustomDrawer extends StatelessWidget {
             // Navigator.pushNamed(context, '/quality');
             // },
           ),
+          if(number!.contains(5)||number!.contains(6)||number!.contains(7)||number!.contains(8))
           ExpansionTile(
             iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
@@ -171,6 +199,7 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+              if(number!.contains(5)||number!.contains(6))
                     InkWell(
                       onTap: () {
                         GoRouter.of(context).push(AppRouter.kPreviousSalesView);
@@ -185,6 +214,7 @@ class CustomDrawer extends StatelessWidget {
                       color: AppColor.white,
                       thickness: 2,
                     ),
+                    if(number!.contains(7)||number!.contains(5))
                     InkWell(
                       onTap: () {
                         GoRouter.of(context).push(AppRouter.kCurrentOrderView);
@@ -199,6 +229,7 @@ class CustomDrawer extends StatelessWidget {
                       color: AppColor.white,
                       thickness: 2,
                     ),
+                    if(number!.contains(8)||(number!.contains(5)))
                     InkWell(
                       onTap: () {
                         GoRouter.of(context).push(AppRouter.kAllShipmentsView);
@@ -214,6 +245,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ],
           ),
+           if(number!.contains(9)||number!.contains(10)||number!.contains(11))
           ExpansionTile(
             iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
@@ -237,6 +269,7 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                     if(number!.contains(9)||(number!.contains(10)))
                     InkWell(
                       onTap: () {
                         GoRouter.of(context)
@@ -252,6 +285,7 @@ class CustomDrawer extends StatelessWidget {
                       color: AppColor.white,
                       thickness: 2,
                     ),
+                     if(number!.contains(9)||(number!.contains(11)))
                     InkWell(
                       onTap: () {
                         GoRouter.of(context)
@@ -268,6 +302,7 @@ class CustomDrawer extends StatelessWidget {
               ),
             ],
           ),
+           if(number!.contains(12)||(number!.contains(13)))
           ExpansionTile(
             iconColor: AppColor.white,
             collapsedIconColor: AppColor.white,
@@ -291,6 +326,7 @@ class CustomDrawer extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                     if(number!.contains(12))
                     InkWell(
                         onTap: () {
                           GoRouter.of(context).push(AppRouter.KCustomerView);
@@ -304,6 +340,7 @@ class CustomDrawer extends StatelessWidget {
                       color: AppColor.white,
                       thickness: 2,
                     ),
+                     if(number!.contains(13))
                     InkWell(
                         onTap: () {
                           GoRouter.of(context).push(AppRouter.KSupplierView);
@@ -318,25 +355,25 @@ class CustomDrawer extends StatelessWidget {
               ),
             ],
           ),
-          ExpansionTile(
-            iconColor: AppColor.white,
-            collapsedIconColor: AppColor.white,
-            leading: const Icon(
-              Icons.insert_chart,
-              color: AppColor.purple1,
-            ),
-            title: InkWell(
-                onTap: () {
-                  GoRouter.of(context).push(AppRouter.KReportView);
-                },
-                child: const Text('Creat Reporte',
-                    style: TextStyle(
-                      color: AppColor.purple1,
-                    ))),
-            // onTap: () {
-            //   // Navigator.pushNamed(context, '/report');
-            // },
-          ),
+          // ExpansionTile(
+          //   iconColor: AppColor.white,
+          //   collapsedIconColor: AppColor.white,
+          //   leading: const Icon(
+          //     Icons.insert_chart,
+          //     color: AppColor.purple1,
+          //   ),
+          //   title: InkWell(
+          //       onTap: () {
+          //         GoRouter.of(context).push(AppRouter.KReportView);
+          //       },
+          //       child: const Text('Creat Reporte',
+          //           style: TextStyle(
+          //             color: AppColor.purple1,
+          //           ))),
+          //   // onTap: () {
+          //   //   // Navigator.pushNamed(context, '/report');
+          //   // },
+          // ),
           ListTile(
             leading: const Icon(
               Icons.report,

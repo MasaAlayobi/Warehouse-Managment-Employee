@@ -72,19 +72,27 @@ bool _isExpanded = false;
               //   }
               // print(variable);
             },
-            title: Text(
-              selectedTitle!,
-              style: TextStyle(
-                  color: AppColor.black,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600),
+            title:  Row(
+              children: [
+                Icon(Icons.warehouse,color: AppColor.purple3,),
+                SizedBox(
+                  width: 15,
+                ),
+                Text(
+                  selectedTitle!,
+                  style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
+                ),
+              ],
             ),
-            backgroundColor: AppColor.purple3,
+            backgroundColor: AppColor.white,
             collapsedShape: ContinuousRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             shape: ContinuousRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20))),
-            collapsedBackgroundColor:AppColor.purple3,
+            collapsedBackgroundColor:AppColor.white,
             textColor: AppColor.black,
             iconColor: AppColor.black,
             children: [
@@ -203,7 +211,7 @@ bool _isExpanded = false;
                   } else if (state is LoadedGetWarehouse) {
                     return Center(
                         child: Lottie.asset("assets/lottie/loading.json",
-                              width: 200, height: 333));
+                              width: 200, height: 100));
                   } else if (state is EmptyGetWarehouse) {
                     return Center(
                       child: Text('لا يوجد مستودعات لعرضها '),
